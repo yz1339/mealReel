@@ -12,12 +12,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" red="0.55546216400000004" green="0.454067043" blue="0.64395912249999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.87539095030000003" green="1" blue="0.67016366120000004" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="162.66666666666666" y="346.95333333333332"/>
+
+            <point key="canvasLocation" x="130.66666666666666" y="309.08666666666664"/>
+
         </scene>
     </scenes>
 </document>
