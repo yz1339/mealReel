@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "Dish.h"
 
 @interface ViewController : UIViewController {
     IBOutlet UIView *frameForCapture;
     IBOutlet UIImageView *imageView;
 }
+
+@property NSMutableArray* album;
+@property Dish* dish;
+
 
 - (IBAction)takephoto:(id)sender;
 

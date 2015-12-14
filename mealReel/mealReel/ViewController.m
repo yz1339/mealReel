@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Dish.h"
 
 @interface ViewController ()
 
@@ -16,6 +17,8 @@ AVCaptureSession *session;
 AVCaptureStillImageOutput *StillImageOutput;
 
 @implementation ViewController
+@synthesize album;
+@synthesize dish;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -87,8 +90,10 @@ AVCaptureStillImageOutput *StillImageOutput;
             NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
             UIImage *image = [UIImage imageWithData:imageData];
             imageView.image = image;
+            //Store images in a Dish Object
+            dish = [[Dish alloc] initWithPicture:image];
         }
-    //Store images in an array, send it to pictureView
+    //send it to pictureView
     //Find a way to pass that array around views
         
     }];
