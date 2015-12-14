@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Dish.h"
+#import "ViewController.h"
 
 @interface WritingViewController : UIViewController
+
+@property (strong, nonatomic) UIImage* currentImage;
+@property (strong, nonatomic) Dish* currentDish;
+@property (strong, nonatomic) NSMutableArray* album;
 
 @end

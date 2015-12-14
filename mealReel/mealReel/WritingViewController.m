@@ -25,9 +25,6 @@
 
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *pictureTap;
 @property (retain, nonatomic) UITextView *captionTextView;
-@property (strong, nonatomic) UIImage* currentImage;
-@property (strong, nonatomic) Dish* currentDish;
-@property (strong, nonatomic) NSMutableArray* album;
 
 @end
 
