@@ -187,7 +187,7 @@
                                 <animations/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pictureFrame-1" id="0eS-gm-FhX">
-                                <rect key="frame" x="20" y="129" width="280" height="328"/>
+                                <rect key="frame" x="20" y="129" width="280" height="330"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <gestureRecognizers/>
