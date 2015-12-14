@@ -10,6 +10,7 @@
 #import "InfoViewController.h"
 #import "ViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Dish.h"
 
 
 @interface WritingViewController ()
@@ -25,10 +26,13 @@
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *pictureTap;
 @property (retain, nonatomic) UITextView *captionTextView;
 
-
 @end
 
 @implementation WritingViewController
+
+@synthesize currentImage;
+@synthesize currentDish;
+@synthesize album;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

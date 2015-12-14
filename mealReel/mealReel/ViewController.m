@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "WritingViewController.h"
 #import "Dish.h"
 
 @interface ViewController ()
@@ -93,10 +94,21 @@ AVCaptureStillImageOutput *StillImageOutput;
             //Store images in a Dish Object
             dish = [[Dish alloc] initWithPicture:image];
         }
-    //send it to pictureView
-    //Find a way to pass that array around views
         
     }];
+    //send it to pictureView
+    [self performSegueWithIdentifier:@"sendingPictureSegue" sender:self];
+    //Find a way to pass that array around views
+
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    //Sending this image to the writingView
+    if ([[segue identifier] isEqualToString:@"sendingPictureSegue"]) {
+        [[segue destinationViewController] setCurrentDish: dish];
+        [[segue destinationViewController] setCurrentImage: imageView.image];
+        [[segue destinationViewController] setAlbum: album];
+    }
 }
 
 
