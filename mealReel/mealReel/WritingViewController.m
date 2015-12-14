@@ -9,6 +9,7 @@
 #import "WritingViewController.h"
 #import "InfoViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Dish.h"
 
 
 @interface WritingViewController ()
@@ -23,11 +24,17 @@
 
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *pictureTap;
 @property (retain, nonatomic) UITextView *captionTextView;
-
+@property (strong, nonatomic) UIImage* currentImage;
+@property (strong, nonatomic) Dish* currentDish;
+@property (strong, nonatomic) NSMutableArray* album;
 
 @end
 
 @implementation WritingViewController
+
+@synthesize currentImage;
+@synthesize currentDish;
+@synthesize album;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

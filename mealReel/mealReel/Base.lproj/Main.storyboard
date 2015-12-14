@@ -25,6 +25,7 @@
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <connections>
                                             <action selector="takephoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SmL-nZ-WJE"/>
+                                            <segue destination="CzM-Vl-PZw" kind="modal" identifier="sedingPictureSegue" id="EEn-Eu-zd3"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8ML-F0-xdS">
@@ -193,7 +194,7 @@
         <!--Picture View Controller-->
         <scene sceneID="Lxc-r6-f07">
             <objects>
-                <viewController id="cwo-iE-hNj" customClass="PictureViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PictureView" id="cwo-iE-hNj" customClass="PictureViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pnL-Ur-yf4"/>
                         <viewControllerLayoutGuide type="bottom" id="Mr9-7r-hUi"/>

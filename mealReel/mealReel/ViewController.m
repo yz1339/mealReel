@@ -93,10 +93,18 @@ AVCaptureStillImageOutput *StillImageOutput;
             //Store images in a Dish Object
             dish = [[Dish alloc] initWithPicture:image];
         }
-    //send it to pictureView
-    //Find a way to pass that array around views
         
     }];
+    //send it to pictureView
+    [self performSegueWithIdentifier:@"sedingPictureSegue" sender:self];
+    //Find a way to pass that array around views
+
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"sedingPictureSegue"]) {
+        [[segue destinationViewController] setCurrentImage: imageView.image];
+    }
 }
 
 
