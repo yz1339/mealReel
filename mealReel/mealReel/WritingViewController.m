@@ -32,6 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+     
     _count = 0;
      //  _pictureBack = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pictureBack.png"]];
     CGRect newFrame = _pictureBack.bounds;
@@ -176,12 +177,10 @@
         _count++;
         [_containerView removeGestureRecognizer:_pictureTap];
         [_pictureTap setEnabled: NO];
-        //[_captionTextView setHidden: NO];
-        //[_captionTextView performSelector:@selector(setHidden) withObject:(NO) afterDelay:(10.0)];
- 
+        
     }
     [_captionTextView performSelector:@selector(setHidden:) withObject:_captionTextView afterDelay:1.2];
-   //[_captionTextView setHidden: NO];
+
     
 }
 
@@ -190,6 +189,14 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+
+
+
+
+
 
 /*
 #pragma mark - Navigation
