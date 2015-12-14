@@ -8,6 +8,7 @@
 
 #import "InfoViewController.h"
 #import "WritingViewController.h"
+#import "ViewController.h"
 
 @interface InfoViewController ()
 
@@ -23,6 +24,11 @@
    WritingViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"WritingView"];
     [self presentViewController:next animated:YES completion:NULL];
 }
+- (IBAction)acceptPressed:(id)sender {
+    ViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CameraView"];
+    [self presentViewController:next animated:YES completion:NULL];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

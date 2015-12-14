@@ -32,6 +32,9 @@
     _containerView.center = CGPointMake(160,300);
     UITextView *captionTextView = [[UITextView alloc] initWithFrame:newFrame];
     
+    UILabel *restaurantName = [[UILabel alloc]initWithFrame:newFrame];
+    UILabel *address = [[UILabel alloc]initWithFrame:newFrame];
+    UILabel *dishName = [[UILabel alloc]initWithFrame:newFrame];
     
     [self.view addSubview:_containerView];
     
@@ -41,13 +44,26 @@
     _pictureBack.center = CGPointMake(_containerView.frame.size.width  / 2,
                                       _containerView.frame.size.height / 2);
     captionTextView.center = CGPointMake(_pictureBack.frame.size.width  / 2,
-                                         _pictureBack.frame.size.height / 2);
+                                         (_pictureBack.frame.size.height / 2)-90);
     
-    captionTextView.text = @"geeeii!!";
+    restaurantName.center = CGPointMake(_pictureBack.frame.size.width  / 2,
+                                         (_pictureBack.frame.size.height / 2)-30);
+    address.center = CGPointMake(_pictureBack.frame.size.width  / 2,
+                                        _pictureBack.frame.size.height / 2);
+    dishName.center = CGPointMake(_pictureBack.frame.size.width  / 2,
+                                        _pictureBack.frame.size.height / 2);
+
+    
+    
+    captionTextView.text = @"sdfasdfadsfasdgsdgsdafsdafasdgdsfgdfgdfgdfsgasfsadgadsfsdafasdgdsfgsfdfasfdsfasdgdsfgsdaf";
+    restaurantName.text = @"Macaroni Grill";
+    address.text = @"183 Notre Dame Way SW";
     //this adds them to our containerView
     [_containerView addSubview:_pictureBack];
     [_pictureBack addSubview: captionTextView];
     [_containerView addSubview:_pictureFrame];
+    [_pictureBack addSubview:restaurantName];
+    [_pictureBack addSubview:address];
     
 
     

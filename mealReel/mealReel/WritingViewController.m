@@ -8,6 +8,7 @@
 
 #import "WritingViewController.h"
 #import "InfoViewController.h"
+#import "ViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Dish.h"
 
@@ -141,6 +142,10 @@
     
 }
 
+- (IBAction)returnPressed:(id)sender {
+    ViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CameraView"];
+    [self presentViewController:next animated:YES completion:NULL];
+}
 
 
 
