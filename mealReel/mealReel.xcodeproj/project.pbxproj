@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		39916E071C0D31A9009A81AE /* WritingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39916E061C0D31A9009A81AE /* WritingViewController.m */; settings = {ASSET_TAGS = (); }; };
-		39916E0A1C0F532D009A81AE /* PictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39916E091C0F532D009A81AE /* PictureViewController.m */; settings = {ASSET_TAGS = (); }; };
-		39916E0D1C1123D4009A81AE /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39916E0C1C1123D4009A81AE /* InfoViewController.m */; settings = {ASSET_TAGS = (); }; };
+		39916E071C0D31A9009A81AE /* WritingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39916E061C0D31A9009A81AE /* WritingViewController.m */; };
+		39916E0A1C0F532D009A81AE /* PictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39916E091C0F532D009A81AE /* PictureViewController.m */; };
+		39916E0D1C1123D4009A81AE /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39916E0C1C1123D4009A81AE /* InfoViewController.m */; };
 		5366A8241C0CEACC00FAF87C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5366A8231C0CEACC00FAF87C /* main.m */; };
 		5366A8271C0CEACC00FAF87C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5366A8261C0CEACC00FAF87C /* AppDelegate.m */; };
 		5366A82A1C0CEACC00FAF87C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5366A8291C0CEACC00FAF87C /* ViewController.m */; };
@@ -433,6 +433,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = mealReel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.mealReel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -444,6 +445,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = mealReel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.mealReel;
 				PRODUCT_NAME = "$(TARGET_NAME)";

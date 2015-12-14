@@ -29,6 +29,16 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
+		<string>auto-focus-camera</string>
+		<string>camera-flash</string>
+		<string>front-facing-camera</string>
+		<string>gps</string>
+		<string>location-services</string>
+		<string>still-camera</string>
+		<string>sms</string>
+		<string>peer-peer</string>
+		<string>wifi</string>
+		<string>video-camera</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
