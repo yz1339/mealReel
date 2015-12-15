@@ -36,7 +36,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     
+    
+    appDelegate = [[UIApplication sharedApplication] delegate];
+    currentDish = appDelegate.addingDish;
+    currentImage = currentDish.dishImage;
+    NSLog(@"=========Writing View currentDish writes: %@", currentDish.writing);
+    
     _count = 0;
         CGRect newFrame = _pictureBack.bounds;
     newFrame.size.height = 200;
@@ -92,6 +97,7 @@
     
     
 }
+
 
 
 - (IBAction)flipPressed:(id)sender {

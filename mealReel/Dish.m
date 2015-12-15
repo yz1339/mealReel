@@ -19,6 +19,7 @@
 -(id) initWithPicture:(UIImage *)image {
     if (self = [super init]) {
         self.dishImage = image;
+        self.writing = @"!!!!!!!!!";
     }
     return self;
 }

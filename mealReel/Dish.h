@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
+
 @interface Dish : NSObject
 
-@property UIImage* dishImage;
-@property NSString* writing;
-@property NSString* dishName;
-@property NSString* restaurant;
-@property NSString* address;
+@property (strong, nonatomic) UIImage* dishImage;
+@property (strong, nonatomic) NSString* writing;
+@property (strong, nonatomic) NSString* dishName;
+@property (strong, nonatomic) NSString* restaurant;
+@property (strong, nonatomic) NSString* address;
 
 
 -(id) initWithPicture: (UIImage*) image;

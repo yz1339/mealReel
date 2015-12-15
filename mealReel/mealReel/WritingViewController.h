@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Dish.h"
 #import "ViewController.h"
+#import "AppDelegate.h"
 
-@interface WritingViewController : UIViewController
+
+@interface WritingViewController : UIViewController {
+    AppDelegate *appDelegate;
+}
 
 @property (strong, nonatomic) UIImage* currentImage;
 @property (strong, nonatomic) Dish* currentDish;

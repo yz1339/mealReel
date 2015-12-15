@@ -10,7 +10,7 @@
 		39916E071C0D31A9009A81AE /* WritingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39916E061C0D31A9009A81AE /* WritingViewController.m */; };
 		39916E0A1C0F532D009A81AE /* PictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39916E091C0F532D009A81AE /* PictureViewController.m */; };
 		39916E0D1C1123D4009A81AE /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39916E0C1C1123D4009A81AE /* InfoViewController.m */; };
-		39916E151C1F8048009A81AE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 39916E141C1F8048009A81AE /* User.m */; settings = {ASSET_TAGS = (); }; };
+		39916E151C1F8048009A81AE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 39916E141C1F8048009A81AE /* User.m */; };
 		5366A8241C0CEACC00FAF87C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5366A8231C0CEACC00FAF87C /* main.m */; };
 		5366A8271C0CEACC00FAF87C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5366A8261C0CEACC00FAF87C /* AppDelegate.m */; };
 		5366A82A1C0CEACC00FAF87C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5366A8291C0CEACC00FAF87C /* ViewController.m */; };
@@ -126,7 +126,6 @@
 				5366A82E1C0CEACC00FAF87C /* Assets.xcassets */,
 				5366A8301C0CEACC00FAF87C /* LaunchScreen.storyboard */,
 				5366A8331C0CEACC00FAF87C /* Info.plist */,
-				5366A8221C0CEACC00FAF87C /* Supporting Files */,
 				39916E051C0D31A9009A81AE /* WritingViewController.h */,
 				39916E061C0D31A9009A81AE /* WritingViewController.m */,
 				39916E081C0F532D009A81AE /* PictureViewController.h */,
@@ -135,6 +134,7 @@
 				39916E0C1C1123D4009A81AE /* InfoViewController.m */,
 				39916E131C1F8048009A81AE /* User.h */,
 				39916E141C1F8048009A81AE /* User.m */,
+				5366A8221C0CEACC00FAF87C /* Supporting Files */,
 			);
 			path = mealReel;
 			sourceTree = "<group>";

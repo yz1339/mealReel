@@ -8,30 +8,35 @@
 
 #import "ViewController.h"
 #import "WritingViewController.h"
-#import "Dish.h"
 
-@interface ViewController ()
 
+@interface ViewController () 
 @end
 
 AVCaptureSession *session;
 AVCaptureStillImageOutput *StillImageOutput;
 
 @implementation ViewController
+
 @synthesize album;
 @synthesize dish;
+@synthesize currentImage;
+@synthesize imageTaken;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    appDelegate = [[UIApplication sharedApplication] delegate];
+    dish = [[Dish alloc] init];
+    currentImage = [[UIImage alloc] init];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    imageTaken = false;
     
     session = [[AVCaptureSession alloc] init];
     
     [session setSessionPreset:AVCaptureSessionPresetPhoto];
-    
     
     AVCaptureDevice *inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
@@ -89,27 +94,34 @@ AVCaptureStillImageOutput *StillImageOutput;
     [StillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
         if (imageDataSampleBuffer != NULL) {
             NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-            UIImage *image = [UIImage imageWithData:imageData];
+            UIImage* image = [UIImage imageWithData:imageData];
             imageView.image = image;
+            currentImage = image;
             //Store images in a Dish Object
-            dish = [[Dish alloc] initWithPicture:image];
+            dish.dishImage = currentImage;
+            dish.writing = @"#########";
+            appDelegate.addingDish = dish;
+//            NSLog(@"first test %@", dish.writing);
+//            imageTaken = true;
+//            [self pictureTaken:self];
+            [self performSegueWithIdentifier:@"sendingPictureSegue" sender:self];
         }
         
     }];
-    //send it to pictureView
-    [self performSegueWithIdentifier:@"sendingPictureSegue" sender:self];
-    //Find a way to pass that array around views
-
 }
 
--(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    //Sending this image to the writingView
-    if ([[segue identifier] isEqualToString:@"sendingPictureSegue"]) {
-        [[segue destinationViewController] setCurrentDish: dish];
-        [[segue destinationViewController] setCurrentImage: imageView.image];
-        [[segue destinationViewController] setAlbum: album];
-    }
-}
+//-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    //Sending this image to the writingView
+//    if ([[segue identifier] isEqualToString:@"sendingPictureSegue"] && imageTaken) {
+//        dish.writing = @"!!!!!!!!!!!!!!!aaaaaaaa";
+//        NSLog(@"Current dish writes: %@", dish.writing);
+//        [[segue destinationViewController] setCurrentDish: dish];
+//        [[segue destinationViewController] setCurrentImage: currentImage];
+//        NSLog(@"Current Image is %@", currentImage);
+//        [[segue destinationViewController] setAlbum: album];
+//        NSLog(@"Passsssss");
+//    }
+//}
 
 
 @end

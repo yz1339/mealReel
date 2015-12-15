@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
+#import "Dish.h"
 
-@class WritingViewController;
+//@class WritingViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, retain) IBOutlet WritingViewController *writingViewController;
+//@property (nonatomic, retain) IBOutlet WritingViewController *writingViewController;
 @property (strong, nonatomic) User* currentUser;
+@property (strong, nonatomic) Dish* addingDish;
 
 
 @end
