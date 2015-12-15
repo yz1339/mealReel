@@ -91,6 +91,7 @@
                                 <state key="normal" image="arrow"/>
                                 <connections>
                                     <action selector="arrowPressed:" destination="CzM-Vl-PZw" eventType="touchUpInside" id="k13-Jw-UDD"/>
+                                    <segue destination="6qw-2b-rHc" kind="modal" identifier="writingToInfo" id="J5l-H5-8A9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XcL-XR-fuM">
@@ -101,6 +102,7 @@
                                 </state>
                                 <connections>
                                     <action selector="returnPressed:" destination="CzM-Vl-PZw" eventType="touchUpInside" id="yBH-QN-JQC"/>
+                                    <segue destination="BYZ-38-t0r" kind="custom" identifier="writingToCamera" id="4jf-EW-4oY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -180,6 +182,7 @@
                                 <state key="normal" image="arrow-1"/>
                                 <connections>
                                     <action selector="returnPressed:" destination="6qw-2b-rHc" eventType="touchUpInside" id="Ccs-3g-llR"/>
+                                    <segue destination="BYZ-38-t0r" kind="custom" identifier="infoCanceled" id="Ib8-Ru-VdL"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="orange box" translatesAutoresizingMaskIntoConstraints="NO" id="XVl-XJ-cHI">
@@ -193,6 +196,7 @@
                                 </state>
                                 <connections>
                                     <action selector="acceptPressed:" destination="6qw-2b-rHc" eventType="touchUpInside" id="8BQ-xc-UbX"/>
+                                    <segue destination="BYZ-38-t0r" kind="custom" identifier="infoAccepted" id="7qm-2r-Cpk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -255,4 +259,7 @@
         <image name="pictureFrame-1" width="1099" height="1214"/>
         <image name="pictureFrame_transparentcenter" width="364" height="410"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ib8-Ru-VdL"/>
+    </inferredMetricsTieBreakers>
 </document>

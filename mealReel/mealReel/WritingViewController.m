@@ -134,6 +134,7 @@
 - (IBAction)arrowPressed:(id)sender {
     
     InfoViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"InfoView"];
+    [self performSegueWithIdentifier:@"wrtingToInfo" sender:self];
     [self presentViewController:next animated:YES completion:NULL];
 
     
@@ -141,6 +142,7 @@
 
 - (IBAction)returnPressed:(id)sender {
     ViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CameraView"];
+    [self performSegueWithIdentifier:@"writingToCamera" sender:self];
     [self presentViewController:next animated:YES completion:NULL];
 }
 
@@ -204,5 +206,20 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    //Sending this image to the writingView
+    if ([[segue identifier] isEqualToString:@"wrtingToInfo"]) {
+        [[segue destinationViewController] setCurrentDish: currentDish];
+        [[segue destinationViewController] setCurrentImage: currentImage];
+        [[segue destinationViewController] setAlbum: album];
+    }
+    if ([[segue identifier] isEqualToString:@"wrtingToCamera"]) {
+        //[[segue destinationViewController] setCurrentDish: currentDish];
+        //[[segue destinationViewController] setCurrentImage: currentImage];
+        [[segue destinationViewController] setAlbum: album];
+    }
+}
+
 
 @end

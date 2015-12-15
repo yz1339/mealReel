@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Dish.h"
+#import "WritingViewController.h"
+#import "ViewController.h"
 
 @interface PictureViewController : UIViewController
+
 
 @end
