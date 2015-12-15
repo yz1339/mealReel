@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Dish.h"
 
 @interface User : NSObject
+
+@property NSMutableArray* album;
+
+-(void) addToAlbum: (Dish*) currentDish;
 
 @end

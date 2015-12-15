@@ -10,4 +10,19 @@
 
 @implementation User
 
+@synthesize album;
+
+
+-(void) addToAlbum:(Dish *)currentDish{
+    if([album count]>0){
+         [album addObject: currentDish];
+    }
+    else{
+        album = [[NSMutableArray alloc]init];
+        [album addObject: currentDish];
+    }
+   
+}
+
+
 @end
