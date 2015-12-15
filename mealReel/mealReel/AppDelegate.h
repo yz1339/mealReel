@@ -14,7 +14,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, retain) IBOutlet WritingViewController *writingViewController;
+//@property (nonatomic, retain) IBOutlet WritingViewController *writingViewController;
 @property (strong, nonatomic) User* currentUser;
 
 

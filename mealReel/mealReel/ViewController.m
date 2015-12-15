@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "WritingViewController.h"
 #import "Dish.h"
+#import "AlbumViewController.h"
 
 @interface ViewController ()
 
@@ -111,5 +112,10 @@ AVCaptureStillImageOutput *StillImageOutput;
     }
 }
 
+- (IBAction)albumPressed:(id)sender {
+    AlbumViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AlbumView"];
+    [self presentViewController:next animated:YES completion:NULL];
+
+}
 
 @end

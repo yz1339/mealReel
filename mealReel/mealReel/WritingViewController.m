@@ -13,7 +13,7 @@
 #import "Dish.h"
 
 
-@interface WritingViewController ()
+@interface WritingViewController () //<UITextViewDelegate>
 @property bool isFlipped;
 @property int count;
 @property (retain, nonatomic) IBOutlet UIImageView *pictureFrame;
@@ -24,7 +24,7 @@
 @property (retain,nonatomic) UIView *subContainerView;
 
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *pictureTap;
-@property (retain, nonatomic) UITextView *captionTextView;
+
 
 @end
 
@@ -33,16 +33,17 @@
 @synthesize currentImage;
 @synthesize currentDish;
 @synthesize album;
+@synthesize captionTextView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     
+    //_captionTextView.delegate = self;
     _count = 0;
         CGRect newFrame = _pictureBack.bounds;
     newFrame.size.height = 200;
     newFrame.size.width = 200;
     
-    UIImageView* currentImageView = [[UIImageView alloc] initWithImage:currentImage];
+    UIImageView* currentImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"orange box.png"]];
     
     _containerView = [[UIView alloc] initWithFrame:_pictureFrame.bounds];
      _containerView.center = CGPointMake(160,300);
@@ -50,14 +51,15 @@
     
 
 
-    _captionTextView = [[UITextView alloc] initWithFrame:newFrame];
-     _captionTextView.center = CGPointMake(160,300);
-    [_captionTextView setEditable: YES];
+    captionTextView = [[UITextView alloc] initWithFrame:newFrame];
+     captionTextView.center = CGPointMake(160,300);
+    [captionTextView setEditable: YES];
+    captionTextView.delegate = self;
    
     
     
     [self.view addSubview:_containerView];
-    [self.view addSubview:_captionTextView];
+    [self.view addSubview:captionTextView];
     
     //this centers the two objects
     _pictureFrame.center = CGPointMake(_containerView.frame.size.width  / 2,
@@ -68,7 +70,7 @@
                                           _pictureFrame.frame.size.height / 2);
     
     
-    _captionTextView.text = @"Enter Text Here";
+    captionTextView.text = @"Enter Text Here";
     //this adds them to our containerView
     [_containerView addSubview:_pictureBack];
     [_containerView addSubview:_pictureFrame];
@@ -79,7 +81,7 @@
     //[_containerView addSubview:_pictureBack];
     
     //[_subContainerView setHidden: YES];
-    [_captionTextView setHidden: YES];
+    [captionTextView setHidden: YES];
     _isFlipped = NO;
     
     
@@ -162,7 +164,7 @@
         [_pictureTap setEnabled: NO];
         
     }
-    [_captionTextView performSelector:@selector(setHidden:) withObject:_captionTextView afterDelay:1.2];
+    [captionTextView performSelector:@selector(setHidden:) withObject:captionTextView afterDelay:1.2];
 
     
 }
@@ -174,6 +176,13 @@
 }
 
 
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    
+    if([text isEqualToString:@"\n"])
+        [textView resignFirstResponder];
+    return YES;
+}
 
 
 

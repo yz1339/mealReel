@@ -10,7 +10,12 @@
 #import "Dish.h"
 #import "ViewController.h"
 
-@interface WritingViewController : UIViewController
+@interface WritingViewController : UIViewController{
+    UITextView *captionTextView;
+}
+
+
+@property (retain,nonatomic) UITextView *captionTextView;
 
 @property (strong, nonatomic) UIImage* currentImage;
 @property (strong, nonatomic) Dish* currentDish;
