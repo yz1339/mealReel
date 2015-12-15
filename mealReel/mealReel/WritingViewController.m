@@ -38,16 +38,17 @@
     [super viewDidLoad];
      
     _count = 0;
-     //  _pictureBack = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pictureBack.png"]];
-    CGRect newFrame = _pictureBack.bounds;
+        CGRect newFrame = _pictureBack.bounds;
     newFrame.size.height = 200;
     newFrame.size.width = 200;
+    
+    UIImageView* currentImageView = [[UIImageView alloc] initWithImage:currentImage];
     
     _containerView = [[UIView alloc] initWithFrame:_pictureFrame.bounds];
      _containerView.center = CGPointMake(160,300);
     
-    //_subContainerView = [[UIView alloc] initWithFrame:_pictureFrame.bounds];
-    // _subContainerView.center = CGPointMake(160,300);
+    
+
 
     _captionTextView = [[UITextView alloc] initWithFrame:newFrame];
      _captionTextView.center = CGPointMake(160,300);
@@ -63,19 +64,16 @@
                                     _containerView.frame.size.height / 2);
     _pictureBack.center = CGPointMake(_containerView.frame.size.width  / 2,
                                       _containerView.frame.size.height / 2);
-   //_captionTextView.center = CGPointMake(_pictureBack.frame.size.width  / 2,
-    //                                     _pictureBack.frame.size.height / 2);
-    //_subContainerView.center = CGPointMake(_pictureBack.frame.size.width  / 2,
-                                        //  _pictureBack.frame.size.height / 2);
-  
+    currentImageView.center = CGPointMake(_pictureFrame.frame.size.width  / 2,
+                                          _pictureFrame.frame.size.height / 2);
+    
     
     _captionTextView.text = @"Enter Text Here";
     //this adds them to our containerView
     [_containerView addSubview:_pictureBack];
-   // [_pictureBack addSubview: _captionTextView];
- //  [_subContainerView addSubview: _subContainerView];
-   // [_subContainerView addSubview:captionTextView];
     [_containerView addSubview:_pictureFrame];
+    [_pictureFrame addSubview:currentImageView];
+    
     
     
     //[_containerView addSubview:_pictureBack];
@@ -97,26 +95,7 @@
 
 
 - (IBAction)flipPressed:(id)sender {
-    /*
-    _pictureBack = [[UIImageView alloc] initWithImage:[UIImage
-                                                       imageNamed:@"pictureBack.png"]];
-    
-    [UIView transitionWithView:_containerView
-                      duration:3
-                       options:UIViewAnimationOptionTransitionFlipFromLeft
-                    animations:^{
-                        
-                        if (!_isFlipped) {
-                            [_pictureBack setHidden:YES];
-                            [_containerView addSubview:_pictureFrame];
-                            _isFlipped = YES;
-                        } else {
-                            [_pictureBack setHidden:NO];
-                            [_pictureFrame removeFromSuperview]; //or hide it.
-                        }
-                        
-                    } completion:nil];
-     */
+   
     
 
     _pictureBack.center = _pictureFrame.center;
