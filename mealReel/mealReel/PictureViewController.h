@@ -17,5 +17,6 @@
 
 }
 
+@property (strong, nonatomic) Dish* currentDish;
 
 @end

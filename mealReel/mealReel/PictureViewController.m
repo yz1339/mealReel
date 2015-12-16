@@ -8,6 +8,8 @@
 
 #import "PictureViewController.h"
 #import "CommentViewController.h"
+#import "AlbumViewController.h"
+#import "Dish.h"
 
 @interface PictureViewController ()
 
@@ -19,6 +21,7 @@
 @property (retain,nonatomic) UIView *containerView;
 @property (strong, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (strong, nonatomic) IBOutlet UIButton *usernameButton;
+
 
 @end
 
@@ -145,6 +148,10 @@
     [self presentViewController:next animated:YES completion:NULL];
 }
 
+- (IBAction)returnPressed:(id)sender {
+    AlbumViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AlbumView"];
+    [self presentViewController:next animated:YES completion:NULL];
+}
 
 
 
