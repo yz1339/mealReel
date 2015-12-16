@@ -26,6 +26,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    appDelegate = [[UIApplication sharedApplication] delegate];
+    
     // Do any additional setup after loading the view.
     CGRect newFrame = _pictureBack.bounds;
     newFrame.size.height = 100;

@@ -21,21 +21,18 @@ AVCaptureStillImageOutput *StillImageOutput;
 
 @implementation ViewController
 
-@synthesize album;
-@synthesize dish;
+
 @synthesize currentImage;
-@synthesize imageTaken;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     appDelegate = [[UIApplication sharedApplication] delegate];
-    dish = [[Dish alloc] init];
     currentImage = [[UIImage alloc] init];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    imageTaken = false;
     
     session = [[AVCaptureSession alloc] init];
     
@@ -100,10 +97,6 @@ AVCaptureStillImageOutput *StillImageOutput;
             UIImage* image = [UIImage imageWithData:imageData];
             //UIImage* image = [[UIImage alloc] initWithData:imageData scale:0.8];
             imageView.image = image;
-            currentImage = image;
-            //Store images in a Dish Object
-            dish.dishImage = currentImage;
-            appDelegate.addingDish = dish;
             appDelegate.currentImage = image;
             WritingViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"WritingView"];
             [self presentViewController:next animated:YES completion:NULL];

@@ -10,15 +10,14 @@
 #import "User.h"
 #import "Dish.h"
 
-//@class WritingViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-//@property (nonatomic, retain) IBOutlet WritingViewController *writingViewController;
 @property (strong, nonatomic) User* currentUser;
 @property (strong, nonatomic) Dish* addingDish;
 @property (strong, nonatomic) UIImage* currentImage;
+@property (strong, readwrite, nonatomic) NSTextStorage* textStorage;
 
 
 @end

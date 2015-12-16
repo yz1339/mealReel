@@ -11,15 +11,18 @@
 @implementation Dish
 
 @synthesize dishImage;
-@synthesize writing;
+@synthesize textStorage;
 @synthesize dishName;
 @synthesize restaurant;
 @synthesize address;
 
--(id) initWithPicture:(UIImage *)image {
+-(id) initWithPicture:(UIImage *)image dishname:(NSString*) dName restaurantName: (NSString*) rest address: (NSString*) addr andWriting: (NSTextStorage*) textStore {
     if (self = [super init]) {
         self.dishImage = image;
-        self.writing = @"!!!!!!!!!";
+        self.dishName = dName;
+        self.restaurant = rest;
+        self.address = addr;
+        self.textStorage = textStore;
     }
     return self;
 }

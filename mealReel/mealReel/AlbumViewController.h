@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
-@interface AlbumViewController : UIViewController
+@interface AlbumViewController : UIViewController {
+    AppDelegate* appDelegate;
+}
 
 @end

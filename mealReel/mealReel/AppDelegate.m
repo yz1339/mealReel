@@ -16,12 +16,14 @@
 
 @synthesize addingDish;
 @synthesize currentImage;
+@synthesize currentUser;
+@synthesize textStorage;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    _currentUser = [User alloc];
-    _currentUser.username = @"loki102";
-    _currentUser.avatar = [UIImage imageNamed:@"Tom-Hiddleston.jpg"];
+    currentUser = [User alloc];
+    currentUser.username = @"loki102";
+    currentUser.avatar = [UIImage imageNamed:@"Tom-Hiddleston.jpg"];
     return YES;
 }
 
@@ -46,5 +48,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 @end
