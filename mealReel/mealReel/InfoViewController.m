@@ -9,6 +9,7 @@
 #import "InfoViewController.h"
 #import "WritingViewController.h"
 #import "ViewController.h"
+#import "AddRecipeViewController.h"
 
 
 
@@ -29,6 +30,7 @@
 @synthesize restaurantTextField;
 @synthesize addressTextField;
 @synthesize dishNameTextField;
+@synthesize dishToAdd;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,8 +53,9 @@
 
 - (IBAction)acceptPressed:(id)sender {
     //Finally have all the information we need for the dish object, init a dish here
-    Dish* dishToAdd = [[Dish alloc] initWithPicture:appDelegate.currentImage dishname:dishNameTextField.text restaurantName:restaurantTextField.text address:addressTextField.text andWriting:appDelegate.textStorage];
+    dishToAdd = [[Dish alloc] initWithPicture:appDelegate.currentImage dishname:dishNameTextField.text restaurantName:restaurantTextField.text address:addressTextField.text textStore:appDelegate.textStorage andWriting:appDelegate.writing];
     //Add the dish to currentUser's album
+    dishToAdd.recipe = appDelegate.recipe;
     [appDelegate.currentUser addToAlbum:dishToAdd];
     //reset the writing to nil so that the next time the user open writing view he/she won't see previous writings
     appDelegate.writing = nil;
@@ -86,6 +89,13 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return NO;
+}
+- (IBAction)addingReceipe:(id)sender {
+    
+    //Connect to the recipeView
+    AddRecipeViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AddRecipeView"];
+    //next.addingDish = dishToAdd;
+    [self presentViewController:next animated:YES completion:NULL];
 }
 
 

@@ -17,4 +17,8 @@
 
 -(void) addToAlbum: (Dish*) currentDish;
 
+- (id)initWithCoder:(NSCoder *)coder;
+
+- (void)encodeWithCoder:(NSCoder *)coder;
+
 @end

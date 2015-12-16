@@ -23,6 +23,8 @@
 		5366A8321C0CEACC00FAF87C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5366A8301C0CEACC00FAF87C /* LaunchScreen.storyboard */; };
 		5366A83D1C0CEACC00FAF87C /* mealReelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5366A83C1C0CEACC00FAF87C /* mealReelTests.m */; };
 		5366A8481C0CEACC00FAF87C /* mealReelUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5366A8471C0CEACC00FAF87C /* mealReelUITests.m */; };
+		53731F071C21C7DB001F1406 /* RecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53731F061C21C7DB001F1406 /* RecipeViewController.m */; };
+		53731F0D1C21DFB8001F1406 /* AddRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53731F0C1C21DFB8001F1406 /* AddRecipeViewController.m */; };
 		53D1C0AA1C1CAF79008A4347 /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D1C0A91C1CAF79008A4347 /* Dish.m */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +77,10 @@
 		5366A8431C0CEACC00FAF87C /* mealReelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mealReelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5366A8471C0CEACC00FAF87C /* mealReelUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mealReelUITests.m; sourceTree = "<group>"; };
 		5366A8491C0CEACC00FAF87C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		53731F051C21C7DB001F1406 /* RecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeViewController.h; sourceTree = "<group>"; };
+		53731F061C21C7DB001F1406 /* RecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeViewController.m; sourceTree = "<group>"; };
+		53731F0B1C21DFB8001F1406 /* AddRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRecipeViewController.h; sourceTree = "<group>"; };
+		53731F0C1C21DFB8001F1406 /* AddRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRecipeViewController.m; sourceTree = "<group>"; };
 		53D1C0A81C1CAF79008A4347 /* Dish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dish.h; path = ../Dish.h; sourceTree = "<group>"; };
 		53D1C0A91C1CAF79008A4347 /* Dish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dish.m; path = ../Dish.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,6 +151,8 @@
 				39916E091C0F532D009A81AE /* PictureViewController.m */,
 				39916E0B1C1123D4009A81AE /* InfoViewController.h */,
 				39916E0C1C1123D4009A81AE /* InfoViewController.m */,
+				53731F051C21C7DB001F1406 /* RecipeViewController.h */,
+				53731F061C21C7DB001F1406 /* RecipeViewController.m */,
 				39916E131C1F8048009A81AE /* User.h */,
 				39916E141C1F8048009A81AE /* User.m */,
 				5366A8221C0CEACC00FAF87C /* Supporting Files */,
@@ -154,6 +162,8 @@
 				3952C6121C20EAA6004AF06D /* CommentViewController.m */,
 				3952C6141C20F592004AF06D /* AlbumCollectionViewCell.h */,
 				3952C6151C20F592004AF06D /* AlbumCollectionViewCell.m */,
+				53731F0B1C21DFB8001F1406 /* AddRecipeViewController.h */,
+				53731F0C1C21DFB8001F1406 /* AddRecipeViewController.m */,
 			);
 			path = mealReel;
 			sourceTree = "<group>";
@@ -319,10 +329,12 @@
 			files = (
 				5366A82A1C0CEACC00FAF87C /* ViewController.m in Sources */,
 				39916E151C1F8048009A81AE /* User.m in Sources */,
+				53731F0D1C21DFB8001F1406 /* AddRecipeViewController.m in Sources */,
 				3952C6101C20887F004AF06D /* AlbumViewController.m in Sources */,
 				39916E0A1C0F532D009A81AE /* PictureViewController.m in Sources */,
 				3952C6131C20EAA6004AF06D /* CommentViewController.m in Sources */,
 				39916E0D1C1123D4009A81AE /* InfoViewController.m in Sources */,
+				53731F071C21C7DB001F1406 /* RecipeViewController.m in Sources */,
 				53D1C0AA1C1CAF79008A4347 /* Dish.m in Sources */,
 				39916E071C0D31A9009A81AE /* WritingViewController.m in Sources */,
 				5366A8271C0CEACC00FAF87C /* AppDelegate.m in Sources */,

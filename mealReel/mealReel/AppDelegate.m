@@ -19,13 +19,14 @@
 @synthesize currentUser;
 @synthesize textStorage;
 @synthesize writing;
+@synthesize recipe;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 //    if (currentUser == NULL) {
-//        currentUser = [User alloc];
-//        currentUser.username = @"loki102";
-//        currentUser.avatar = [UIImage imageNamed:@"Tom-Hiddleston.jpg"];
+        currentUser = [User alloc];
+        currentUser.username = @"loki102";
+        currentUser.avatar = [UIImage imageNamed:@"Tom-Hiddleston.jpg"];
 //    } else {
 //        NSUserDefaults *defaultUser = [NSUserDefaults standardUserDefaults];
 //        NSData* defaultData = [defaultUser objectForKey:@"loki102"];
@@ -52,20 +53,20 @@
 //        NSData* defaultData = [defaultUser objectForKey:@"loki102"];
 //        currentUser = [NSKeyedUnarchiver unarchiveObjectWithData:defaultData];
 //    }
-//    
+//
     return YES;
 }
 
 - (BOOL) application:(UIApplication *)application willFinishLaunchingWithOptions:(nullable NSDictionary *)launchOptions {
-if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasUser"]) {
-    currentUser = [User alloc];
-    currentUser.username = @"loki102";
-    currentUser.avatar = [UIImage imageNamed:@"Tom-Hiddleston.jpg"];
-} else {
-    NSUserDefaults *defaultUser = [NSUserDefaults standardUserDefaults];
-    NSData* defaultData = [defaultUser objectForKey:@"loki102"];
-    currentUser = [NSKeyedUnarchiver unarchiveObjectWithData:defaultData];
-}
+//if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasUser"]) {
+//    currentUser = [User alloc];
+//    currentUser.username = @"loki102";
+//    currentUser.avatar = [UIImage imageNamed:@"Tom-Hiddleston.jpg"];
+//} else {
+//    NSUserDefaults *defaultUser = [NSUserDefaults standardUserDefaults];
+//    NSData* defaultData = [defaultUser objectForKey:@"loki102"];
+//    currentUser = [NSKeyedUnarchiver unarchiveObjectWithData:defaultData];
+//}
 
 return YES;
 
@@ -91,18 +92,18 @@ return YES;
 
 - (BOOL)application:(UIApplication *)application
 shouldSaveApplicationState:(NSCoder *)coder{
-    [coder encodeObject:currentUser forKey:@"CurUser"];
+    //[coder encodeObject:currentUser forKey:@"loki102"];
     return YES;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    NSData* defaultData = [NSKeyedArchiver archivedDataWithRootObject:currentUser];
-    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject: defaultData forKey:@"loki102"];
-    [defaults setBool:YES forKey:@"hasUser"];
-    NSLog(@"has user? %d", [defaults boolForKey:@"hasUser"]);
-    [defaults synchronize];
+//    NSData* defaultData = [NSKeyedArchiver archivedDataWithRootObject:currentUser];
+//    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+//    [defaults setObject: defaultData forKey:@"loki102"];
+//    [defaults setBool:YES forKey:@"hasUser"];
+//    NSLog(@"has user? %d", [defaults boolForKey:@"hasUser"]);
+//    [defaults synchronize];
 }
 
 
