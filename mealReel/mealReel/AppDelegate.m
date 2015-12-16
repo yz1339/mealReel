@@ -19,6 +19,10 @@
 @synthesize currentUser;
 @synthesize textStorage;
 
+
+/*
+ * Set up users for startup.
+ */
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 

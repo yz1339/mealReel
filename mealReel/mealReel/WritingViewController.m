@@ -13,7 +13,7 @@
 #import "Dish.h"
 
 
-@interface WritingViewController () //<UITextViewDelegate>
+@interface WritingViewController ()
 @property bool isFlipped;
 @property int count;
 
@@ -30,7 +30,7 @@
 
 @implementation WritingViewController
 
-//@synthesize writing;
+
 @synthesize currentImage;
 @synthesize captionTextView;
 @synthesize textStorage;
@@ -42,12 +42,10 @@
     appDelegate = [[UIApplication sharedApplication] delegate];
     
     currentImage = appDelegate.currentImage;
-    //_captionTextView.delegate = self;
-
-    //initiate the Writing first
-    //writing = [[NSString alloc] init];
-    textStorage = [[NSTextStorage alloc] init];
+      textStorage = [[NSTextStorage alloc] init];
     _count = 0;
+    
+    //set the sizes of the images to be displayed within the view
     CGRect newFrame = _pictureBack.bounds;
     newFrame.size.height = 200;
     newFrame.size.width = 200;
@@ -58,24 +56,25 @@
     
     _currentImageView = [[UIImageView alloc] initWithImage:currentImage];
     [_currentImageView setFrame:picBound];
-    
+   
+    //create a container on which the pictures will placed for animation
     _containerView = [[UIView alloc] initWithFrame:_pictureFrame.bounds];
      _containerView.center = CGPointMake(160,300);
     
     
 
-
+    //have a captionTextView so that users may write on the back of the picture once the flip animation is called
     captionTextView = [[UITextView alloc] initWithFrame:newFrame];
      captionTextView.center = CGPointMake(160,300);
     [captionTextView setEditable: YES];
     captionTextView.delegate = self;
    
     
-    
+  
     [self.view addSubview:_containerView];
     [self.view addSubview:captionTextView];
     
-    //this centers the two objects
+    //This is where we center all the objects
     _pictureFrame.center = CGPointMake(_containerView.frame.size.width  / 2,
                                     _containerView.frame.size.height / 2);
     _pictureBack.center = CGPointMake(_containerView.frame.size.width  / 2,
@@ -85,16 +84,12 @@
     
     
     captionTextView.text = @"Enter Text Here";
-    //this adds them to our containerView
     [_containerView addSubview:_pictureBack];
     [_containerView addSubview:_pictureFrame];
-    //[_pictureFrame addSubview:currentImageView];
+ 
     [_containerView addSubview:_currentImageView];
     
-    
-    //[_containerView addSubview:_pictureBack];
-    
-    //[_subContainerView setHidden: YES];
+    //captionView does not show up until image is flipped
     [captionTextView setHidden: YES];
     _isFlipped = NO;
     
@@ -103,29 +98,12 @@
     _pictureTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [_containerView addGestureRecognizer:_pictureTap];
     
-   
-    //[_pictureTap release];
+  
     
     
 }
 
 
-
-- (IBAction)flipPressed:(id)sender {
-   
-    
-
-    _pictureBack.center = _pictureFrame.center;
-    [UIView beginAnimations:@"WritingView" context:NULL];
-    [UIView setAnimationDuration:1.0];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft
-                           forView:_containerView
-                             cache:YES];
-    [_pictureFrame removeFromSuperview];
-    [_containerView addSubview:_pictureBack];
-    [UIView commitAnimations];
-
-}
 
 
 - (IBAction)arrowPressed:(id)sender {
@@ -136,6 +114,7 @@
     
 }
 
+
 - (IBAction)returnPressed:(id)sender {
     ViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CameraView"];
     [self presentViewController:next animated:YES completion:NULL];
@@ -143,11 +122,15 @@
 
 
 
+/*
+ * Here we handle the animation and flipping of image using a UITapGestureRecognizer. So when the user taps the 
+ * image it flips and reveals a textview.
+ */
+
 
 - (void)handleTap:(UITapGestureRecognizer *)sender {
     
-    //_pictureBack = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pictureBack.png"]];
-    NSLog(@"weenis");
+   
     if (sender.state == UIGestureRecognizerStateEnded && _count ==0) {
         [UIView transitionWithView:_containerView
                           duration:1
@@ -155,21 +138,16 @@
                         animations:^{
                             
                             if (!_isFlipped) {
-                                /*
-                                [_pictureBack setHidden:YES];
-                                [_containerView addSubview:_pictureFrame];
-                                 */
                                 [_pictureFrame setHidden:YES];
                                 [_currentImageView setHidden:YES];
                                 [_pictureBack setHidden: NO];
-                                //[_containerView addSubview:_pictureBack];
+                            
 
                                 _isFlipped = YES;
                             } else {
                                 [_pictureFrame setHidden:NO];
                                 [_currentImageView setHidden:NO];
                                 [_pictureBack setHidden:YES];
-                               // [_pictureBack removeFromSuperview]; //or hide it.
                                 _isFlipped = NO;
                             }
                             
@@ -193,6 +171,10 @@
 }
 
 
+/*
+ * This checks the input into the textView.
+ */
+
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     
@@ -202,8 +184,7 @@
         textStorage = captionTextView.textStorage;
         appDelegate.textStorage = [[NSTextStorage alloc]init];
         appDelegate.textStorage = textStorage;
-        //NSLog(@"delegate writes: %@", [appDelegate.addingDish textStorage]);
-    }
+            }
     return YES;
 }
 

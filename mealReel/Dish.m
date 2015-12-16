@@ -16,6 +16,11 @@
 @synthesize restaurant;
 @synthesize address;
 
+/*
+ * inWithPicture:
+ * Here we initialize the picture and dish that is taken and created in the primary view, so it may be sent late
+ * to the pictureView.
+ */
 -(id) initWithPicture:(UIImage *)image dishname:(NSString*) dName restaurantName: (NSString*) rest address: (NSString*) addr andWriting: (NSTextStorage*) textStore {
     if (self = [super init]) {
         self.dishImage = image;
