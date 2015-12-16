@@ -14,7 +14,12 @@
 
 @interface WritingViewController : UIViewController {
     AppDelegate *appDelegate;
+    UITextView *captionTextView;
 }
+
+
+
+@property (retain,nonatomic) UITextView *captionTextView;
 
 @property (strong, nonatomic) UIImage* currentImage;
 @property (strong, nonatomic) Dish* currentDish;

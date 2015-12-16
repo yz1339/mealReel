@@ -8,6 +8,9 @@
 
 #import "ViewController.h"
 #import "WritingViewController.h"
+#import "Dish.h"
+#import "AlbumViewController.h"
+
 
 
 @interface ViewController () 
@@ -94,34 +97,26 @@ AVCaptureStillImageOutput *StillImageOutput;
     [StillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
         if (imageDataSampleBuffer != NULL) {
             NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-            UIImage* image = [UIImage imageWithData:imageData];
+            UIImage* image = [[UIImage alloc] initWithData:imageData];
             imageView.image = image;
             currentImage = image;
             //Store images in a Dish Object
             dish.dishImage = currentImage;
-            dish.writing = @"#########";
             appDelegate.addingDish = dish;
-//            NSLog(@"first test %@", dish.writing);
-//            imageTaken = true;
-//            [self pictureTaken:self];
-            [self performSegueWithIdentifier:@"sendingPictureSegue" sender:self];
+            appDelegate.currentImage = image;
+            WritingViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"WritingView"];
+            [self presentViewController:next animated:YES completion:NULL];
         }
         
     }];
 }
 
-//-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    //Sending this image to the writingView
-//    if ([[segue identifier] isEqualToString:@"sendingPictureSegue"] && imageTaken) {
-//        dish.writing = @"!!!!!!!!!!!!!!!aaaaaaaa";
-//        NSLog(@"Current dish writes: %@", dish.writing);
-//        [[segue destinationViewController] setCurrentDish: dish];
-//        [[segue destinationViewController] setCurrentImage: currentImage];
-//        NSLog(@"Current Image is %@", currentImage);
-//        [[segue destinationViewController] setAlbum: album];
-//        NSLog(@"Passsssss");
-//    }
-//}
 
+
+- (IBAction)albumPressed:(id)sender {
+    AlbumViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AlbumView"];
+    [self presentViewController:next animated:YES completion:NULL];
+
+}
 
 @end
