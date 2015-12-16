@@ -22,13 +22,17 @@
 @property (strong, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (strong, nonatomic) IBOutlet UIButton *usernameButton;
 
+@property (retain, nonatomic) UIImageView *currentImageView;
+
+@property (retain, nonatomic) UILabel *dishName;
+
 
 @end
 
 @implementation PictureViewController
 
 
-
+@synthesize currentDish;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,20 +46,30 @@
     [_usernameButton setTitle:appDelegate.currentUser.username forState:UIControlStateNormal];
    
     
-
+    UIImage* currentImage = currentDish.dishImage;
     
+    CGRect picBound = _pictureBack.bounds;
+    picBound.size.height = 256;
+    picBound.size.width = 248.5;
+    
+    _currentImageView = [[UIImageView alloc] initWithImage:currentImage];
+    [_currentImageView setFrame:picBound];
     
     CGRect newFrame = _pictureBack.bounds;
     newFrame.size.height = 100;
-    newFrame.size.width = 100;
+    newFrame.size.width = 150;
+    
+  
     
     _containerView = [[UIView alloc] initWithFrame:_pictureFrame.bounds];
     _containerView.center = CGPointMake(160,300);
     UITextView *captionTextView = [[UITextView alloc] initWithFrame:newFrame];
-    
+    UILabel *restaurant = [[UILabel alloc]initWithFrame:newFrame];
+    UILabel *addressText = [[UILabel alloc]initWithFrame:newFrame];
     UILabel *restaurantName = [[UILabel alloc]initWithFrame:newFrame];
     UILabel *address = [[UILabel alloc]initWithFrame:newFrame];
-    UILabel *dishName = [[UILabel alloc]initWithFrame:newFrame];
+    _dishName = [[UILabel alloc]initWithFrame:newFrame];
+    
     
     [self.view addSubview:_containerView];
     
@@ -67,24 +81,40 @@
     captionTextView.center = CGPointMake(_pictureBack.frame.size.width  / 2,
                                          (_pictureBack.frame.size.height / 2)-90);
     
-    restaurantName.center = CGPointMake(_pictureBack.frame.size.width  / 2,
-                                         (_pictureBack.frame.size.height / 2)-30);
-    address.center = CGPointMake(_pictureBack.frame.size.width  / 2,
-                                        _pictureBack.frame.size.height / 2);
-    dishName.center = CGPointMake(_pictureBack.frame.size.width  / 2,
-                                        _pictureBack.frame.size.height / 2);
+    
+    restaurant.center = CGPointMake((_pictureBack.frame.size.width  / 2)+15,
+                                        (_pictureBack.frame.size.height / 2)-20);
 
+    restaurantName.center = CGPointMake((_pictureBack.frame.size.width  / 2)+15,
+                                         (_pictureBack.frame.size.height / 2));
+    addressText.center = CGPointMake((_pictureBack.frame.size.width  / 2)+15,
+                                     (_pictureBack.frame.size.height / 2)+40);
+    address.center = CGPointMake((_pictureBack.frame.size.width  / 2)+15,
+                                        (_pictureBack.frame.size.height / 2)+60);
+    _dishName.center = CGPointMake((_pictureBack.frame.size.width  / 2)+25,
+                                      (  _pictureBack.frame.size.height / 2)+120);
+    _currentImageView.center = CGPointMake((_pictureFrame.frame.size.width  / 2 ) + 1.5,
+                                           (_pictureFrame.frame.size.height / 2) - 24);
     
     
-    captionTextView.text = @"sdfasdfadsfasdgsdgsdafsdafasdgdsfgdfgdfgdfsgasfsadgadsfsdafasdgdsfgsfdfasfdsfasdgdsfgsdaf";
-    restaurantName.text = @"Macaroni Grill";
-    address.text = @"183 Notre Dame Way SW";
+    restaurant.text = @"Restaurant:";
+    addressText.text = @"Address:";
+    _dishName.text = currentDish.dishName;
+    _dishName.textAlignment = NSTextAlignmentCenter;
+    captionTextView.text = currentDish.textStorage.string;
+    restaurantName.text = currentDish.restaurant;
+    address.text = currentDish.address;
+    address.textAlignment = NSTextAlignmentCenter;
     //this adds them to our containerView
     [_containerView addSubview:_pictureBack];
     [_pictureBack addSubview: captionTextView];
     [_containerView addSubview:_pictureFrame];
     [_pictureBack addSubview:restaurantName];
     [_pictureBack addSubview:address];
+    [_pictureBack addSubview:restaurant];
+    [_pictureBack addSubview:addressText];
+    [_containerView addSubview:_currentImageView];
+    [_containerView addSubview:_dishName];
     
 
     
@@ -115,12 +145,16 @@
                                  [_pictureBack setHidden:YES];
                                  [_containerView addSubview:_pictureFrame];
                                  */
+                                [_dishName setHidden: YES];
+                                [_currentImageView setHidden:YES];
                                 [_pictureFrame setHidden:YES];
                                 [_pictureBack setHidden: NO];
                                 //[_containerView addSubview:_pictureBack];
                                 
                                 _isFlipped = YES;
                             } else {
+                                [_dishName setHidden: NO];
+                                [_currentImageView setHidden:NO];
                                 [_pictureFrame setHidden:NO];
                                 [_pictureBack setHidden:YES];
                                 // [_pictureBack removeFromSuperview]; //or hide it.

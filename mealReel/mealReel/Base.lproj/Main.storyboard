@@ -159,13 +159,6 @@
                                     <action selector="acceptPressed:" destination="6qw-2b-rHc" eventType="touchUpInside" id="8BQ-xc-UbX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vle-8U-w7F">
-                                <rect key="frame" x="150" y="28" width="30" height="30"/>
-                                <state key="normal" title="Test"/>
-                                <connections>
-                                    <action selector="testPressed:" destination="6qw-2b-rHc" eventType="touchUpInside" id="my6-vc-aPn"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pictureBack-1" translatesAutoresizingMaskIntoConstraints="NO" id="mHY-8k-Zuk">
                                 <rect key="frame" x="30" y="93" width="265" height="323"/>
                             </imageView>
@@ -190,12 +183,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="csH-Si-ijh">
-                                <rect key="frame" x="83" y="317" width="190" height="81"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restaurant:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6t-KB-jHW">
                                 <rect key="frame" x="145" y="132" width="67" height="21"/>
                                 <fontDescription key="fontDescription" name="IowanOldStyle-Roman" family="Iowan Old Style" pointSize="13"/>
@@ -208,13 +195,19 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8s-Y3-wWB">
+                                <rect key="frame" x="83" y="331" width="87" height="26"/>
+                                <fontDescription key="fontDescription" name="IowanOldStyle-Roman" family="Iowan Old Style" pointSize="13"/>
+                                <state key="normal" title="*Add Recipe">
+                                    <color key="titleColor" red="0.58325526969999997" green="0.57829365160000001" blue="0.7247672033" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.93472160900000001" blue="0.86531856549999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="addressTextField" destination="m55-1m-7FY" id="NhT-eI-KDo"/>
                         <outlet property="dishNameTextField" destination="YgT-U2-Qjz" id="44V-OH-7XF"/>
-                        <outlet property="recipeTextView" destination="csH-Si-ijh" id="c2U-XM-l3W"/>
                         <outlet property="restaurantTextField" destination="Jew-3u-Avt" id="kW1-z7-b1A"/>
                     </connections>
                 </viewController>
