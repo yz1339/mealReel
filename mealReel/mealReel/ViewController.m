@@ -97,7 +97,8 @@ AVCaptureStillImageOutput *StillImageOutput;
     [StillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
         if (imageDataSampleBuffer != NULL) {
             NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-            UIImage* image = [[UIImage alloc] initWithData:imageData];
+            UIImage* image = [UIImage imageWithData:imageData];
+            //UIImage* image = [[UIImage alloc] initWithData:imageData scale:0.8];
             imageView.image = image;
             currentImage = image;
             //Store images in a Dish Object
