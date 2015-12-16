@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface AlbumCollectionViewCell : UICollectionViewCell
+@property (strong, nonatomic) IBOutlet UIImageView *cellPicture;
+
+
 
 @end

@@ -7,7 +7,9 @@
 //
 
 #import "AlbumCollectionViewCell.h"
+#import "PictureViewController.h"
 
 @implementation AlbumCollectionViewCell
+
 
 @end

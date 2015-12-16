@@ -244,21 +244,29 @@
                                         <rect key="frame" x="20" y="4" width="268" height="389"/>
                                         <color key="backgroundColor" red="1" green="0.9001373694" blue="0.65731829689999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fvF-wY-MN2">
-                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="itemSize" width="74" height="73"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AlbumCell" id="cpq-pf-tOI" customClass="AlbumCollectionViewCell">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="74" height="73"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="74" height="73"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YXg-7g-fiU">
+                                                            <rect key="frame" x="0.0" y="0.0" width="74" height="73"/>
+                                                        </imageView>
+                                                    </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <color key="backgroundColor" red="0.90437578914141414" green="0.74082186982420462" blue="0.56111271744669822" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <outlet property="cellPicture" destination="YXg-7g-fiU" id="Qvs-WP-2De"/>
+                                                </connections>
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
@@ -347,6 +355,9 @@
                                 <state key="normal" title="Return">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="returnPressed:" destination="cwo-iE-hNj" eventType="touchUpInside" id="2PO-k0-MIe"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.93472160900000001" blue="0.86531856549999997" alpha="1" colorSpace="calibratedRGB"/>

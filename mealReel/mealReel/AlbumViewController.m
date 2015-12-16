@@ -10,6 +10,8 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "AlbumCollectionViewCell.h"
+#import "PictureViewController.h"
+#import "Dish.h"
 
 @interface AlbumViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
@@ -33,11 +35,14 @@
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [_avatarImageView setImage: appDelegate.currentUser.avatar];
     _usernameLabel.text = appDelegate.currentUser.username;
-    //dishArray = appDelegate.currentUser.album;
+    dishArray = appDelegate.currentUser.album;
+   
+    /*
     dishArray = [[NSMutableArray alloc]init];
-    UIImage *test = [UIImage imageNamed:@"Tom-Hiddleston.jpg"];UIImage *test2 = [UIImage imageNamed:@"Tom-Hiddleston.jpg"];
+    UIImage *test = [UIImage imageNamed:@"loki_icon_by_charlottegray-d67hiep_zpsebfd7a12.png"];UIImage *test2 = [UIImage imageNamed:@"Tom-Hiddleston.jpg"];
     [dishArray addObject:test];
     [dishArray addObject:test2];
+     */
     albumCollectionView.delegate = self;
     albumCollectionView.dataSource = self;
 
@@ -58,19 +63,33 @@
 #pragma mark - UICollectionView DataSource 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
     return dishArray.count;
+  
 }
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identifier = @"Cell";
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AlbumCell"forIndexPath:indexPath];
-    UIImageView *recipeImageView = (UIImageView *)[cell viewWithTag:100];
+    AlbumCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AlbumCell"forIndexPath:indexPath];
+    //UIImageView *recipeImageView = (UIImageView *)[cell viewWithTag:100];
     NSLog(@"LOL!");
-    recipeImageView.image = [dishArray objectAtIndex:indexPath.row]; //[UIImage imageNamed:[dishArray objectAtIndex:indexPath.row]];
+    
+    //cell.cellPicture = [[UIImageView alloc] initWithImage:[dishArray objectAtIndex:indexPath.row]];
+    Dish * currentDish = [dishArray objectAtIndex:indexPath.row];
+    [cell.cellPicture setImage:currentDish.dishImage];
+    //[dishArray objectAtIndex:indexPath.row];
+    //[UIImage imageNamed:[dishArray objectAtIndex:indexPath.row]];
     
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    PictureViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PictureView"];
+    next.currentDish = [dishArray objectAtIndex:indexPath.row];
+    [self presentViewController:next animated:YES completion:NULL];
+
 }
 /*
 #pragma mark - Navigation
