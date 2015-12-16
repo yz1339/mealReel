@@ -33,6 +33,17 @@ AVCaptureStillImageOutput *StillImageOutput;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+//    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasUser"]) {
+//                appDelegate.currentUser = [User alloc];
+//                appDelegate.currentUser.username = @"loki102";
+//                appDelegate.currentUser.avatar = [UIImage imageNamed:@"Tom-Hiddleston.jpg"];
+//            } else {
+//                NSUserDefaults *defaultUser = [NSUserDefaults standardUserDefaults];
+//                NSData* defaultData = [defaultUser objectForKey:@"loki102"];
+//                appDelegate.currentUser = [NSKeyedUnarchiver unarchiveObjectWithData:defaultData];
+//            }
+
+    
     
     session = [[AVCaptureSession alloc] init];
     
@@ -75,6 +86,15 @@ AVCaptureStillImageOutput *StillImageOutput;
     [session startRunning];
     
 }
+
+//- (void) viewWillDisappear:(BOOL)animated {
+//    NSData* defaultData = [NSKeyedArchiver archivedDataWithRootObject:appDelegate.currentUser];
+//    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+//    [defaults setObject: defaultData forKey:@"loki102"];
+//    [defaults setBool:YES forKey:@"hasUser"];
+//    NSLog(@"has user? %d", [defaults boolForKey:@"hasUser"]);
+//    [defaults synchronize];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

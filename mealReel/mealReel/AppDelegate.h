@@ -22,6 +22,8 @@
 @property (strong, nonatomic) Dish* addingDish;
 @property (strong, nonatomic) UIImage* currentImage;
 @property (strong, readwrite, nonatomic) NSTextStorage* textStorage;
+@property (strong, nonatomic) NSString* writing;
+@property (strong, nonatomic) NSMutableArray* recipe;
 
 
 @end

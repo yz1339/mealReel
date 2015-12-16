@@ -201,6 +201,9 @@
                                 <state key="normal" title="*Add Recipe">
                                     <color key="titleColor" red="0.58325526969999997" green="0.57829365160000001" blue="0.7247672033" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="addingReceipe:" destination="6qw-2b-rHc" eventType="touchUpInside" id="rGR-qI-kC7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.93472160900000001" blue="0.86531856549999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -214,6 +217,79 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="65A-6R-qS5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1212" y="256"/>
+        </scene>
+        <!--Add Recipe View Controller-->
+        <scene sceneID="4o8-Md-Cxw">
+            <objects>
+                <viewController storyboardIdentifier="AddRecipeView" id="Yd1-h5-MUA" customClass="AddRecipeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="clA-Z9-Znh"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ch8-fO-X6l"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eXs-DD-FYk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Step 1:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CuU-T1-ZGf">
+                                <rect key="frame" x="40" y="61" width="106" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Add your step here..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qdp-Qm-2cR">
+                                <rect key="frame" x="40" y="90" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RaB-50-cZc">
+                                <rect key="frame" x="40" y="276" width="240" height="92"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v9o-Nb-neu">
+                                <rect key="frame" x="128" y="401" width="64" height="30"/>
+                                <state key="normal" title="Add Step"/>
+                                <connections>
+                                    <action selector="addCurrentStep:" destination="Yd1-h5-MUA" eventType="touchUpInside" id="M88-Lc-njI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pu6-cs-urG">
+                                <rect key="frame" x="137" y="461" width="46" height="30"/>
+                                <state key="normal" title="Return"/>
+                                <connections>
+                                    <action selector="finishRecipe:" destination="Yd1-h5-MUA" eventType="touchUpInside" id="avS-Eu-NuC"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Previous Step: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eky-Wu-U8R">
+                                <rect key="frame" x="40" y="239" width="152" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.93472160900000001" blue="0.86531856549999997" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="addStepButton" destination="v9o-Nb-neu" id="AaN-Jw-ro3"/>
+                        <outlet property="prevStepLabel" destination="RaB-50-cZc" id="ESS-cB-tMI"/>
+                        <outlet property="returnToInfo" destination="pu6-cs-urG" id="0Sf-Ub-TVX"/>
+                        <outlet property="stepNumberLabel" destination="CuU-T1-ZGf" id="fgP-4G-Weg"/>
+                        <outlet property="stepTextView" destination="qdp-Qm-2cR" id="Xxs-Kf-RD8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CWh-Gq-ZYj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1640" y="226"/>
+        </scene>
+        <!--Recipe View Controller-->
+        <scene sceneID="w8t-5I-JEq">
+            <objects>
+                <pageViewController storyboardIdentifier="RecipeView" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="pEP-gB-Gu3" customClass="RecipeViewController" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DEP-39-1mB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2087" y="294"/>
         </scene>
         <!--Album View Controller-->
         <scene sceneID="PPn-r3-mgt">

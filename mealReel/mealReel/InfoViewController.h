@@ -37,6 +37,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *restaurantTextField;
 @property (strong, nonatomic) IBOutlet UITextField *addressTextField;
 @property (strong, nonatomic) IBOutlet UITextField *dishNameTextField;
+@property (strong, nonatomic) Dish* dishToAdd;
 
 
 @end

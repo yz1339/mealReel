@@ -21,10 +21,15 @@
 @property (strong, nonatomic) NSString* dishName;
 @property (strong, nonatomic) NSString* restaurant;
 @property (strong, nonatomic) NSString* address;
+@property (strong, nonatomic) NSString* writing;
+@property (strong, nonatomic) NSMutableArray* recipe;
 
+-(void) addToRecipe:(NSString *)currentStep;
 
--(id) initWithPicture:(UIImage *)image dishname:(NSString*) dName restaurantName: (NSString*) rest address: (NSString*) addr andWriting: (NSTextStorage*) textStore;
+-(id) initWithPicture:(UIImage *)image dishname:(NSString*) dName restaurantName: (NSString*) rest address: (NSString*) addr textStore: (NSTextStorage*) textStore andWriting: (NSString*) write;
 
+- (void)encodeWithCoder:(NSCoder *)coder;
 
+- (id)initWithCoder:(NSCoder *)coder;
 
 @end

@@ -11,6 +11,8 @@
 @implementation User
 
 @synthesize album;
+@synthesize username;
+@synthesize avatar;
 
 
 -(void) addToAlbum:(Dish *)currentDish{
@@ -24,5 +26,23 @@
    
 }
 
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [super init];
+    if (self) {
+        album = [coder decodeObjectForKey:@"FirstUserAlbum"];
+        //[album initWithCoder:coder];
+        username = [coder decodeObjectForKey:@"FirstUserName"];
+        avatar = [coder decodeObjectForKey:@"FirstUserImage"];
+    }
+    return self;
+}
+
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self.album forKey:@"FirstUserAlbum"];
+    [coder encodeObject:self.username forKey:@"FirstUserName"];
+    [coder encodeObject:self.avatar forKey:@"FirstUserImage"];
+
+}
 
 @end

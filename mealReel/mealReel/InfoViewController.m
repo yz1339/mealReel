@@ -9,6 +9,7 @@
 #import "InfoViewController.h"
 #import "WritingViewController.h"
 #import "ViewController.h"
+#import "AddRecipeViewController.h"
 
 
 
@@ -29,6 +30,7 @@
 @synthesize restaurantTextField;
 @synthesize addressTextField;
 @synthesize dishNameTextField;
+@synthesize dishToAdd;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,11 +52,13 @@
 }
 
 - (IBAction)acceptPressed:(id)sender {
- 
-    Dish* dishToAdd = [[Dish alloc] initWithPicture:appDelegate.currentImage dishname:dishNameTextField.text restaurantName:restaurantTextField.text address:addressTextField.text andWriting:appDelegate.textStorage];
-    
+    //Finally have all the information we need for the dish object, init a dish here
+    dishToAdd = [[Dish alloc] initWithPicture:appDelegate.currentImage dishname:dishNameTextField.text restaurantName:restaurantTextField.text address:addressTextField.text textStore:appDelegate.textStorage andWriting:appDelegate.writing];
+    //Add the dish to currentUser's album
+    dishToAdd.recipe = appDelegate.recipe;
     [appDelegate.currentUser addToAlbum:dishToAdd];
-    NSLog(@"In infoView!!!!! Album size should be 1: %lu", (unsigned long)appDelegate.currentUser.album.count);
+    //reset the writing to nil so that the next time the user open writing view he/she won't see previous writings
+    appDelegate.writing = nil;
     ViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CameraView"];
     [self presentViewController:next animated:YES completion:NULL];
 }
@@ -85,6 +89,13 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return NO;
+}
+- (IBAction)addingReceipe:(id)sender {
+    
+    //Connect to the recipeView
+    AddRecipeViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AddRecipeView"];
+    //next.addingDish = dishToAdd;
+    [self presentViewController:next animated:YES completion:NULL];
 }
 
 
