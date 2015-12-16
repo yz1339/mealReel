@@ -50,11 +50,12 @@
 }
 
 - (IBAction)acceptPressed:(id)sender {
- 
+    //Finally have all the information we need for the dish object, init a dish here
     Dish* dishToAdd = [[Dish alloc] initWithPicture:appDelegate.currentImage dishname:dishNameTextField.text restaurantName:restaurantTextField.text address:addressTextField.text andWriting:appDelegate.textStorage];
-    
+    //Add the dish to currentUser's album
     [appDelegate.currentUser addToAlbum:dishToAdd];
-    NSLog(@"In infoView!!!!! Album size should be 1: %lu", (unsigned long)appDelegate.currentUser.album.count);
+    //reset the writing to nil so that the next time the user open writing view he/she won't see previous writings
+    appDelegate.writing = nil;
     ViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CameraView"];
     [self presentViewController:next animated:YES completion:NULL];
 }

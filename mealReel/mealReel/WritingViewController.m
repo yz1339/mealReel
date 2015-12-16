@@ -12,8 +12,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Dish.h"
 
+#define MAX_WRITING_LENGTH 10
 
-@interface WritingViewController () //<UITextViewDelegate>
+@interface WritingViewController () <UITextViewDelegate>
 @property bool isFlipped;
 @property int count;
 
@@ -26,11 +27,11 @@
 @property(nonatomic, readonly, strong) NSTextStorage *textStorage;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *pictureTap;
 
+
 @end
 
 @implementation WritingViewController
 
-//@synthesize writing;
 @synthesize currentImage;
 @synthesize captionTextView;
 @synthesize textStorage;
@@ -45,7 +46,6 @@
     //_captionTextView.delegate = self;
 
     //initiate the Writing first
-    //writing = [[NSString alloc] init];
     textStorage = [[NSTextStorage alloc] init];
     _count = 0;
     CGRect newFrame = _pictureBack.bounds;
@@ -63,12 +63,12 @@
      _containerView.center = CGPointMake(160,300);
     
     
-
-
-    captionTextView = [[UITextView alloc] initWithFrame:newFrame];
+        captionTextView = [[UITextView alloc] initWithFrame:newFrame];
      captionTextView.center = CGPointMake(160,300);
     [captionTextView setEditable: YES];
     captionTextView.delegate = self;
+    
+    
    
     
     
@@ -84,7 +84,14 @@
                                           (_pictureFrame.frame.size.height / 2) - 21.5);
     
     
-    captionTextView.text = @"Enter Text Here";
+    //check to see if the user previously typed something
+    if (appDelegate.writing != nil) {
+        NSLog(@"User previously wrote sth!!!");
+        captionTextView.text = appDelegate.writing;
+    } else {
+        captionTextView.text = @"Enter Text Here";
+    }
+    
     //this adds them to our containerView
     [_containerView addSubview:_pictureBack];
     [_containerView addSubview:_pictureFrame];
@@ -192,17 +199,50 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if ([captionTextView.text isEqualToString:@"Enter Text Here"]) {
+        captionTextView.text = @"";
+    }
+    [captionTextView becomeFirstResponder];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if ([captionTextView.text isEqualToString:@""]) {
+        captionTextView.text = @"Enter Text Here";
+    }
+    [captionTextView resignFirstResponder];
+}
+
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     
-    if([text isEqualToString:@"\n"])
-        [textView resignFirstResponder];
-    else {
-        textStorage = captionTextView.textStorage;
-        appDelegate.textStorage = [[NSTextStorage alloc]init];
-        appDelegate.textStorage = textStorage;
-        //NSLog(@"delegate writes: %@", [appDelegate.addingDish textStorage]);
+    if([text isEqualToString:@"\n"]){
+        [captionTextView resignFirstResponder];
+        
+    }
+    else{
+        NSUInteger newLength = (textView.text.length - range.length) + text.length;
+        if(newLength <= MAX_WRITING_LENGTH)
+        {
+            
+        } else {
+            NSUInteger emptySpace = MAX_WRITING_LENGTH - (captionTextView.text.length - range.length);
+            captionTextView.text = [[[captionTextView.text substringToIndex:range.location]
+                              stringByAppendingString:[text substringToIndex:emptySpace]]
+                             stringByAppendingString:[captionTextView.text substringFromIndex:(range.location + range.length)]];
+           return NO;
+            
+        }
+        NSString* writing = captionTextView.text;
+            appDelegate.writing = writing;
+            textStorage = captionTextView.textStorage;
+            appDelegate.textStorage = [[NSTextStorage alloc]init];
+            appDelegate.textStorage = textStorage;
+
+        
     }
     return YES;
 }

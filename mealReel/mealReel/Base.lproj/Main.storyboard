@@ -215,6 +215,14 @@
             </objects>
             <point key="canvasLocation" x="1212" y="256"/>
         </scene>
+        <!--Page View Controller-->
+        <scene sceneID="w8t-5I-JEq">
+            <objects>
+                <pageViewController storyboardIdentifier="Recipe" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="pEP-gB-Gu3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DEP-39-1mB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1579" y="256"/>
+        </scene>
         <!--Album View Controller-->
         <scene sceneID="PPn-r3-mgt">
             <objects>
