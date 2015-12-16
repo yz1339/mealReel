@@ -21,6 +21,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+//    if (currentUser == NULL) {
+//        currentUser = [User alloc];
+//        currentUser.username = @"loki102";
+//        currentUser.avatar = [UIImage imageNamed:@"Tom-Hiddleston.jpg"];
+//    } else {
+//        NSUserDefaults *defaultUser = [NSUserDefaults standardUserDefaults];
+//        NSData* defaultData = [defaultUser objectForKey:@"loki102"];
+//        currentUser = [NSKeyedUnarchiver unarchiveObjectWithData:defaultData];
+//    }
+//
+    return YES;
+}
+
+- (BOOL) application:(UIApplication *)application willFinishLaunchingWithOptions:(nullable NSDictionary *)launchOptions {
     if (currentUser == NULL) {
         currentUser = [User alloc];
         currentUser.username = @"loki102";
@@ -54,7 +68,9 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     NSData* defaultData = [NSKeyedArchiver archivedDataWithRootObject:currentUser];
-    [[NSUserDefaults standardUserDefaults] setObject:defaultData forKey:@"loki102"];
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:defaultData forKey:@"loki102"];
+    [defaults synchronize];
 }
 
 

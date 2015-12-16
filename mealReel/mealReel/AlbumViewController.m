@@ -8,14 +8,20 @@
 
 #import "AlbumViewController.h"
 #import "AppDelegate.h"
+#import "ViewController.h"
+#import "AlbumCollectionViewCell.h"
 
 @interface AlbumViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *avatarImageView;
 
+
 @end
 
 @implementation AlbumViewController
+
+@synthesize dishArray;
+@synthesize albumCollectionView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,12 +32,20 @@
     // Do any additional setup after loading the view.
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [_avatarImageView setImage: appDelegate.currentUser.avatar];
-    CGRect newFrame = _avatarImageView.bounds;
-    newFrame.size.height = 10;
-    newFrame.size.width = 10;
-    [_avatarImageView setFrame: newFrame];
     _usernameLabel.text = appDelegate.currentUser.username;
+    //dishArray = appDelegate.currentUser.album;
+    dishArray = [[NSMutableArray alloc]init];
+    UIImage *test = [UIImage imageNamed:@"Tom-Hiddleston.jpg"];UIImage *test2 = [UIImage imageNamed:@"Tom-Hiddleston.jpg"];
+    [dishArray addObject:test];
+    [dishArray addObject:test2];
+    albumCollectionView.delegate = self;
+    albumCollectionView.dataSource = self;
+
     
+}
+- (IBAction)cameraPressed:(id)sender {
+    ViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CameraView"];
+    [self presentViewController:next animated:YES completion:NULL];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,6 +53,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+#pragma mark - UICollectionView DataSource 
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return dishArray.count;
+}
+
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *identifier = @"Cell";
+    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AlbumCell"forIndexPath:indexPath];
+    UIImageView *recipeImageView = (UIImageView *)[cell viewWithTag:100];
+    NSLog(@"LOL!");
+    recipeImageView.image = [dishArray objectAtIndex:indexPath.row]; //[UIImage imageNamed:[dishArray objectAtIndex:indexPath.row]];
+    
+    return cell;
+}
 /*
 #pragma mark - Navigation
 
