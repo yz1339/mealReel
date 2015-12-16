@@ -7,8 +7,11 @@
 //
 
 #import "AlbumViewController.h"
+#import "AppDelegate.h"
 
 @interface AlbumViewController ()
+@property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *avatarImageView;
 
 @end
 
@@ -17,6 +20,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [_avatarImageView setImage: appDelegate.currentUser.avatar];
+    CGRect newFrame = _avatarImageView.bounds;
+    newFrame.size.height = 10;
+    newFrame.size.width = 10;
+    [_avatarImageView setFrame: newFrame];
+    _usernameLabel.text = appDelegate.currentUser.username;
+    
 }
 
 - (void)didReceiveMemoryWarning {

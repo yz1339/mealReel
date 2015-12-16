@@ -19,6 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    _currentUser = [User alloc];
+    _currentUser.username = @"loki102";
+    _currentUser.avatar = [UIImage imageNamed:@"Tom-Hiddleston.jpg"];
     return YES;
 }
 
