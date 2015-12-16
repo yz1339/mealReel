@@ -7,6 +7,7 @@
 //
 
 #import "PictureViewController.h"
+#import "CommentViewController.h"
 
 @interface PictureViewController ()
 
@@ -16,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *pictureBack;
 
 @property (retain,nonatomic) UIView *containerView;
+@property (strong, nonatomic) IBOutlet UIImageView *avatarImageView;
+@property (strong, nonatomic) IBOutlet UIButton *usernameButton;
 
 @end
 
@@ -27,6 +30,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [_avatarImageView setImage: appDelegate.currentUser.avatar];
+    [_usernameButton setTitle:appDelegate.currentUser.username forState:UIControlStateNormal];
+   
+    
+
+    
+    
     CGRect newFrame = _pictureBack.bounds;
     newFrame.size.height = 100;
     newFrame.size.width = 100;
@@ -43,7 +55,7 @@
     
     //this centers the two objects
     _pictureFrame.center = CGPointMake(_containerView.frame.size.width  / 2,
-                                       _containerView.frame.size.height / 2);
+                                       (_containerView.frame.size.height / 2)+10);
     _pictureBack.center = CGPointMake(_containerView.frame.size.width  / 2,
                                       _containerView.frame.size.height / 2);
     captionTextView.center = CGPointMake(_pictureBack.frame.size.width  / 2,
@@ -124,6 +136,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)commentsPressed:(id)sender {
+    CommentViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CommentView"];
+    [self presentViewController:next animated:YES completion:NULL];
 }
 
 

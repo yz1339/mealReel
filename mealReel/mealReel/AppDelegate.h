@@ -17,6 +17,7 @@
 @property (strong, nonatomic) UIWindow *window;
 //@property (nonatomic, retain) IBOutlet WritingViewController *writingViewController;
 @property (strong, nonatomic) User* currentUser;
+@property (strong, nonatomic) User* otherUser;
 @property (strong, nonatomic) Dish* addingDish;
 @property (strong, nonatomic) UIImage* currentImage;
 

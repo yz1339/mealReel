@@ -21,7 +21,7 @@
     // Override point for customization after application launch.
     _currentUser = [User alloc];
     _currentUser.username = @"loki102";
-    _currentUser.avatar = [UIImage imageNamed:@"Tom-Hiddleston.jpg"];
+    _currentUser.avatar = [UIImage imageNamed:@"loki_icon_by_charlottegray-d67hiep_zpsebfd7a12.png"];
     return YES;
 }
 

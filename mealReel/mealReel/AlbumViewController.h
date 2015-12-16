@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AlbumViewController : UIViewController
+@interface AlbumViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>{
+    UICollectionView *albumCollectionView;
+    NSMutableArray* dishArray;
+
+}
+
+@property (strong, nonatomic) IBOutlet UICollectionView *albumCollectionView;
+@property (strong, nonatomic) NSMutableArray* dishArray;
 
 @end
