@@ -10,8 +10,12 @@
 #import "Dish.h"
 #import "WritingViewController.h"
 #import "ViewController.h"
+#import "AppDelegate.h"
 
-@interface PictureViewController : UIViewController
+@interface PictureViewController : UIViewController {
+    AppDelegate *appDelegate;
+
+}
 
 
 @end

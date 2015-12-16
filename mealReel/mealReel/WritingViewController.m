@@ -23,30 +23,30 @@
 @property (retain,nonatomic) UIView *containerView;
 @property (retain,nonatomic) UIView *subContainerView;
 @property (retain, nonatomic) UIImageView *currentImageView;
-
+@property(nonatomic, readonly, strong) NSTextStorage *textStorage;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *pictureTap;
-//@property (weak, nonatomic) IBOutlet UIImageView *holder;
 
 @end
 
 @implementation WritingViewController
 
+//@synthesize writing;
 @synthesize currentImage;
-@synthesize currentDish;
-@synthesize album;
 @synthesize captionTextView;
+@synthesize textStorage;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     
     appDelegate = [[UIApplication sharedApplication] delegate];
-    currentDish = appDelegate.addingDish;
+    
     currentImage = appDelegate.currentImage;
-    NSLog(@"=========Writing View currentDish writes: %@", currentDish.writing);
-   // _holder.image = currentImage;
     //_captionTextView.delegate = self;
 
+    //initiate the Writing first
+    //writing = [[NSString alloc] init];
+    textStorage = [[NSTextStorage alloc] init];
     _count = 0;
     CGRect newFrame = _pictureBack.bounds;
     newFrame.size.height = 200;
@@ -131,7 +131,6 @@
 - (IBAction)arrowPressed:(id)sender {
     
     InfoViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"InfoView"];
-    //[self performSegueWithIdentifier:@"wrtingToInfo" sender:self];
     [self presentViewController:next animated:YES completion:NULL];
 
     
@@ -139,7 +138,6 @@
 
 - (IBAction)returnPressed:(id)sender {
     ViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CameraView"];
-    //[self performSegueWithIdentifier:@"writingToCamera" sender:self];
     [self presentViewController:next animated:YES completion:NULL];
 }
 
@@ -200,8 +198,16 @@
     
     if([text isEqualToString:@"\n"])
         [textView resignFirstResponder];
+    else {
+        textStorage = captionTextView.textStorage;
+        appDelegate.textStorage = [[NSTextStorage alloc]init];
+        appDelegate.textStorage = textStorage;
+        //NSLog(@"delegate writes: %@", [appDelegate.addingDish textStorage]);
+    }
     return YES;
 }
+
+
 
 
 
@@ -219,19 +225,6 @@
 }
 */
 
-//-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    //Sending this image to the writingView
-//    if ([[segue identifier] isEqualToString:@"wrtingToInfo"]) {
-//        [[segue destinationViewController] setCurrentDish: currentDish];
-//        [[segue destinationViewController] setCurrentImage: currentImage];
-//        [[segue destinationViewController] setAlbum: album];
-//    }
-//    if ([[segue identifier] isEqualToString:@"wrtingToCamera"]) {
-//        //[[segue destinationViewController] setCurrentDish: currentDish];
-//        //[[segue destinationViewController] setCurrentImage: currentImage];
-//        [[segue destinationViewController] setAlbum: album];
-//    }
-//}
 
 
 @end

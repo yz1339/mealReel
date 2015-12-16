@@ -17,10 +17,10 @@
     AppDelegate *appDelegate;
 }
 
-@property (strong, nonatomic) NSMutableArray* album;
-@property (strong, nonatomic) Dish* dish;
+
+
 @property (strong, nonatomic) UIImage* currentImage;
-@property BOOL imageTaken;
+
 
 - (IBAction)takephoto:(id)sender;
 

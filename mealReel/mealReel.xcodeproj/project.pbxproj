@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		3952C60D1C1FB05B004AF06D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3952C60C1C1FB05B004AF06D /* CoreLocation.framework */; };
 		3952C6101C20887F004AF06D /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3952C60F1C20887F004AF06D /* AlbumViewController.m */; };
-		3952C6131C20EAA6004AF06D /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3952C6121C20EAA6004AF06D /* CommentViewController.m */; settings = {ASSET_TAGS = (); }; };
-		3952C6161C20F592004AF06D /* AlbumCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3952C6151C20F592004AF06D /* AlbumCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		3952C6131C20EAA6004AF06D /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3952C6121C20EAA6004AF06D /* CommentViewController.m */; };
+		3952C6161C20F592004AF06D /* AlbumCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3952C6151C20F592004AF06D /* AlbumCollectionViewCell.m */; };
 		39916E071C0D31A9009A81AE /* WritingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39916E061C0D31A9009A81AE /* WritingViewController.m */; };
 		39916E0A1C0F532D009A81AE /* PictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39916E091C0F532D009A81AE /* PictureViewController.m */; };
 		39916E0D1C1123D4009A81AE /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39916E0C1C1123D4009A81AE /* InfoViewController.m */; };
@@ -466,11 +466,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = mealReel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.mealReel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -479,11 +482,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = mealReel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.mealReel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

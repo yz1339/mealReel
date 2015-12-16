@@ -11,7 +11,7 @@
 #import "WritingViewController.h"
 #import "ViewController.h"
 #import <CoreLocation/CoreLocation.h>
-
+#import "AppDelegate.h"
 @interface InfoViewController : UIViewController <CLLocationManagerDelegate>{
     UITextView* recipeTextView;
     UITextField* restaurantTextField;
@@ -20,6 +20,7 @@
     CLLocationManager *locationManager;
     CLGeocoder *geocoder;
     CLPlacemark *placemark;
+    AppDelegate* appDelegate;
     
 }
 
@@ -29,15 +30,7 @@
 @property CLPlacemark *placemark;
 @property (strong, nonatomic) IBOutlet UITextField *restaurantTextField;
 @property (strong, nonatomic) IBOutlet UITextField *addressTextField;
-
 @property (strong, nonatomic) IBOutlet UITextField *dishNameTextField;
-
-
-
-@property (strong, nonatomic) UIImage* currentImage;
-@property (strong, nonatomic) Dish* currentDish;
-@property (strong, nonatomic) NSMutableArray* album;
-
 
 
 @end
