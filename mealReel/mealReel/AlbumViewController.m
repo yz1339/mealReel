@@ -23,8 +23,8 @@
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [_avatarImageView setImage: appDelegate.currentUser.avatar];
     CGRect newFrame = _avatarImageView.bounds;
-    newFrame.size.height = 200;
-    newFrame.size.width = 200;
+    newFrame.size.height = 10;
+    newFrame.size.width = 10;
     [_avatarImageView setFrame: newFrame];
     _usernameLabel.text = appDelegate.currentUser.username;
     

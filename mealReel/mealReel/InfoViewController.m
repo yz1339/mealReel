@@ -30,6 +30,10 @@
 @synthesize addressTextField;
 @synthesize dishNameTextField;
 
+@synthesize currentImage;
+@synthesize currentDish;
+@synthesize album;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     locationManager = [[CLLocationManager alloc] init];
@@ -44,11 +48,13 @@
     }
 - (IBAction)returnPressed:(id)sender {
    WritingViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"WritingView"];
+    //[self performSegueWithIdentifier:@"infoCanceled" sender:self];
     [self presentViewController:next animated:YES completion:NULL];
 }
 
 - (IBAction)acceptPressed:(id)sender {
     ViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CameraView"];
+    //[self performSegueWithIdentifier:@"infoAccepted" sender:self];
     [self presentViewController:next animated:YES completion:NULL];
 }
 
@@ -134,5 +140,21 @@
     // Pass the selected object to the new view controller.
 }
 */
+//-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    //Sending this image to the writingView
+//    if ([[segue identifier] isEqualToString:@"infoAccepted"]) {
+//        //Once infomation is accepted, the image and info should be stored
+//        [[segue destinationViewController] setCurrentDish: currentDish];
+//        [[segue destinationViewController] setCurrentImage: currentImage];
+//        [[segue destinationViewController] setAlbum: album];
+//    }
+//    if ([[segue identifier] isEqualToString:@"infoCanceled"]) {
+//        //[[segue destinationViewController] setCurrentDish: currentDish];
+//        //[[segue destinationViewController] setCurrentImage: currentImage];
+//        [[segue destinationViewController] setAlbum: album];
+//    }
+//}
+
+
 
 @end

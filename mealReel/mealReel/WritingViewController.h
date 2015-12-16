@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "Dish.h"
 #import "ViewController.h"
+#import "AppDelegate.h"
 
-@interface WritingViewController : UIViewController{
+
+@interface WritingViewController : UIViewController {
+    AppDelegate *appDelegate;
     UITextView *captionTextView;
 }
+
 
 
 @property (retain,nonatomic) UITextView *captionTextView;

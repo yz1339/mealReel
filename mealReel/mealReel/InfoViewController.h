@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Dish.h"
+#import "WritingViewController.h"
+#import "ViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface InfoViewController : UIViewController <CLLocationManagerDelegate>{
@@ -28,6 +31,13 @@
 @property (strong, nonatomic) IBOutlet UITextField *addressTextField;
 
 @property (strong, nonatomic) IBOutlet UITextField *dishNameTextField;
+
+
+
+@property (strong, nonatomic) UIImage* currentImage;
+@property (strong, nonatomic) Dish* currentDish;
+@property (strong, nonatomic) NSMutableArray* album;
+
 
 
 @end

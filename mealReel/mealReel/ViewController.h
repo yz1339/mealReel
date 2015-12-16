@@ -9,15 +9,18 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "Dish.h"
+#import "AppDelegate.h"
 
 @interface ViewController : UIViewController {
     IBOutlet UIView *frameForCapture;
     IBOutlet UIImageView *imageView;
+    AppDelegate *appDelegate;
 }
 
-@property NSMutableArray* album;
-@property Dish* dish;
-
+@property (strong, nonatomic) NSMutableArray* album;
+@property (strong, nonatomic) Dish* dish;
+@property (strong, nonatomic) UIImage* currentImage;
+@property BOOL imageTaken;
 
 - (IBAction)takephoto:(id)sender;
 

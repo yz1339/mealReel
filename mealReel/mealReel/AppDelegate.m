@@ -14,6 +14,8 @@
 
 @implementation AppDelegate
 
+@synthesize addingDish;
+@synthesize currentImage;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
