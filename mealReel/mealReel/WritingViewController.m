@@ -189,6 +189,7 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
+    [self animateTextField:textView up:YES];
     if ([captionTextView.text isEqualToString:@"Enter Text Here"]) {
         captionTextView.text = @"";
     }
@@ -197,10 +198,24 @@
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
+    [self animateTextField:textView up:NO];
     if ([captionTextView.text isEqualToString:@""]) {
         captionTextView.text = @"Enter Text Here";
     }
     [captionTextView resignFirstResponder];
+}
+-(void)animateTextField:(UITextView*)textField up:(BOOL)up
+{
+    const int movementDistance = -130; // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
+    
+    int movement = (up ? movementDistance : -movementDistance);
+    
+    [UIView beginAnimations: @"animateTextField" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
 }
 
 
@@ -227,16 +242,11 @@
            return NO;
         }
         NSString* writing = captionTextView.text;
-        if (writing == NULL) {
-            appDelegate.writing = @" ";
-            NSLog(@"==========empty entry!!");
-        } else {
-            appDelegate.writing = writing;
-            textStorage = captionTextView.textStorage;
-            appDelegate.textStorage = [[NSTextStorage alloc]init];
-            appDelegate.textStorage = textStorage;
-            NSLog(@"==========has entry!!");
-        }
+        appDelegate.writing = writing;
+        textStorage = captionTextView.textStorage;
+        appDelegate.textStorage = [[NSTextStorage alloc]init];
+        appDelegate.textStorage = textStorage;
+        NSLog(@"==========has entry!!");
         
     }
     return YES;
