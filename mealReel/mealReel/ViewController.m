@@ -11,6 +11,7 @@
 #import "Dish.h"
 #import "AlbumViewController.h"
 #import "LoginViewController.h"
+#import "SearchViewController.h"
 #import <Parse/Parse.h>
 
 
@@ -145,8 +146,13 @@ AVCaptureStillImageOutput *StillImageOutput;
 
 - (IBAction)albumPressed:(id)sender {
     AlbumViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AlbumView"];
+    next.thisUser = [PFUser currentUser];
     [self presentViewController:next animated:YES completion:NULL];
 
+}
+- (IBAction)searchPressed:(id)sender {
+    SearchViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SearchView"];
+    [self presentViewController:next animated:YES completion:NULL];
 }
 
 @end

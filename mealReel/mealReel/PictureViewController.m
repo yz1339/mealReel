@@ -27,12 +27,14 @@
 @property (retain, nonatomic) UILabel *dishName;
 
 
+
 @end
 
 @implementation PictureViewController
 
 
 @synthesize currentDish;
+@synthesize thisUser;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -209,6 +211,7 @@
 
 - (IBAction)returnPressed:(id)sender {
     AlbumViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AlbumView"];
+    next.thisUser = thisUser;
     [self presentViewController:next animated:YES completion:NULL];
 }
 
