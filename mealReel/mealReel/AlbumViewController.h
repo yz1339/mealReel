@@ -25,5 +25,4 @@
 @property (strong, nonatomic) IBOutlet UICollectionView *albumCollectionView;
 @property (strong, nonatomic) NSMutableArray* dishArray;
 
-
 @end

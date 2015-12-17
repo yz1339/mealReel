@@ -12,6 +12,7 @@
 #import "AlbumCollectionViewCell.h"
 #import "PictureViewController.h"
 #import "Dish.h"
+#import "RecipeLaunchView.h"
 
 @interface AlbumViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
@@ -25,9 +26,10 @@
 @synthesize dishArray;
 @synthesize albumCollectionView;
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [_avatarImageView setImage: appDelegate.currentUser.avatar];
@@ -76,7 +78,9 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     PictureViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PictureView"];
+    
     next.currentDish = [dishArray objectAtIndex:indexPath.row];
+    //[self.view addSubview: next.view];
     [self presentViewController:next animated:YES completion:NULL];
 
 }

@@ -12,6 +12,8 @@
 #import "ViewController.h"
 #import "AppDelegate.h"
 
+
+
 /*
  *This is where all the dish information is displayed, along with the picture. This 
  *view is reachable through a user's albumView.

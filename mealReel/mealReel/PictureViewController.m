@@ -10,9 +10,8 @@
 #import "CommentViewController.h"
 #import "AlbumViewController.h"
 #import "Dish.h"
-#import "RecipeViewController.h"
-
-@interface PictureViewController ()
+#import "RecipeLaunchView.h"
+@interface PictureViewController () <UIPageViewControllerDataSource>
 
 @property bool isFlipped;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *pictureTap;
@@ -22,7 +21,8 @@
 @property (retain,nonatomic) UIView *containerView;
 @property (strong, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (strong, nonatomic) IBOutlet UIButton *usernameButton;
-
+@property (weak, nonatomic) IBOutlet UIButton *viewRecipeButton;
+@property (strong, nonatomic) UIPageViewController* recipeViewController;
 @property (retain, nonatomic) UIImageView *currentImageView;
 
 @property (retain, nonatomic) UILabel *dishName;
@@ -46,7 +46,7 @@
     [_avatarImageView setImage: appDelegate.currentUser.avatar];
     [_usernameButton setTitle:appDelegate.currentUser.username forState:UIControlStateNormal];
    
-    
+    appDelegate.addingDish = currentDish;
     UIImage* currentImage = currentDish.dishImage;
     
     CGRect picBound = _pictureBack.bounds;
@@ -133,20 +133,17 @@
     [_pictureBack addSubview:addressText];
     [_containerView addSubview:_currentImageView];
     [_containerView addSubview:_dishName];
-    
-
-
-    
     _isFlipped = NO;
-    
-    
-    
     _pictureTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [_containerView addGestureRecognizer:_pictureTap];
   
     
     //[_pictureTap release];
 
+}
+
+-(void) viewDidAppear {
+    [self.viewRecipeButton setEnabled:YES];
 }
 
 
@@ -203,15 +200,110 @@
 
 - (IBAction)returnPressed:(id)sender {
     AlbumViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AlbumView"];
+    //[self.view removeFromSuperview];
     [self presentViewController:next animated:YES completion:NULL];
 }
 
 
 - (IBAction)seeRecipe:(id)sender {
-    RecipeViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RecipeView"];
-    next.currentDish = currentDish;
-    [self presentViewController:next animated:YES completion:NULL];
+    //[self.view setHidden:YES];
+    [self createPageViewController];
+    [self setupPageControl];
+    
+    
+    //RecipeLaunchView *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RecipeLaunch"];
+    //[self.view addSubview:next.view];
+    //[self presentViewController:next animated:YES completion:NULL];
+//    UIStoryboardSegue *segue = [[UIStoryboardSegue alloc]initWithIdentifier:@"test" source:self destination:next];
+//    [self performSegueWithIdentifier:@"test" sender:segue];
 }
+//-(void) presentRecipeLaunchView {
+//    RecipeLaunchView *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RecipeLaunch"];
+//    appDelegate.addingDish = currentDish;
+//    
+//    [self presentViewController:next animated:YES completion:NULL];
+//
+//}
+
+- (void) createPageViewController
+{
+    UIPageViewController *recipeViewController = [self.storyboard instantiateViewControllerWithIdentifier: @"RecipeView"];
+    recipeViewController.dataSource = self;
+    
+    if([currentDish.recipe count])
+    {
+        NSArray *startingViewControllers = @[[self viewControllerAtIndex:0]];
+        [recipeViewController setViewControllers: startingViewControllers
+                                       direction: UIPageViewControllerNavigationDirectionForward
+                                        animated: NO
+                                      completion: nil];
+    }
+    
+    self.recipeViewController = recipeViewController;
+    [self addChildViewController: self.recipeViewController];
+    [self.view addSubview: self.recipeViewController.view];
+    [self.recipeViewController  didMoveToParentViewController: self];
+}
+
+- (void) setupPageControl
+{
+    [[UIPageControl appearance] setPageIndicatorTintColor: [UIColor grayColor]];
+    [[UIPageControl appearance] setCurrentPageIndicatorTintColor: [UIColor whiteColor]];
+    [[UIPageControl appearance] setBackgroundColor: [UIColor darkGrayColor]];
+}
+
+#pragma mark -
+#pragma mark UIPageViewControllerDataSource
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
+{
+    NSUInteger index = ((SingleStepViewController*) viewController).itemIndex;
+    
+    if ((index == 0) || (index == NSNotFound)) {
+        return nil;
+    }
+    index--;
+    return [self viewControllerAtIndex:index];
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
+{
+    NSUInteger index = ((SingleStepViewController*) viewController).itemIndex;
+    
+    if (index == NSNotFound) {
+        return nil;
+    }
+    index++;
+    if (index == [currentDish.recipe count]) {
+        return nil;
+    }
+    return [self viewControllerAtIndex:index];
+}
+- (SingleStepViewController *) viewControllerAtIndex: (NSUInteger) itemIndex
+{
+    if (itemIndex < [currentDish.recipe count])
+    {
+        SingleStepViewController *stepController = [self.storyboard instantiateViewControllerWithIdentifier: @"SingleStepView"];
+        stepController.itemIndex = itemIndex;
+        stepController.dishName = currentDish.dishName;
+        stepController.stepContent = [currentDish.recipe objectAtIndex:itemIndex];
+        return stepController;
+    }
+    
+    return nil;
+}
+
+- (NSInteger) presentationCountForPageViewController: (UIPageViewController *) pageViewController
+{
+    return [currentDish.recipe count];
+}
+
+- (NSInteger) presentationIndexForPageViewController: (UIPageViewController *) pageViewController
+{
+    return 0;
+}
+
+
 
 /*
 #pragma mark - Navigation
@@ -222,5 +314,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end

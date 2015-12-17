@@ -15,12 +15,7 @@
 
 @interface InfoViewController ()<CLLocationManagerDelegate>
 
-
-
-
 @end
-
-
 
 @implementation InfoViewController
 @synthesize recipeTextView;
@@ -57,9 +52,9 @@
     //Add the dish to currentUser's album
     dishToAdd.recipe = appDelegate.recipe;
     [appDelegate.currentUser addToAlbum:dishToAdd];
-    //reset the writing to nil so that the next time the user open writing view he/she won't see previous writings
+    //reset the writing and recipes to nil so that the next time the user open writing view he/she won't see previous writings
     appDelegate.writing = nil;
-    NSLog(@"recipe length is !!!!!!!!! %i", (int) dishToAdd.recipe.count);
+    appDelegate.recipe = nil;
     ViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CameraView"];
     [self presentViewController:next animated:YES completion:NULL];
 }

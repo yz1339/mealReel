@@ -33,8 +33,8 @@ AVCaptureStillImageOutput *StillImageOutput;
     PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
     testObject[@"foo"] = @"bar";
     [testObject saveInBackground];
-   
-
+    //[[UIApplication sharedApplication].keyWindow setRootViewController:self];
+    
     
     appDelegate = [[UIApplication sharedApplication] delegate];
     currentImage = [[UIImage alloc] init];
