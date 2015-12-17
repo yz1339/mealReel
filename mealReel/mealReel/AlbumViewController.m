@@ -13,6 +13,8 @@
 #import "PictureViewController.h"
 #import "Dish.h"
 #import "RecipeLaunchView.h"
+#import <Parse/Parse.h>
+
 
 @interface AlbumViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
@@ -32,11 +34,21 @@
     [super viewDidLoad];
     
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [_avatarImageView setImage: appDelegate.currentUser.avatar];
-    _usernameLabel.text = appDelegate.currentUser.username;
-    dishArray = appDelegate.currentUser.album;
-   
+    //[_avatarImageView setImage: appDelegate.currentUser.avatar];
+       //dishArray = appDelegate.currentUser.album;
+    PFUser *currentUser = [PFUser currentUser];
+    _usernameLabel.text = currentUser.username;
+    dishArray = [currentUser objectForKey:@"dishAlbum"];
+    NSLog(@"%lu", [dishArray count]);
     
+    UIImage *profileImage;
+    PFFile *imageFile = [currentUser objectForKey:@"avatar"];
+    profileImage = [UIImage imageWithData: [imageFile getData]];
+    
+    [_avatarImageView setImage:profileImage];
+    
+    
+    //[_avatarImageView setImage:[currentUser objectForKey:@"avatar"]];
     albumCollectionView.delegate = self;
     albumCollectionView.dataSource = self;
 
@@ -70,8 +82,29 @@
     
     AlbumCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AlbumCell"forIndexPath:indexPath];
 
-    Dish * currentDish = [dishArray objectAtIndex:indexPath.row];
-    [cell.cellPicture setImage:currentDish.dishImage];
+   
+    PFObject *currentDish = [dishArray objectAtIndex:indexPath.row];
+     [currentDish fetchIfNeeded];
+    //UIImage *currentImage = currentDish[@"dishImage"];
+    //UIImage *currentImage = [UIImage imageWithData:[currentDish objectForKey:@"dishImage2"]];
+    
+    
+    UIImage *currentImage;
+    PFFile *currentFile = [currentDish objectForKey:@"dishImage2"];
+    currentImage = [UIImage imageWithData: [currentFile getData]];
+
+    /*
+    [currentFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+            NSLog(@"Success");
+                   }
+        else{
+            NSLog(@"Fail");
+        }
+    }];
+     */
+    
+    [cell.cellPicture setImage:currentImage];
       
     return cell;
 }

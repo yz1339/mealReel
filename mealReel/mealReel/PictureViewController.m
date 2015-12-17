@@ -43,17 +43,24 @@
     // Do any additional setup after loading the view.
     
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    
     [_avatarImageView setImage: appDelegate.currentUser.avatar];
     [_usernameButton setTitle:appDelegate.currentUser.username forState:UIControlStateNormal];
    
     appDelegate.addingDish = currentDish;
-    UIImage* currentImage = currentDish.dishImage;
+    
+    UIImage *currentImage;
+    PFFile *currentFile = [currentDish objectForKey:@"dishImage2"];
+    currentImage = [UIImage imageWithData: [currentFile getData]];
+    //UIImage* currentImage = currentDish.dishImage;
+
     
     CGRect picBound = _pictureBack.bounds;
     picBound.size.height = 256;
     picBound.size.width = 248.5;
     
-    _currentImageView = [[UIImageView alloc] initWithImage:currentImage];
+   _currentImageView = [[UIImageView alloc] initWithImage:currentImage];
     [_currentImageView setFrame:picBound];
     
     CGRect newFrame = _pictureBack.bounds;
@@ -107,19 +114,23 @@
     addressText.textAlignment = NSTextAlignmentCenter;
      [addressText setFont:[UIFont fontWithName:@"Menlo-Bold" size:12]];
     
-    _dishName.text = currentDish.dishName;
+    //_dishName.text = currentDish.dishName;
+    _dishName.text = [currentDish objectForKey:@"dishName"];
     [_dishName setFont:[UIFont fontWithName:@"Menlo" size:12]];
     _dishName.textAlignment = NSTextAlignmentCenter;
     
     
-    captionTextView.text = currentDish.textStorage.string;
+    //captionTextView.text = currentDish.textStorage.string;
+     captionTextView.text = [currentDish objectForKey:@"caption"];
     [captionTextView setFont:[UIFont fontWithName:@"Menlo" size:15]];
     
-    restaurantName.text = currentDish.restaurant;
+    //restaurantName.text = currentDish.restaurant;
+     restaurantName.text = [currentDish objectForKey:@"restaurant"];
     [restaurantName setFont:[UIFont fontWithName:@"Menlo" size:12]];
     restaurantName.textAlignment = NSTextAlignmentCenter;
     
-    address.text = currentDish.address;
+    //address.text = currentDish.address;
+    address.text = [currentDish objectForKey:@"address"];
     [address setFont:[UIFont fontWithName:@"Menlo" size:12]];
     address.textAlignment = NSTextAlignmentCenter;
     
@@ -207,8 +218,8 @@
 
 - (IBAction)seeRecipe:(id)sender {
     //[self.view setHidden:YES];
-    [self createPageViewController];
-    [self setupPageControl];
+//    [self createPageViewController];
+//    [self setupPageControl];
     
     
     //RecipeLaunchView *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RecipeLaunch"];
@@ -225,83 +236,83 @@
 //
 //}
 
-- (void) createPageViewController
-{
-    UIPageViewController *recipeViewController = [self.storyboard instantiateViewControllerWithIdentifier: @"RecipeView"];
-    recipeViewController.dataSource = self;
-    
-    if([currentDish.recipe count])
-    {
-        NSArray *startingViewControllers = @[[self viewControllerAtIndex:0]];
-        [recipeViewController setViewControllers: startingViewControllers
-                                       direction: UIPageViewControllerNavigationDirectionForward
-                                        animated: NO
-                                      completion: nil];
-    }
-    
-    self.recipeViewController = recipeViewController;
-    [self addChildViewController: self.recipeViewController];
-    [self.view addSubview: self.recipeViewController.view];
-    [self.recipeViewController  didMoveToParentViewController: self];
-}
-
-- (void) setupPageControl
-{
-    [[UIPageControl appearance] setPageIndicatorTintColor: [UIColor grayColor]];
-    [[UIPageControl appearance] setCurrentPageIndicatorTintColor: [UIColor whiteColor]];
-    [[UIPageControl appearance] setBackgroundColor: [UIColor darkGrayColor]];
-}
-
-#pragma mark -
-#pragma mark UIPageViewControllerDataSource
-
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
-{
-    NSUInteger index = ((SingleStepViewController*) viewController).itemIndex;
-    
-    if ((index == 0) || (index == NSNotFound)) {
-        return nil;
-    }
-    index--;
-    return [self viewControllerAtIndex:index];
-}
-
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
-{
-    NSUInteger index = ((SingleStepViewController*) viewController).itemIndex;
-    
-    if (index == NSNotFound) {
-        return nil;
-    }
-    index++;
-    if (index == [currentDish.recipe count]) {
-        return nil;
-    }
-    return [self viewControllerAtIndex:index];
-}
-- (SingleStepViewController *) viewControllerAtIndex: (NSUInteger) itemIndex
-{
-    if (itemIndex < [currentDish.recipe count])
-    {
-        SingleStepViewController *stepController = [self.storyboard instantiateViewControllerWithIdentifier: @"SingleStepView"];
-        stepController.itemIndex = itemIndex;
-        stepController.dishName = currentDish.dishName;
-        stepController.stepContent = [currentDish.recipe objectAtIndex:itemIndex];
-        return stepController;
-    }
-    
-    return nil;
-}
-
-- (NSInteger) presentationCountForPageViewController: (UIPageViewController *) pageViewController
-{
-    return [currentDish.recipe count];
-}
-
-- (NSInteger) presentationIndexForPageViewController: (UIPageViewController *) pageViewController
-{
-    return 0;
-}
+//- (void) createPageViewController
+//{
+//    UIPageViewController *recipeViewController = [self.storyboard instantiateViewControllerWithIdentifier: @"RecipeView"];
+//    recipeViewController.dataSource = self;
+//    
+//    if([currentDish.recipe count])
+//    {
+//        NSArray *startingViewControllers = @[[self viewControllerAtIndex:0]];
+//        [recipeViewController setViewControllers: startingViewControllers
+//                                       direction: UIPageViewControllerNavigationDirectionForward
+//                                        animated: NO
+//                                      completion: nil];
+//    }
+//    
+//    self.recipeViewController = recipeViewController;
+//    [self addChildViewController: self.recipeViewController];
+//    [self.view addSubview: self.recipeViewController.view];
+//    [self.recipeViewController  didMoveToParentViewController: self];
+//}
+//
+//- (void) setupPageControl
+//{
+//    [[UIPageControl appearance] setPageIndicatorTintColor: [UIColor grayColor]];
+//    [[UIPageControl appearance] setCurrentPageIndicatorTintColor: [UIColor whiteColor]];
+//    [[UIPageControl appearance] setBackgroundColor: [UIColor darkGrayColor]];
+//}
+//
+//#pragma mark -
+//#pragma mark UIPageViewControllerDataSource
+//
+//- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
+//{
+//    NSUInteger index = ((SingleStepViewController*) viewController).itemIndex;
+//    
+//    if ((index == 0) || (index == NSNotFound)) {
+//        return nil;
+//    }
+//    index--;
+//    return [self viewControllerAtIndex:index];
+//}
+//
+//- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
+//{
+//    NSUInteger index = ((SingleStepViewController*) viewController).itemIndex;
+//    
+//    if (index == NSNotFound) {
+//        return nil;
+//    }
+//    index++;
+//    if (index == [currentDish.recipe count]) {
+//        return nil;
+//    }
+//    return [self viewControllerAtIndex:index];
+//}
+//- (SingleStepViewController *) viewControllerAtIndex: (NSUInteger) itemIndex
+//{
+//    if (itemIndex < [currentDish.recipe count])
+//    {
+//        SingleStepViewController *stepController = [self.storyboard instantiateViewControllerWithIdentifier: @"SingleStepView"];
+//        stepController.itemIndex = itemIndex;
+//        stepController.dishName = currentDish.dishName;
+//        stepController.stepContent = [currentDish.recipe objectAtIndex:itemIndex];
+//        return stepController;
+//    }
+//    
+//    return nil;
+//}
+//
+//- (NSInteger) presentationCountForPageViewController: (UIPageViewController *) pageViewController
+//{
+//    return [currentDish.recipe count];
+//}
+//
+//- (NSInteger) presentationIndexForPageViewController: (UIPageViewController *) pageViewController
+//{
+//    return 0;
+//}
 
 
 

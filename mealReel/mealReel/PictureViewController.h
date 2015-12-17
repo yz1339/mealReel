@@ -11,6 +11,7 @@
 #import "WritingViewController.h"
 #import "ViewController.h"
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 
 
@@ -24,6 +25,6 @@
 
 }
 
-@property (strong, nonatomic) Dish* currentDish;
+@property (strong, nonatomic) PFObject* currentDish;
 
 @end

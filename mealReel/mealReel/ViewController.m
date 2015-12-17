@@ -30,11 +30,14 @@ AVCaptureStillImageOutput *StillImageOutput;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    testObject[@"foo"] = @"bar";
-    [testObject saveInBackground];
-    //[[UIApplication sharedApplication].keyWindow setRootViewController:self];
-    
+    /*
+     PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+     testObject[@"foo"] = @"bar";
+     [testObject saveInBackground];
+     */
+    NSLog(@"test");
+
+
     
     appDelegate = [[UIApplication sharedApplication] delegate];
     currentImage = [[UIImage alloc] init];
@@ -135,6 +138,7 @@ AVCaptureStillImageOutput *StillImageOutput;
 }
 
 - (IBAction)signOutPressed:(id)sender {
+    [PFUser logOut];
     LoginViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginView"];
     [self presentViewController:next animated:YES completion:NULL];
 }
