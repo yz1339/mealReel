@@ -16,12 +16,7 @@
 
 @interface InfoViewController ()<CLLocationManagerDelegate>
 
-
-
-
 @end
-
-
 
 @implementation InfoViewController
 @synthesize recipeTextView;
@@ -58,8 +53,10 @@
     //Add the dish to currentUser's album
     dishToAdd.recipe = appDelegate.recipe;
     [appDelegate.currentUser addToAlbum:dishToAdd];
-    //reset the writing to nil so that the next time the user open writing view he/she won't see previous writings
+    //reset the writing and recipes to nil so that the next time the user open writing view he/she won't see previous writings
     appDelegate.writing = nil;
+    appDelegate.recipe = nil;
+
     
     //[PFUser currentUser][@"dishAlbum"] = appDelegate.recipe;
     //PFQuery *albumQuery = [PFUser query];
@@ -162,8 +159,8 @@
 - (IBAction)addingReceipe:(id)sender {
     
     //Connect to the recipeView
+    NSLog(@"Testing appdelegate: %@", appDelegate.writing);
     AddRecipeViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AddRecipeView"];
-    //next.addingDish = dishToAdd;
     [self presentViewController:next animated:YES completion:NULL];
 }
 

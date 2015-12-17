@@ -40,6 +40,8 @@
 		5366A8481C0CEACC00FAF87C /* mealReelUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5366A8471C0CEACC00FAF87C /* mealReelUITests.m */; };
 		53731F071C21C7DB001F1406 /* RecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53731F061C21C7DB001F1406 /* RecipeViewController.m */; };
 		53731F0D1C21DFB8001F1406 /* AddRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53731F0C1C21DFB8001F1406 /* AddRecipeViewController.m */; };
+		53731F101C224621001F1406 /* SingleStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53731F0F1C224621001F1406 /* SingleStepViewController.m */; };
+		53731F131C226A40001F1406 /* RecipeLaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53731F121C226A3F001F1406 /* RecipeLaunchView.m */; };
 		53D1C0AA1C1CAF79008A4347 /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D1C0A91C1CAF79008A4347 /* Dish.m */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +117,10 @@
 		53731F061C21C7DB001F1406 /* RecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeViewController.m; sourceTree = "<group>"; };
 		53731F0B1C21DFB8001F1406 /* AddRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRecipeViewController.h; sourceTree = "<group>"; };
 		53731F0C1C21DFB8001F1406 /* AddRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRecipeViewController.m; sourceTree = "<group>"; };
+		53731F0E1C224621001F1406 /* SingleStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleStepViewController.h; sourceTree = "<group>"; };
+		53731F0F1C224621001F1406 /* SingleStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleStepViewController.m; sourceTree = "<group>"; };
+		53731F111C226A3F001F1406 /* RecipeLaunchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeLaunchView.h; sourceTree = "<group>"; };
+		53731F121C226A3F001F1406 /* RecipeLaunchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeLaunchView.m; sourceTree = "<group>"; };
 		53D1C0A81C1CAF79008A4347 /* Dish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dish.h; path = ../Dish.h; sourceTree = "<group>"; };
 		53D1C0A91C1CAF79008A4347 /* Dish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dish.m; path = ../Dish.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,6 +212,10 @@
 				5366A8281C0CEACC00FAF87C /* ViewController.h */,
 				5366A8291C0CEACC00FAF87C /* ViewController.m */,
 				5366A82B1C0CEACC00FAF87C /* Main.storyboard */,
+				53731F111C226A3F001F1406 /* RecipeLaunchView.h */,
+				53731F121C226A3F001F1406 /* RecipeLaunchView.m */,
+				53731F0E1C224621001F1406 /* SingleStepViewController.h */,
+				53731F0F1C224621001F1406 /* SingleStepViewController.m */,
 				5366A82E1C0CEACC00FAF87C /* Assets.xcassets */,
 				5366A8301C0CEACC00FAF87C /* LaunchScreen.storyboard */,
 				5366A8331C0CEACC00FAF87C /* Info.plist */,
@@ -409,12 +419,14 @@
 				3980BF811C2238CC004C443D /* SearchViewController.m in Sources */,
 				39916E0D1C1123D4009A81AE /* InfoViewController.m in Sources */,
 				3980BF871C223F4A004C443D /* CreateAccountViewController.m in Sources */,
+				53731F131C226A40001F1406 /* RecipeLaunchView.m in Sources */,
 				53731F071C21C7DB001F1406 /* RecipeViewController.m in Sources */,
 				53D1C0AA1C1CAF79008A4347 /* Dish.m in Sources */,
 				39916E071C0D31A9009A81AE /* WritingViewController.m in Sources */,
 				5366A8271C0CEACC00FAF87C /* AppDelegate.m in Sources */,
 				3952C6161C20F592004AF06D /* AlbumCollectionViewCell.m in Sources */,
 				5366A8241C0CEACC00FAF87C /* main.m in Sources */,
+				53731F101C224621001F1406 /* SingleStepViewController.m in Sources */,
 				3980BF841C223CCD004C443D /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

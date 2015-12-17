@@ -27,5 +27,4 @@
 @property (strong, nonatomic) NSMutableArray* dishArray;
 @property (strong, nonatomic) PFUser* thisUser;
 
-
 @end

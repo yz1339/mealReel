@@ -10,6 +10,7 @@
 #import "InfoViewController.h"
 
 
+
 #define MAX_STEP_LENGTH 50
 
 @implementation AddRecipeViewController
@@ -35,6 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    appDelegate = [[UIApplication sharedApplication] delegate];
     // Do any additional setup after loading the view.
     NSString *stepNumber = [[NSString alloc]initWithFormat:@"Step %i", (int)(steps.count)+1];
     stepNumberLabel.text = stepNumber;
@@ -83,6 +85,8 @@
 - (IBAction)finishRecipe:(id)sender {
 
     appDelegate.recipe = steps;
+    NSLog(@"appdelegate recipe length is %i while steps is %i", (int) appDelegate.recipe.count, (int)steps.count);
+    NSLog(@"appdelegate writes %@", appDelegate.writing);
     InfoViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"InfoView"];
     [self presentViewController:next animated:YES completion:NULL];
 }

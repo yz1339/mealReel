@@ -13,6 +13,8 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 
+
+
 /*
  *This is where all the dish information is displayed, along with the picture. This 
  *view is reachable through a user's albumView.

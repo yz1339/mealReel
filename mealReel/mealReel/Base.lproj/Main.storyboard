@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="qv1-YW-ju8">
     <dependencies>
         <deployment version="2048" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -313,13 +313,76 @@
             </objects>
             <point key="canvasLocation" x="1640" y="226"/>
         </scene>
+        <!--Recipe Launch View-->
+        <scene sceneID="L7F-Gl-17C">
+            <objects>
+                <viewController storyboardIdentifier="RecipeLaunch" id="Ewq-hf-Xfy" customClass="RecipeLaunchView" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ug7-27-8Xx"/>
+                        <viewControllerLayoutGuide type="bottom" id="1hN-b5-P5w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eTi-T8-4Pc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.93472160900000001" blue="0.86531856549999997" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QXW-jR-G3O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1131" y="987"/>
+        </scene>
         <!--Recipe View Controller-->
         <scene sceneID="w8t-5I-JEq">
             <objects>
-                <pageViewController storyboardIdentifier="RecipeView" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="pEP-gB-Gu3" customClass="RecipeViewController" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="RecipeView" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="pEP-gB-Gu3" customClass="RecipeViewController" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DEP-39-1mB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2087" y="294"/>
+            <point key="canvasLocation" x="2083" y="162"/>
+        </scene>
+        <!--Single Step View Controller-->
+        <scene sceneID="yOW-KG-qcW">
+            <objects>
+                <viewController storyboardIdentifier="SingleStepView" id="WYg-Ym-lzy" customClass="SingleStepViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EMs-qB-PsP"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Kw-M4-2lF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T2v-WE-fr6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qko-ab-8cT">
+                                <rect key="frame" x="48" y="179" width="220" height="242"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ni4-Vl-knS">
+                                <rect key="frame" x="126" y="42" width="65" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxy-Yg-F9U">
+                                <rect key="frame" x="48" y="103" width="220" height="47"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.93472160900000001" blue="0.86531856549999997" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="dishNameLabel" destination="ni4-Vl-knS" id="Qw7-oD-YMY"/>
+                        <outlet property="stepContentLabel" destination="Qko-ab-8cT" id="1gK-wT-dJo"/>
+                        <outlet property="stepNumberLabel" destination="hxy-Yg-F9U" id="dwt-G6-cxh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4bT-zy-ar3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2507" y="282"/>
         </scene>
         <!--Album View Controller-->
         <scene sceneID="PPn-r3-mgt">
@@ -508,10 +571,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zll-1f-1Jo">
-                                <rect key="frame" x="129" y="345" width="55" height="30"/>
+                                <rect key="frame" x="133" y="452" width="55" height="30"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
                                     <action selector="signUp:" destination="9Ck-UK-2HX" eventType="touchUpInside" id="5tL-PU-Lj1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bAH-w4-NcP">
+                                <rect key="frame" x="85" y="398" width="150" height="30"/>
+                                <state key="normal" title="Upload Profile Picture"/>
+                                <connections>
+                                    <action selector="uploadPicture:" destination="9Ck-UK-2HX" eventType="touchUpInside" id="Ueb-O0-G7B"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c8v-pU-Xjw">
+                                <rect key="frame" x="85" y="243" width="150" height="141"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z90-b5-7RP">
+                                <rect key="frame" x="137" y="502" width="46" height="30"/>
+                                <state key="normal" title="Return"/>
+                                <connections>
+                                    <action selector="returnPressed:" destination="9Ck-UK-2HX" eventType="touchUpInside" id="3Ae-hV-HkR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -519,6 +599,7 @@
                     </view>
                     <connections>
                         <outlet property="passwordTextField" destination="w0V-qt-6sV" id="sc8-OQ-VeW"/>
+                        <outlet property="profileImageView" destination="c8v-pU-Xjw" id="cZ4-Hb-NAp"/>
                         <outlet property="usernameTextField" destination="klQ-ni-aZq" id="JCm-EJ-hXp"/>
                     </connections>
                 </viewController>
@@ -691,7 +772,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9q6-45-8Z9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1172" y="997"/>
+            <point key="canvasLocation" x="1990" y="979"/>
         </scene>
     </scenes>
     <resources>

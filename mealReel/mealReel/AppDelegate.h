@@ -24,6 +24,9 @@
 @property (strong, readwrite, nonatomic) NSTextStorage* textStorage;
 @property (strong, nonatomic) NSString* writing;
 @property (strong, nonatomic) NSMutableArray* recipe;
+@property (strong, nonatomic) NSString* restaurant;
+@property (strong, nonatomic) NSString* dishName;
+@property (strong, nonatomic) NSString* location;
 
 
 @end

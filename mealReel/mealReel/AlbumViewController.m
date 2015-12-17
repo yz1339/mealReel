@@ -12,6 +12,9 @@
 #import "AlbumCollectionViewCell.h"
 #import "PictureViewController.h"
 #import "Dish.h"
+#import "RecipeLaunchView.h"
+#import <Parse/Parse.h>
+
 
 
 @interface AlbumViewController ()
@@ -27,18 +30,27 @@
 @synthesize albumCollectionView;
 @synthesize thisUser;
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [_avatarImageView setImage: appDelegate.currentUser.avatar];
+    //[_avatarImageView setImage: appDelegate.currentUser.avatar];
        //dishArray = appDelegate.currentUser.album;
     //PFUser *currentUser = [PFUser currentUser];
     _usernameLabel.text = thisUser.username;
     dishArray = [thisUser objectForKey:@"dishAlbum"];
     NSLog(@"%lu", [dishArray count]);
     
+    UIImage *profileImage;
+    PFFile *imageFile = [thisUser objectForKey:@"avatar"];
+    profileImage = [UIImage imageWithData: [imageFile getData]];
+    
+    [_avatarImageView setImage:profileImage];
+    
+    
+    //[_avatarImageView setImage:[currentUser objectForKey:@"avatar"]];
     albumCollectionView.delegate = self;
     albumCollectionView.dataSource = self;
 
@@ -101,8 +113,10 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     PictureViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PictureView"];
+    
     next.currentDish = [dishArray objectAtIndex:indexPath.row];
     next.thisUser = thisUser;
+
     [self presentViewController:next animated:YES completion:NULL];
 
 }

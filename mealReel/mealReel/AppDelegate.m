@@ -21,6 +21,10 @@
 @synthesize textStorage;
 @synthesize writing;
 @synthesize recipe;
+@synthesize restaurant;
+@synthesize dishName;
+@synthesize location;
+
 
 
 /*
@@ -48,7 +52,7 @@
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     
-    
+
 //    } else {
 //        NSUserDefaults *defaultUser = [NSUserDefaults standardUserDefaults];
 //        NSData* defaultData = [defaultUser objectForKey:@"loki102"];

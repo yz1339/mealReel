@@ -32,11 +32,12 @@ AVCaptureStillImageOutput *StillImageOutput;
     [super viewDidLoad];
     
     /*
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    testObject[@"foo"] = @"bar";
-    [testObject saveInBackground];
-   */
+     PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+     testObject[@"foo"] = @"bar";
+     [testObject saveInBackground];
+     */
     NSLog(@"test");
+
 
     
     appDelegate = [[UIApplication sharedApplication] delegate];

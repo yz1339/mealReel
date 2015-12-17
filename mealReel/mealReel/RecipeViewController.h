@@ -10,10 +10,12 @@
 #import "Dish.h"
 #import "AppDelegate.h"
 
-@interface RecipeViewController : UIPageViewController {
+@interface RecipeViewController : UIPageViewController <UIPageViewControllerDelegate, UIPageViewControllerDataSource> {
     AppDelegate *appDelegate;
 }
+@property (assign, nonatomic) NSInteger index;
 
 @property (strong, nonatomic) Dish* currentDish;
+
 
 @end
