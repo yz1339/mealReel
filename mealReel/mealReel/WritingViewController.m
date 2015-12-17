@@ -210,8 +210,6 @@
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    
-
     if([text isEqualToString:@"\n"]){
         [captionTextView resignFirstResponder];
         
@@ -227,14 +225,18 @@
                               stringByAppendingString:[text substringToIndex:emptySpace]]
                              stringByAppendingString:[captionTextView.text substringFromIndex:(range.location + range.length)]];
            return NO;
-            
         }
         NSString* writing = captionTextView.text;
+        if (writing == NULL) {
+            appDelegate.writing = @" ";
+            NSLog(@"==========empty entry!!");
+        } else {
             appDelegate.writing = writing;
             textStorage = captionTextView.textStorage;
             appDelegate.textStorage = [[NSTextStorage alloc]init];
             appDelegate.textStorage = textStorage;
-
+            NSLog(@"==========has entry!!");
+        }
         
     }
     return YES;

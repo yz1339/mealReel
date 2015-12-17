@@ -26,5 +26,6 @@
 }
 
 @property (strong, nonatomic) PFObject* currentDish;
+@property (strong, nonatomic) PFUser* thisUser;
 
 @end

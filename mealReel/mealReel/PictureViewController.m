@@ -28,12 +28,14 @@
 @property (retain, nonatomic) UILabel *dishName;
 
 
+
 @end
 
 @implementation PictureViewController
 
 
 @synthesize currentDish;
+@synthesize thisUser;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,7 +47,14 @@
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     
-    [_avatarImageView setImage: appDelegate.currentUser.avatar];
+    //[_avatarImageView setImage: appDelegate.currentUser.avatar];
+    
+    UIImage *profileImage;
+    PFFile *imageFile = [thisUser objectForKey:@"avatar"];
+    profileImage = [UIImage imageWithData: [imageFile getData]];
+    
+    [_avatarImageView setImage:profileImage];
+    
     [_usernameButton setTitle:appDelegate.currentUser.username forState:UIControlStateNormal];
    
     appDelegate.addingDish = currentDish;
@@ -211,7 +220,8 @@
 
 - (IBAction)returnPressed:(id)sender {
     AlbumViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AlbumView"];
-    //[self.view removeFromSuperview];
+    next.thisUser = thisUser;
+
     [self presentViewController:next animated:YES completion:NULL];
 }
 

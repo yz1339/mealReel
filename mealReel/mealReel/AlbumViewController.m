@@ -16,6 +16,7 @@
 #import <Parse/Parse.h>
 
 
+
 @interface AlbumViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *avatarImageView;
@@ -27,6 +28,7 @@
 
 @synthesize dishArray;
 @synthesize albumCollectionView;
+@synthesize thisUser;
 
 
 
@@ -36,13 +38,13 @@
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     //[_avatarImageView setImage: appDelegate.currentUser.avatar];
        //dishArray = appDelegate.currentUser.album;
-    PFUser *currentUser = [PFUser currentUser];
-    _usernameLabel.text = currentUser.username;
-    dishArray = [currentUser objectForKey:@"dishAlbum"];
+    //PFUser *currentUser = [PFUser currentUser];
+    _usernameLabel.text = thisUser.username;
+    dishArray = [thisUser objectForKey:@"dishAlbum"];
     NSLog(@"%lu", [dishArray count]);
     
     UIImage *profileImage;
-    PFFile *imageFile = [currentUser objectForKey:@"avatar"];
+    PFFile *imageFile = [thisUser objectForKey:@"avatar"];
     profileImage = [UIImage imageWithData: [imageFile getData]];
     
     [_avatarImageView setImage:profileImage];
@@ -113,7 +115,8 @@
     PictureViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PictureView"];
     
     next.currentDish = [dishArray objectAtIndex:indexPath.row];
-    //[self.view addSubview: next.view];
+    next.thisUser = thisUser;
+
     [self presentViewController:next animated:YES completion:NULL];
 
 }

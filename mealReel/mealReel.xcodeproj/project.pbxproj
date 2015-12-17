@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3903964B1C234A880022EFFB /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3903964A1C234A880022EFFB /* SearchTableViewCell.m */; };
 		3952C60D1C1FB05B004AF06D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3952C60C1C1FB05B004AF06D /* CoreLocation.framework */; };
 		3952C6101C20887F004AF06D /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3952C60F1C20887F004AF06D /* AlbumViewController.m */; };
 		3952C6131C20EAA6004AF06D /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3952C6121C20EAA6004AF06D /* CommentViewController.m */; };
@@ -62,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		390396491C234A880022EFFB /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
+		3903964A1C234A880022EFFB /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
 		3952C60C1C1FB05B004AF06D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3952C60E1C20887F004AF06D /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
 		3952C60F1C20887F004AF06D /* AlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumViewController.m; sourceTree = "<group>"; };
@@ -241,6 +244,8 @@
 				3980BF831C223CCD004C443D /* LoginViewController.m */,
 				3980BF851C223F4A004C443D /* CreateAccountViewController.h */,
 				3980BF861C223F4A004C443D /* CreateAccountViewController.m */,
+				390396491C234A880022EFFB /* SearchTableViewCell.h */,
+				3903964A1C234A880022EFFB /* SearchTableViewCell.m */,
 			);
 			path = mealReel;
 			sourceTree = "<group>";
@@ -407,6 +412,7 @@
 				5366A82A1C0CEACC00FAF87C /* ViewController.m in Sources */,
 				39916E151C1F8048009A81AE /* User.m in Sources */,
 				53731F0D1C21DFB8001F1406 /* AddRecipeViewController.m in Sources */,
+				3903964B1C234A880022EFFB /* SearchTableViewCell.m in Sources */,
 				3952C6101C20887F004AF06D /* AlbumViewController.m in Sources */,
 				39916E0A1C0F532D009A81AE /* PictureViewController.m in Sources */,
 				3952C6131C20EAA6004AF06D /* CommentViewController.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 
 /*
@@ -24,5 +25,6 @@
 
 @property (strong, nonatomic) IBOutlet UICollectionView *albumCollectionView;
 @property (strong, nonatomic) NSMutableArray* dishArray;
+@property (strong, nonatomic) PFUser* thisUser;
 
 @end
