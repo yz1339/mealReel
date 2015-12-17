@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 @interface AppDelegate ()
 
@@ -31,6 +32,23 @@
         currentUser = [User alloc];
         currentUser.username = @"loki102";
         currentUser.avatar = [UIImage imageNamed:@"loki_icon_by_charlottegray-d67hiep_zpsebfd7a12.png"];
+    
+
+    
+    
+    // [Optional] Power your app with Local Datastore. For more info, go to
+    // https://parse.com/docs/ios/guide#local-datastore
+    [Parse enableLocalDatastore];
+    
+    // Initialize Parse.
+    [Parse setApplicationId:@"8cOeFXHdNC35xqpcFqUvrr4RrWdhmImf3oZ49tgf"
+                  clientKey:@"jJE8Gt8W2ASCLrsXuL1Wx5fz28rbsoJXSiYAR2mN"];
+    
+    // [Optional] Track statistics around application opens.
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    
+    
 //    } else {
 //        NSUserDefaults *defaultUser = [NSUserDefaults standardUserDefaults];
 //        NSData* defaultData = [defaultUser objectForKey:@"loki102"];

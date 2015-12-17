@@ -18,6 +18,7 @@
 @property (retain,nonatomic) UIImage* avatar;
 @property (retain, nonatomic) NSString* username;
 @property (retain, nonatomic) NSMutableArray* album;
+@property (retain, nonatomic) NSString* password;
 
 -(void) addToAlbum: (Dish*) currentDish;
 

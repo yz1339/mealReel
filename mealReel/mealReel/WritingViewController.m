@@ -12,7 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Dish.h"
 
-#define MAX_WRITING_LENGTH 10
+#define MAX_WRITING_LENGTH 100
 
 
 @interface WritingViewController () <UITextViewDelegate>

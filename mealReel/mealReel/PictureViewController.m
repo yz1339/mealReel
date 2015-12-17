@@ -57,7 +57,7 @@
     
     CGRect newFrame = _pictureBack.bounds;
     newFrame.size.height = 100;
-    newFrame.size.width = 150;
+    newFrame.size.width = 200;
     
   
     
@@ -79,32 +79,49 @@
     _pictureBack.center = CGPointMake(_containerView.frame.size.width  / 2,
                                       _containerView.frame.size.height / 2);
     captionTextView.center = CGPointMake(_pictureBack.frame.size.width  / 2,
-                                         (_pictureBack.frame.size.height / 2)-90);
+                                         (_pictureBack.frame.size.height / 2)-60);
     
     
-    restaurant.center = CGPointMake((_pictureBack.frame.size.width  / 2)+15,
-                                        (_pictureBack.frame.size.height / 2)-20);
+    restaurant.center = CGPointMake((_pictureBack.frame.size.width  / 2),
+                                        (_pictureBack.frame.size.height / 2)+30);
 
-    restaurantName.center = CGPointMake((_pictureBack.frame.size.width  / 2)+15,
-                                         (_pictureBack.frame.size.height / 2));
-    addressText.center = CGPointMake((_pictureBack.frame.size.width  / 2)+15,
-                                     (_pictureBack.frame.size.height / 2)+40);
-    address.center = CGPointMake((_pictureBack.frame.size.width  / 2)+15,
-                                        (_pictureBack.frame.size.height / 2)+60);
-    _dishName.center = CGPointMake((_pictureBack.frame.size.width  / 2)+25,
+    restaurantName.center = CGPointMake((_pictureBack.frame.size.width  / 2),
+                                         (_pictureBack.frame.size.height / 2)+50);
+    addressText.center = CGPointMake((_pictureBack.frame.size.width  / 2),
+                                     (_pictureBack.frame.size.height / 2)+90);
+    address.center = CGPointMake((_pictureBack.frame.size.width  / 2),
+                                        (_pictureBack.frame.size.height / 2)+110);
+    _dishName.center = CGPointMake((_pictureBack.frame.size.width  / 2)+10,
                                       (  _pictureBack.frame.size.height / 2)+120);
     _currentImageView.center = CGPointMake((_pictureFrame.frame.size.width  / 2 ) + 1.5,
                                            (_pictureFrame.frame.size.height / 2) - 24);
     
     
+    
     restaurant.text = @"Restaurant:";
+    [restaurant setFont:[UIFont fontWithName:@"Menlo-Bold" size:12]];
+    restaurant.textAlignment = NSTextAlignmentCenter;
+    
     addressText.text = @"Address:";
+    addressText.textAlignment = NSTextAlignmentCenter;
+     [addressText setFont:[UIFont fontWithName:@"Menlo-Bold" size:12]];
+    
     _dishName.text = currentDish.dishName;
+    [_dishName setFont:[UIFont fontWithName:@"Menlo" size:12]];
     _dishName.textAlignment = NSTextAlignmentCenter;
+    
+    
     captionTextView.text = currentDish.textStorage.string;
+    [captionTextView setFont:[UIFont fontWithName:@"Menlo" size:15]];
+    
     restaurantName.text = currentDish.restaurant;
+    [restaurantName setFont:[UIFont fontWithName:@"Menlo" size:12]];
+    restaurantName.textAlignment = NSTextAlignmentCenter;
+    
     address.text = currentDish.address;
+    [address setFont:[UIFont fontWithName:@"Menlo" size:12]];
     address.textAlignment = NSTextAlignmentCenter;
+    
     //this adds them to our containerView
     [_containerView addSubview:_pictureBack];
     [_pictureBack addSubview: captionTextView];
@@ -116,6 +133,7 @@
     [_containerView addSubview:_currentImageView];
     [_containerView addSubview:_dishName];
     
+
 
     
     _isFlipped = NO;

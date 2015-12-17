@@ -11,6 +11,20 @@
 		3952C6101C20887F004AF06D /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3952C60F1C20887F004AF06D /* AlbumViewController.m */; };
 		3952C6131C20EAA6004AF06D /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3952C6121C20EAA6004AF06D /* CommentViewController.m */; };
 		3952C6161C20F592004AF06D /* AlbumCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3952C6151C20F592004AF06D /* AlbumCollectionViewCell.m */; };
+		3980BF6A1C2232E5004C443D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3980BF691C2232E5004C443D /* Bolts.framework */; };
+		3980BF6C1C2232FD004C443D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3980BF6B1C2232FD004C443D /* Parse.framework */; };
+		3980BF6E1C22333E004C443D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3980BF6D1C22333E004C443D /* AudioToolbox.framework */; };
+		3980BF701C223348004C443D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3980BF6F1C223348004C443D /* CFNetwork.framework */; };
+		3980BF721C22334E004C443D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3980BF711C22334E004C443D /* CoreGraphics.framework */; };
+		3980BF741C22335A004C443D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3980BF731C22335A004C443D /* QuartzCore.framework */; };
+		3980BF761C22336A004C443D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3980BF751C22336A004C443D /* Security.framework */; };
+		3980BF781C223373004C443D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3980BF771C223373004C443D /* StoreKit.framework */; };
+		3980BF7A1C22337B004C443D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3980BF791C22337B004C443D /* SystemConfiguration.framework */; };
+		3980BF7C1C223389004C443D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3980BF7B1C223389004C443D /* libz.tbd */; };
+		3980BF7E1C22339C004C443D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3980BF7D1C22339C004C443D /* libsqlite3.tbd */; };
+		3980BF811C2238CC004C443D /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3980BF801C2238CC004C443D /* SearchViewController.m */; };
+		3980BF841C223CCD004C443D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3980BF831C223CCD004C443D /* LoginViewController.m */; };
+		3980BF871C223F4A004C443D /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3980BF861C223F4A004C443D /* CreateAccountViewController.m */; };
 		39916E071C0D31A9009A81AE /* WritingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39916E061C0D31A9009A81AE /* WritingViewController.m */; };
 		39916E0A1C0F532D009A81AE /* PictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39916E091C0F532D009A81AE /* PictureViewController.m */; };
 		39916E0D1C1123D4009A81AE /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39916E0C1C1123D4009A81AE /* InfoViewController.m */; };
@@ -53,6 +67,23 @@
 		3952C6121C20EAA6004AF06D /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		3952C6141C20F592004AF06D /* AlbumCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumCollectionViewCell.h; sourceTree = "<group>"; };
 		3952C6151C20F592004AF06D /* AlbumCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumCollectionViewCell.m; sourceTree = "<group>"; };
+		3980BF691C2232E5004C443D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		3980BF6B1C2232FD004C443D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		3980BF6D1C22333E004C443D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		3980BF6F1C223348004C443D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		3980BF711C22334E004C443D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3980BF731C22335A004C443D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3980BF751C22336A004C443D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3980BF771C223373004C443D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		3980BF791C22337B004C443D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3980BF7B1C223389004C443D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		3980BF7D1C22339C004C443D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		3980BF7F1C2238CC004C443D /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		3980BF801C2238CC004C443D /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		3980BF821C223CCD004C443D /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		3980BF831C223CCD004C443D /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		3980BF851C223F4A004C443D /* CreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAccountViewController.h; sourceTree = "<group>"; };
+		3980BF861C223F4A004C443D /* CreateAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAccountViewController.m; sourceTree = "<group>"; };
 		39916E051C0D31A9009A81AE /* WritingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WritingViewController.h; sourceTree = "<group>"; };
 		39916E061C0D31A9009A81AE /* WritingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WritingViewController.m; sourceTree = "<group>"; };
 		39916E081C0F532D009A81AE /* PictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureViewController.h; sourceTree = "<group>"; };
@@ -90,7 +121,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3980BF7E1C22339C004C443D /* libsqlite3.tbd in Frameworks */,
+				3980BF7C1C223389004C443D /* libz.tbd in Frameworks */,
+				3980BF7A1C22337B004C443D /* SystemConfiguration.framework in Frameworks */,
+				3980BF781C223373004C443D /* StoreKit.framework in Frameworks */,
+				3980BF761C22336A004C443D /* Security.framework in Frameworks */,
+				3980BF741C22335A004C443D /* QuartzCore.framework in Frameworks */,
+				3980BF721C22334E004C443D /* CoreGraphics.framework in Frameworks */,
+				3980BF701C223348004C443D /* CFNetwork.framework in Frameworks */,
+				3980BF6E1C22333E004C443D /* AudioToolbox.framework in Frameworks */,
 				3952C60D1C1FB05B004AF06D /* CoreLocation.framework in Frameworks */,
+				3980BF6C1C2232FD004C443D /* Parse.framework in Frameworks */,
+				3980BF6A1C2232E5004C443D /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,10 +153,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3980BF681C2232BB004C443D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3980BF7D1C22339C004C443D /* libsqlite3.tbd */,
+				3980BF7B1C223389004C443D /* libz.tbd */,
+				3980BF791C22337B004C443D /* SystemConfiguration.framework */,
+				3980BF771C223373004C443D /* StoreKit.framework */,
+				3980BF751C22336A004C443D /* Security.framework */,
+				3980BF731C22335A004C443D /* QuartzCore.framework */,
+				3980BF711C22334E004C443D /* CoreGraphics.framework */,
+				3980BF6F1C223348004C443D /* CFNetwork.framework */,
+				3980BF6D1C22333E004C443D /* AudioToolbox.framework */,
+				3980BF6B1C2232FD004C443D /* Parse.framework */,
+				3980BF691C2232E5004C443D /* Bolts.framework */,
+				3952C60C1C1FB05B004AF06D /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5366A8161C0CEACC00FAF87C = {
 			isa = PBXGroup;
 			children = (
-				3952C60C1C1FB05B004AF06D /* CoreLocation.framework */,
+				3980BF681C2232BB004C443D /* Frameworks */,
 				5366A8211C0CEACC00FAF87C /* mealReel */,
 				5366A83B1C0CEACC00FAF87C /* mealReelTests */,
 				5366A8461C0CEACC00FAF87C /* mealReelUITests */,
@@ -164,6 +225,12 @@
 				3952C6151C20F592004AF06D /* AlbumCollectionViewCell.m */,
 				53731F0B1C21DFB8001F1406 /* AddRecipeViewController.h */,
 				53731F0C1C21DFB8001F1406 /* AddRecipeViewController.m */,
+				3980BF7F1C2238CC004C443D /* SearchViewController.h */,
+				3980BF801C2238CC004C443D /* SearchViewController.m */,
+				3980BF821C223CCD004C443D /* LoginViewController.h */,
+				3980BF831C223CCD004C443D /* LoginViewController.m */,
+				3980BF851C223F4A004C443D /* CreateAccountViewController.h */,
+				3980BF861C223F4A004C443D /* CreateAccountViewController.m */,
 			);
 			path = mealReel;
 			sourceTree = "<group>";
@@ -333,13 +400,16 @@
 				3952C6101C20887F004AF06D /* AlbumViewController.m in Sources */,
 				39916E0A1C0F532D009A81AE /* PictureViewController.m in Sources */,
 				3952C6131C20EAA6004AF06D /* CommentViewController.m in Sources */,
+				3980BF811C2238CC004C443D /* SearchViewController.m in Sources */,
 				39916E0D1C1123D4009A81AE /* InfoViewController.m in Sources */,
+				3980BF871C223F4A004C443D /* CreateAccountViewController.m in Sources */,
 				53731F071C21C7DB001F1406 /* RecipeViewController.m in Sources */,
 				53D1C0AA1C1CAF79008A4347 /* Dish.m in Sources */,
 				39916E071C0D31A9009A81AE /* WritingViewController.m in Sources */,
 				5366A8271C0CEACC00FAF87C /* AppDelegate.m in Sources */,
 				3952C6161C20F592004AF06D /* AlbumCollectionViewCell.m in Sources */,
 				5366A8241C0CEACC00FAF87C /* main.m in Sources */,
+				3980BF841C223CCD004C443D /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +550,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = mealReel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -496,6 +570,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = mealReel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
