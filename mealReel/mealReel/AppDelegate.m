@@ -20,6 +20,10 @@
 @synthesize textStorage;
 @synthesize writing;
 @synthesize recipe;
+@synthesize restaurant;
+@synthesize dishName;
+@synthesize location;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -27,6 +31,7 @@
         currentUser = [User alloc];
         currentUser.username = @"loki102";
         currentUser.avatar = [UIImage imageNamed:@"Tom-Hiddleston.jpg"];
+        recipe = [NSMutableArray alloc];
 //    } else {
 //        NSUserDefaults *defaultUser = [NSUserDefaults standardUserDefaults];
 //        NSData* defaultData = [defaultUser objectForKey:@"loki102"];

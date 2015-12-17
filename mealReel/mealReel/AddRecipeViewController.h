@@ -11,8 +11,9 @@
 #import "AppDelegate.h"
 
 
-@interface AddRecipeViewController : UIViewController {
-    AppDelegate* appDelegate;
+
+@interface AddRecipeViewController : UIViewController <UITextViewDelegate>{
+    AppDelegate *appDelegate;
 }
 @property (weak, nonatomic) IBOutlet UILabel *stepNumberLabel;
 

@@ -59,6 +59,7 @@
     [appDelegate.currentUser addToAlbum:dishToAdd];
     //reset the writing to nil so that the next time the user open writing view he/she won't see previous writings
     appDelegate.writing = nil;
+    NSLog(@"recipe length is !!!!!!!!! %i", (int) dishToAdd.recipe.count);
     ViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CameraView"];
     [self presentViewController:next animated:YES completion:NULL];
 }
@@ -93,8 +94,8 @@
 - (IBAction)addingReceipe:(id)sender {
     
     //Connect to the recipeView
+    NSLog(@"Testing appdelegate: %@", appDelegate.writing);
     AddRecipeViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AddRecipeView"];
-    //next.addingDish = dishToAdd;
     [self presentViewController:next animated:YES completion:NULL];
 }
 

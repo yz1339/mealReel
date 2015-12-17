@@ -10,6 +10,7 @@
 #import "CommentViewController.h"
 #import "AlbumViewController.h"
 #import "Dish.h"
+#import "RecipeViewController.h"
 
 @interface PictureViewController ()
 
@@ -188,6 +189,11 @@
 }
 
 
+- (IBAction)seeRecipe:(id)sender {
+    RecipeViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RecipeView"];
+    next.currentDish = currentDish;
+    [self presentViewController:next animated:YES completion:NULL];
+}
 
 /*
 #pragma mark - Navigation
