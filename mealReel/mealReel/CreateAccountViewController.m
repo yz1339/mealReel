@@ -28,9 +28,22 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)signUp:(id)sender {
-    PFObject *newUser = [PFObject objectWithClassName:@"User"];
-    newUser[_usernameTextField.text] = _passwordTextField.text;
-    [newUser saveInBackground];
+   // PFObject *newUser = [PFObject objectWithClassName:@"User"];
+   // newUser[_usernameTextField.text] = _passwordTextField.text;
+   // [newUser saveInBackground];
+   
+    PFUser *newUser = [PFUser user];
+    newUser.username = _usernameTextField.text;
+    newUser.password = _passwordTextField.text;
+    
+    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if(!error){
+            NSLog(@"Registration Sucesss!");
+        }
+        else{
+            NSLog(@"Registration Error!");
+        }
+    }];
     
     LoginViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginView"];
     [self presentViewController:next animated:YES completion:NULL];

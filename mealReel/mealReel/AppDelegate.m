@@ -30,7 +30,7 @@
     // Override point for customization after application launch.
 //    if (currentUser == NULL) {
         currentUser = [User alloc];
-        currentUser.username = @"loki102";
+        //currentUser.username = @"loki102";
         currentUser.avatar = [UIImage imageNamed:@"loki_icon_by_charlottegray-d67hiep_zpsebfd7a12.png"];
     
 

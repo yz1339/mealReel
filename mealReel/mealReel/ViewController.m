@@ -30,10 +30,12 @@ AVCaptureStillImageOutput *StillImageOutput;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    /*
     PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
     testObject[@"foo"] = @"bar";
     [testObject saveInBackground];
-   
+   */
+    NSLog(@"test");
 
     
     appDelegate = [[UIApplication sharedApplication] delegate];
@@ -135,6 +137,7 @@ AVCaptureStillImageOutput *StillImageOutput;
 }
 
 - (IBAction)signOutPressed:(id)sender {
+    [PFUser logOut];
     LoginViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginView"];
     [self presentViewController:next animated:YES completion:NULL];
 }

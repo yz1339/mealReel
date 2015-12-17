@@ -8,9 +8,14 @@
 
 #import "LoginViewController.h"
 #import "CreateAccountViewController.h"
+#import "ViewController.h"
+#import <Parse/Parse.h>
+#import "AppDelegate.h"
 
 
 @interface LoginViewController ()
+@property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
 
 @end
 
@@ -19,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _usernameTextField.delegate = self;
+    _passwordTextField.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,6 +35,29 @@
 - (IBAction)signUpPressed:(id)sender {
     CreateAccountViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CreateAccount"];
     [self presentViewController:next animated:YES completion:NULL];
+}
+- (IBAction)enterPressed:(id)sender {
+    
+    [PFUser logInWithUsernameInBackground:_usernameTextField.text password:_passwordTextField.text block:^(PFUser * user, NSError * error) {
+        if(!error){
+            
+            AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+            appDelegate.currentUser.username = _usernameTextField.text;
+            ViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CameraView"];
+            [self presentViewController:next animated:YES completion:NULL];
+
+        }
+        else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!!" message:@" No account with this username and password combination could be found!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }
+    }];
+  
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
 }
 
 /*

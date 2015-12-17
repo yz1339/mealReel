@@ -11,6 +11,7 @@
 #import "WritingViewController.h"
 #import "ViewController.h"
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 /*
  *This is where all the dish information is displayed, along with the picture. This 
@@ -22,6 +23,6 @@
 
 }
 
-@property (strong, nonatomic) Dish* currentDish;
+@property (strong, nonatomic) PFObject* currentDish;
 
 @end

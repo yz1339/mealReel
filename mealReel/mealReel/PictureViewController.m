@@ -46,13 +46,16 @@
     [_usernameButton setTitle:appDelegate.currentUser.username forState:UIControlStateNormal];
    
     
-    UIImage* currentImage = currentDish.dishImage;
+    UIImage *currentImage;
+    PFFile *currentFile = [currentDish objectForKey:@"dishImage2"];
+    currentImage = [UIImage imageWithData: [currentFile getData]];
+    //UIImage* currentImage = currentDish.dishImage;
     
     CGRect picBound = _pictureBack.bounds;
     picBound.size.height = 256;
     picBound.size.width = 248.5;
     
-    _currentImageView = [[UIImageView alloc] initWithImage:currentImage];
+   _currentImageView = [[UIImageView alloc] initWithImage:currentImage];
     [_currentImageView setFrame:picBound];
     
     CGRect newFrame = _pictureBack.bounds;
@@ -106,19 +109,23 @@
     addressText.textAlignment = NSTextAlignmentCenter;
      [addressText setFont:[UIFont fontWithName:@"Menlo-Bold" size:12]];
     
-    _dishName.text = currentDish.dishName;
+    //_dishName.text = currentDish.dishName;
+    _dishName.text = [currentDish objectForKey:@"dishName"];
     [_dishName setFont:[UIFont fontWithName:@"Menlo" size:12]];
     _dishName.textAlignment = NSTextAlignmentCenter;
     
     
-    captionTextView.text = currentDish.textStorage.string;
+    //captionTextView.text = currentDish.textStorage.string;
+     captionTextView.text = [currentDish objectForKey:@"caption"];
     [captionTextView setFont:[UIFont fontWithName:@"Menlo" size:15]];
     
-    restaurantName.text = currentDish.restaurant;
+    //restaurantName.text = currentDish.restaurant;
+     restaurantName.text = [currentDish objectForKey:@"restaurant"];
     [restaurantName setFont:[UIFont fontWithName:@"Menlo" size:12]];
     restaurantName.textAlignment = NSTextAlignmentCenter;
     
-    address.text = currentDish.address;
+    //address.text = currentDish.address;
+    address.text = [currentDish objectForKey:@"address"];
     [address setFont:[UIFont fontWithName:@"Menlo" size:12]];
     address.textAlignment = NSTextAlignmentCenter;
     
