@@ -19,6 +19,7 @@
 @synthesize recipe;
 
 
+
 -(void) addToRecipe:(NSString *)currentStep {
     if([recipe count]>0){
         [recipe addObject: currentStep];
@@ -31,6 +32,13 @@
     }
     
 }
+
+
+/*
+ * inWithPicture:
+ * Here we initialize the picture and dish that is taken and created in the primary view, so it may be sent late
+ * to the pictureView.
+ */
 -(id) initWithPicture:(UIImage *)image dishname:(NSString*) dName restaurantName: (NSString*) rest address: (NSString*) addr textStore: (NSTextStorage*) textStore andWriting: (NSString*) write {
     if (self = [super init]) {
         self.dishImage = image;

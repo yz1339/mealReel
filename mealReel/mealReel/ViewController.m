@@ -10,6 +10,8 @@
 #import "WritingViewController.h"
 #import "Dish.h"
 #import "AlbumViewController.h"
+#import "LoginViewController.h"
+#import <Parse/Parse.h>
 
 
 
@@ -27,6 +29,13 @@ AVCaptureStillImageOutput *StillImageOutput;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    testObject[@"foo"] = @"bar";
+    [testObject saveInBackground];
+   
+
+    
     appDelegate = [[UIApplication sharedApplication] delegate];
     currentImage = [[UIImage alloc] init];
     // Do any additional setup after loading the view, typically from a nib.
@@ -125,6 +134,10 @@ AVCaptureStillImageOutput *StillImageOutput;
     }];
 }
 
+- (IBAction)signOutPressed:(id)sender {
+    LoginViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginView"];
+    [self presentViewController:next animated:YES completion:NULL];
+}
 
 
 - (IBAction)albumPressed:(id)sender {

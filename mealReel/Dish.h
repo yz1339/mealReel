@@ -10,7 +10,10 @@
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
 
-
+/*
+ *This object contains the dish information which is gathered from the writing and info views, and is
+ *stored for later use in the pictureViewController.
+ */
 @interface Dish : NSObject
 
 @property (strong, nonatomic) UIImage* dishImage;

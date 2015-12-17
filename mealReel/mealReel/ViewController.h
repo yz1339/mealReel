@@ -11,6 +11,9 @@
 #import "Dish.h"
 #import "AppDelegate.h"
 
+/*
+ * This is the view where the pictures are taking using Iphone's camera.
+ */
 @interface ViewController : UIViewController {
     IBOutlet UIView *frameForCapture;
     IBOutlet UIImageView *imageView;

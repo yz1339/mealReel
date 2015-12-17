@@ -11,7 +11,10 @@
 #import "ViewController.h"
 #import "AppDelegate.h"
 
-
+/*
+ *Here is where the captured image is sent so that the user may write a caption, which is 
+ *affixed to a dish object.
+ */
 @interface WritingViewController : UIViewController {
     AppDelegate *appDelegate;
     UITextView *captionTextView;

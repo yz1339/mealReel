@@ -3,9 +3,15 @@
 //  mealReel
 //
 //  Created by Alexandra Serralta on 12/3/15.
-//  Copyright © 2015 Yating Zhan. All rights reserved.
+//  Copyright © 2015 Alexandra Serralta. All rights reserved.
 //
 
+
+
+/*
+ *This is the view here we gather the dish name, restaurant name, and address. Optionally 
+ *we also gather the recipe.
+ */
 #import <UIKit/UIKit.h>
 #import "Dish.h"
 #import "WritingViewController.h"

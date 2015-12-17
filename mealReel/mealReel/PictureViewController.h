@@ -3,7 +3,7 @@
 //  mealReel
 //
 //  Created by Alexandra Serralta on 12/2/15.
-//  Copyright © 2015 Yating Zhan. All rights reserved.
+//  Copyright © 2015 Alexandra Serralta. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -11,6 +11,11 @@
 #import "WritingViewController.h"
 #import "ViewController.h"
 #import "AppDelegate.h"
+
+/*
+ *This is where all the dish information is displayed, along with the picture. This 
+ *view is reachable through a user's albumView.
+ */
 
 @interface PictureViewController : UIViewController {
     AppDelegate *appDelegate;

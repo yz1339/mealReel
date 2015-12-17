@@ -3,7 +3,7 @@
 //  mealReel
 //
 //  Created by Alexandra Serralta on 12/14/15.
-//  Copyright © 2015 Yating Zhan. All rights reserved.
+//  Copyright © 2015 Alexandra Serralta. All rights reserved.
 //
 
 #import "User.h"

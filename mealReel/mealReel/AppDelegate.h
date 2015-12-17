@@ -10,6 +10,9 @@
 #import "User.h"
 #import "Dish.h"
 
+/*
+ *AppDelegate contains global variables, such as users, and dishes.
+ */
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
