@@ -11,7 +11,7 @@
 #import "AlbumViewController.h"
 #import "Dish.h"
 #import "RecipeLaunchView.h"
-@interface PictureViewController () <UIPageViewControllerDataSource>
+@interface PictureViewController ()
 
 @property bool isFlipped;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *pictureTap;
@@ -22,7 +22,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (strong, nonatomic) IBOutlet UIButton *usernameButton;
 @property (weak, nonatomic) IBOutlet UIButton *viewRecipeButton;
-@property (strong, nonatomic) UIPageViewController* recipeViewController;
 @property (retain, nonatomic) UIImageView *currentImageView;
 
 @property (retain, nonatomic) UILabel *dishName;
@@ -41,14 +40,10 @@
     [super viewDidLoad];
     
     appDelegate = [[UIApplication sharedApplication] delegate];
+    //AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    // Do any additional setup after loading the view.
-    
-    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    
-    //[_avatarImageView setImage: appDelegate.currentUser.avatar];
-    
+    //currentDish = (PFObject*) appDelegate.addingDish;
+    //set the profile image at the topleft corner
     UIImage *profileImage;
     PFFile *imageFile = [thisUser objectForKey:@"avatar"];
     profileImage = [UIImage imageWithData: [imageFile getData]];
@@ -57,27 +52,22 @@
     
     [_usernameButton setTitle:appDelegate.currentUser.username forState:UIControlStateNormal];
    
-    appDelegate.addingDish = currentDish;
     
+    //set the front of the picture
     UIImage *currentImage;
     PFFile *currentFile = [currentDish objectForKey:@"dishImage2"];
     currentImage = [UIImage imageWithData: [currentFile getData]];
-    //UIImage* currentImage = currentDish.dishImage;
-
-    
     CGRect picBound = _pictureBack.bounds;
     picBound.size.height = 256;
     picBound.size.width = 248.5;
-    
-   _currentImageView = [[UIImageView alloc] initWithImage:currentImage];
+    _currentImageView = [[UIImageView alloc] initWithImage:currentImage];
     [_currentImageView setFrame:picBound];
-    
     CGRect newFrame = _pictureBack.bounds;
     newFrame.size.height = 100;
     newFrame.size.width = 200;
     
   
-    
+    //set the back of the picture
     _containerView = [[UIView alloc] initWithFrame:_pictureFrame.bounds];
     _containerView.center = CGPointMake(160,300);
     UITextView *captionTextView = [[UITextView alloc] initWithFrame:newFrame];
@@ -86,8 +76,6 @@
     UILabel *restaurantName = [[UILabel alloc]initWithFrame:newFrame];
     UILabel *address = [[UILabel alloc]initWithFrame:newFrame];
     _dishName = [[UILabel alloc]initWithFrame:newFrame];
-    
-    
     [self.view addSubview:_containerView];
     
     //this centers the two objects
@@ -157,13 +145,26 @@
     _pictureTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [_containerView addGestureRecognizer:_pictureTap];
   
+    //Now when there is no recipe, the user won't able to click on the button, but later maybe we should sent an alert telling the user there is no recipe and ask if they want to add a recipe.
+    if ((int)[[currentDish objectForKey:@"recipe"] count] == 0) {
+        [self.viewRecipeButton setEnabled:NO];
+        NSLog(@"recipe length %i", (int)[[currentDish objectForKey:@"recipe"] count]);
+    }else{
+        [self.viewRecipeButton setEnabled:YES];
+    }
+
     
     //[_pictureTap release];
 
 }
 
 -(void) viewDidAppear {
-    [self.viewRecipeButton setEnabled:YES];
+    if ([[currentDish objectForKey:@"recipe"] count] == 0) {
+        [self.viewRecipeButton setEnabled:NO];
+        NSLog(@"recipe length %i", (int)[[currentDish objectForKey:@"recipe"] count]);
+    }else{
+        [self.viewRecipeButton setEnabled:YES];
+    }
 }
 
 
@@ -227,114 +228,10 @@
 
 
 - (IBAction)seeRecipe:(id)sender {
-    //[self.view setHidden:YES];
-//    [self createPageViewController];
-//    [self setupPageControl];
-    
-    
-    //RecipeLaunchView *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RecipeLaunch"];
-    //[self.view addSubview:next.view];
-    //[self presentViewController:next animated:YES completion:NULL];
-//    UIStoryboardSegue *segue = [[UIStoryboardSegue alloc]initWithIdentifier:@"test" source:self destination:next];
-//    [self performSegueWithIdentifier:@"test" sender:segue];
+    RecipeLaunchView *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RecipeLaunch"];
+    next.thisUser = thisUser;
+    next.currentDish = currentDish;
+    [self presentViewController:next animated:YES completion:NULL];
 }
-//-(void) presentRecipeLaunchView {
-//    RecipeLaunchView *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RecipeLaunch"];
-//    appDelegate.addingDish = currentDish;
-//    
-//    [self presentViewController:next animated:YES completion:NULL];
-//
-//}
-
-//- (void) createPageViewController
-//{
-//    UIPageViewController *recipeViewController = [self.storyboard instantiateViewControllerWithIdentifier: @"RecipeView"];
-//    recipeViewController.dataSource = self;
-//    
-//    if([currentDish.recipe count])
-//    {
-//        NSArray *startingViewControllers = @[[self viewControllerAtIndex:0]];
-//        [recipeViewController setViewControllers: startingViewControllers
-//                                       direction: UIPageViewControllerNavigationDirectionForward
-//                                        animated: NO
-//                                      completion: nil];
-//    }
-//    
-//    self.recipeViewController = recipeViewController;
-//    [self addChildViewController: self.recipeViewController];
-//    [self.view addSubview: self.recipeViewController.view];
-//    [self.recipeViewController  didMoveToParentViewController: self];
-//}
-//
-//- (void) setupPageControl
-//{
-//    [[UIPageControl appearance] setPageIndicatorTintColor: [UIColor grayColor]];
-//    [[UIPageControl appearance] setCurrentPageIndicatorTintColor: [UIColor whiteColor]];
-//    [[UIPageControl appearance] setBackgroundColor: [UIColor darkGrayColor]];
-//}
-//
-//#pragma mark -
-//#pragma mark UIPageViewControllerDataSource
-//
-//- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
-//{
-//    NSUInteger index = ((SingleStepViewController*) viewController).itemIndex;
-//    
-//    if ((index == 0) || (index == NSNotFound)) {
-//        return nil;
-//    }
-//    index--;
-//    return [self viewControllerAtIndex:index];
-//}
-//
-//- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
-//{
-//    NSUInteger index = ((SingleStepViewController*) viewController).itemIndex;
-//    
-//    if (index == NSNotFound) {
-//        return nil;
-//    }
-//    index++;
-//    if (index == [currentDish.recipe count]) {
-//        return nil;
-//    }
-//    return [self viewControllerAtIndex:index];
-//}
-//- (SingleStepViewController *) viewControllerAtIndex: (NSUInteger) itemIndex
-//{
-//    if (itemIndex < [currentDish.recipe count])
-//    {
-//        SingleStepViewController *stepController = [self.storyboard instantiateViewControllerWithIdentifier: @"SingleStepView"];
-//        stepController.itemIndex = itemIndex;
-//        stepController.dishName = currentDish.dishName;
-//        stepController.stepContent = [currentDish.recipe objectAtIndex:itemIndex];
-//        return stepController;
-//    }
-//    
-//    return nil;
-//}
-//
-//- (NSInteger) presentationCountForPageViewController: (UIPageViewController *) pageViewController
-//{
-//    return [currentDish.recipe count];
-//}
-//
-//- (NSInteger) presentationIndexForPageViewController: (UIPageViewController *) pageViewController
-//{
-//    return 0;
-//}
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 
 @end

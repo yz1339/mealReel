@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
+
 
 @interface SingleStepViewController : UIViewController {
     AppDelegate* appDelegate;
@@ -20,5 +22,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *stepNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *stepContentLabel;
 @property (strong, nonatomic) NSString* stepContent;
+@property (strong, nonatomic) PFUser* thisUser;
+@property (strong, nonatomic) PFObject* currentDish;
+
+
+- (IBAction)returnToPictureView:(id)sender;
 
 @end

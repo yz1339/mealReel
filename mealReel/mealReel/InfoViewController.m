@@ -84,13 +84,16 @@
     }else{
         parseDish[@"address"] = dishToAdd.address;
     }
-
     if (dishToAdd.writing == nil) {
         parseDish[@"caption"] = @" ";
     }else {
         parseDish[@"caption"] = dishToAdd.writing;
     }
-
+    if (dishToAdd.recipe.count == 0) {
+        parseDish[@"recipe"] = [[NSArray alloc]initWithObjects:@"", nil];
+    } else {
+        parseDish[@"recipe"] = dishToAdd.recipe;
+    }
 
     NSData* data = UIImageJPEGRepresentation(dishToAdd.dishImage, 0.5f);
     //PFFile *imageFile = [PFFile fileWithName:dishToAdd.dishImage data:data];
@@ -197,6 +200,7 @@
     [textField resignFirstResponder];
     return NO;
 }
+
 - (IBAction)addingReceipe:(id)sender {
     
     //Connect to the recipeView

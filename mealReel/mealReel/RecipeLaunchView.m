@@ -17,20 +17,27 @@
 @implementation RecipeLaunchView
 
 @synthesize dishName;
-//@synthesize itemIndex;
+
 @synthesize stepContent;
 @synthesize recipeView;
 @synthesize recipe;
+@synthesize thisUser;
+@synthesize currentDish;
+
 
 -(void) viewDidLoad {
     [super viewDidLoad];
     appDelegate = [[UIApplication sharedApplication] delegate];
     
     
-    //self.recipe = appDelegate.addingDish.recipe;
-    //self.dishName = appDelegate.addingDish.dishName;
-    dishName = @"haha";
-    recipe = [[NSMutableArray alloc]initWithObjects:@"skdjf",@"dsfjahk", nil];
+    self.recipe = [currentDish objectForKey:@"recipe"];
+    self.dishName = [currentDish objectForKey:@"dishName"];
+    
+//    NSLog(@"Launch view: recipe length %i", (int) recipe.count);
+//    NSLog(@"Launch view: dishName is %@", [currentDish objectForKey:@"dishName"]);
+    
+//    dishName = @"haha";
+//    recipe = [[NSMutableArray alloc]initWithObjects:@"skdjf",@"dsfjahk", nil];
     [self createPageViewController];
     [self setupPageControl];
     
@@ -98,6 +105,8 @@
         stepController.itemIndex = itemIndex;
         stepController.dishName = dishName;
         stepController.stepContent = [recipe objectAtIndex:itemIndex];
+        stepController.currentDish = currentDish;
+        stepController.thisUser = thisUser;
         return stepController;
     }
     

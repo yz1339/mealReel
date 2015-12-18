@@ -76,7 +76,6 @@
     if (steps.count > 0) {
         prevStepLabel.text = [steps objectAtIndex:steps.count-1];
     }
-    //NSLog(@"addingDish writes: %@", steps.writing);
     NSLog(@"How many steps now?? %i", (int)(steps.count));
     NSString *stepNumber = [[NSString alloc]initWithFormat:@"Step %i", (int)(steps.count) + 1];
     stepNumberLabel.text = stepNumber;
@@ -85,8 +84,6 @@
 - (IBAction)finishRecipe:(id)sender {
 
     appDelegate.recipe = steps;
-    NSLog(@"appdelegate recipe length is %i while steps is %i", (int) appDelegate.recipe.count, (int)steps.count);
-    NSLog(@"appdelegate writes %@", appDelegate.writing);
     InfoViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"InfoView"];
     [self presentViewController:next animated:YES completion:NULL];
 }

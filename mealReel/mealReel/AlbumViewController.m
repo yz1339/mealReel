@@ -113,7 +113,6 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     PictureViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PictureView"];
-    
     next.currentDish = [dishArray objectAtIndex:indexPath.row];
     next.thisUser = thisUser;
 
