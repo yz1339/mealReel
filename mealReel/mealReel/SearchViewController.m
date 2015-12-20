@@ -21,7 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     [self performSelector:@selector(retrieveFromParse)];
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -37,7 +36,6 @@
     PFQuery *retrieveUsernames = [PFUser query];
     [retrieveUsernames findObjectsInBackgroundWithBlock:^(NSArray * objects, NSError * error) {
         if(!error){
-            NSLog(@"%@",objects);
             NSLog(@"Success!");
             usernamesArray = [[NSArray alloc]initWithArray:objects];
             
@@ -69,7 +67,6 @@
 
 
 -(UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-    NSLog(@"here we enter");
     static NSString *CellIdentifier = @"SearchCell";
     SearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
    
@@ -88,16 +85,5 @@
     [self presentViewController:next animated:YES completion:NULL];
     
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

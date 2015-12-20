@@ -96,14 +96,14 @@
     }
 
     NSData* data = UIImageJPEGRepresentation(dishToAdd.dishImage, 0.5f);
-    //PFFile *imageFile = [PFFile fileWithName:dishToAdd.dishImage data:data];
+
     PFFile *imageFile = [PFFile fileWithData:data];
 
 
     [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             // The image has now been uploaded to Parse. Associate it with a new object
-            //PFObject* newPhotoObject = [parseDish objectWithClassName:@"PhotoObject"];
+
             [parseDish setObject:imageFile forKey:@"dishImage2"];
         
             [parseDish saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -122,12 +122,10 @@
     [parseDish saveInBackground];
 
     PFUser *currentUser = [PFUser currentUser];
-    NSLog(@"%@", currentUser.username);
     
     // Adds object to dishAlbum array
     [currentUser addObject:parseDish forKey:@"dishAlbum"];
     NSMutableArray* testAlbum = [currentUser objectForKey:@"dishAlbum"];
-    NSLog(@"%lu", (unsigned long)[testAlbum count]);
     
     // Saves the changes on the Parse server. This is necessary to update the actual Parse server. If you don't "save" then the changes will be lost
     [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
@@ -140,11 +138,7 @@
             NSLog(@"Failure!");
         }
     }];
-    
-        //[[[PFUser currentUser] objectForKey:@"dishAlbum"] saveInBackground];
-    //}];
-    
-     NSLog(@"Death");
+
     ViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CameraView"];
     [self presentViewController:next animated:YES completion:NULL];
 }
@@ -204,7 +198,6 @@
 - (IBAction)addingReceipe:(id)sender {
     
     //Connect to the recipeView
-    NSLog(@"Testing appdelegate: %@", appDelegate.writing);
     AddRecipeViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AddRecipeView"];
     [self presentViewController:next animated:YES completion:NULL];
 }
@@ -247,24 +240,5 @@
         }
     } ];
 }
-
-
-
-
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-
-
 
 @end

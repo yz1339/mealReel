@@ -25,22 +25,18 @@
 -(void) addToRecipe:(NSString *)currentStep {
     if([steps count]>0){
         [steps addObject: currentStep];
-        NSLog(@"Adding");
     }
     else{
         steps = [[NSMutableArray alloc]init];
         [steps addObject: currentStep];
-        NSLog(@"Initiating");
     }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     appDelegate = [[UIApplication sharedApplication] delegate];
-    // Do any additional setup after loading the view.
     NSString *stepNumber = [[NSString alloc]initWithFormat:@"Step %i", (int)(steps.count)+1];
     stepNumberLabel.text = stepNumber;
-    NSLog(@"How many steps now?? %i", (int)(steps.count));
     if (steps.count > 1) {
         prevStepLabel.text = [steps objectAtIndex:steps.count-1];
     }
@@ -76,7 +72,6 @@
     if (steps.count > 0) {
         prevStepLabel.text = [steps objectAtIndex:steps.count-1];
     }
-    NSLog(@"How many steps now?? %i", (int)(steps.count));
     NSString *stepNumber = [[NSString alloc]initWithFormat:@"Step %i", (int)(steps.count) + 1];
     stepNumberLabel.text = stepNumber;
     stepTextView.text = @"Add your step here...";

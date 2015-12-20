@@ -36,21 +36,22 @@
     [super viewDidLoad];
     
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    //[_avatarImageView setImage: appDelegate.currentUser.avatar];
-       //dishArray = appDelegate.currentUser.album;
-    //PFUser *currentUser = [PFUser currentUser];
+
     _usernameLabel.text = thisUser.username;
     dishArray = [thisUser objectForKey:@"dishAlbum"];
-    NSLog(@"%lu", [dishArray count]);
     
-    UIImage *profileImage;
     PFFile *imageFile = [thisUser objectForKey:@"avatar"];
-    profileImage = [UIImage imageWithData: [imageFile getData]];
     
-    [_avatarImageView setImage:profileImage];
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
+        
+        
+        NSData *imageData = data;
+        UIImage *profileImage = [UIImage imageWithData:imageData];
+
+        [_avatarImageView setImage:profileImage];
+    }];
     
-    
-    //[_avatarImageView setImage:[currentUser objectForKey:@"avatar"]];
+
     albumCollectionView.delegate = self;
     albumCollectionView.dataSource = self;
 
@@ -87,25 +88,12 @@
    
     PFObject *currentDish = [dishArray objectAtIndex:indexPath.row];
      [currentDish fetchIfNeeded];
-    //UIImage *currentImage = currentDish[@"dishImage"];
-    //UIImage *currentImage = [UIImage imageWithData:[currentDish objectForKey:@"dishImage2"]];
     
     
     UIImage *currentImage;
     PFFile *currentFile = [currentDish objectForKey:@"dishImage2"];
     currentImage = [UIImage imageWithData: [currentFile getData]];
 
-    /*
-    [currentFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        if (!error) {
-            NSLog(@"Success");
-                   }
-        else{
-            NSLog(@"Fail");
-        }
-    }];
-     */
-    
     [cell.cellPicture setImage:currentImage];
       
     return cell;
@@ -119,14 +107,6 @@
     [self presentViewController:next animated:YES completion:NULL];
 
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

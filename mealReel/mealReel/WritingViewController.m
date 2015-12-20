@@ -94,7 +94,6 @@
 
     //check to see if the user previously typed something
     if (appDelegate.writing != nil) {
-        NSLog(@"User previously wrote sth!!!");
         captionTextView.text = appDelegate.writing;
     } else {
         captionTextView.text = @"Enter Text Here";
@@ -246,8 +245,6 @@
         textStorage = captionTextView.textStorage;
         appDelegate.textStorage = [[NSTextStorage alloc]init];
         appDelegate.textStorage = textStorage;
-        NSLog(@"==========has entry!!");
-        
     }
     return YES;
 }

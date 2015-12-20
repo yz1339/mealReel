@@ -111,22 +111,17 @@
     addressText.textAlignment = NSTextAlignmentCenter;
      [addressText setFont:[UIFont fontWithName:@"Menlo-Bold" size:12]];
     
-    //_dishName.text = currentDish.dishName;
     _dishName.text = [currentDish objectForKey:@"dishName"];
     [_dishName setFont:[UIFont fontWithName:@"Menlo" size:12]];
     _dishName.textAlignment = NSTextAlignmentCenter;
     
-    
-    //captionTextView.text = currentDish.textStorage.string;
      captionTextView.text = [currentDish objectForKey:@"caption"];
     [captionTextView setFont:[UIFont fontWithName:@"Menlo" size:15]];
-    
-    //restaurantName.text = currentDish.restaurant;
+
      restaurantName.text = [currentDish objectForKey:@"restaurant"];
     [restaurantName setFont:[UIFont fontWithName:@"Menlo" size:12]];
     restaurantName.textAlignment = NSTextAlignmentCenter;
     
-    //address.text = currentDish.address;
     address.text = [currentDish objectForKey:@"address"];
     [address setFont:[UIFont fontWithName:@"Menlo" size:12]];
     address.textAlignment = NSTextAlignmentCenter;
@@ -148,7 +143,6 @@
     //Now when there is no recipe, the user won't able to click on the button, but later maybe we should sent an alert telling the user there is no recipe and ask if they want to add a recipe.
     if ((int)[[currentDish objectForKey:@"recipe"] count] == 0) {
         [self.viewRecipeButton setEnabled:NO];
-        NSLog(@"recipe length %i", (int)[[currentDish objectForKey:@"recipe"] count]);
     }else{
         [self.viewRecipeButton setEnabled:YES];
     }
@@ -161,7 +155,6 @@
 -(void) viewDidAppear {
     if ([[currentDish objectForKey:@"recipe"] count] == 0) {
         [self.viewRecipeButton setEnabled:NO];
-        NSLog(@"recipe length %i", (int)[[currentDish objectForKey:@"recipe"] count]);
     }else{
         [self.viewRecipeButton setEnabled:YES];
     }
@@ -170,7 +163,6 @@
 
 - (void)handleTap:(UITapGestureRecognizer *)sender {
     
-    //_pictureBack = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pictureBack.png"]];
     if (sender.state == UIGestureRecognizerStateEnded) {
         [UIView transitionWithView:_containerView
                           duration:1
@@ -178,15 +170,11 @@
                         animations:^{
                             
                             if (!_isFlipped) {
-                                /*
-                                 [_pictureBack setHidden:YES];
-                                 [_containerView addSubview:_pictureFrame];
-                                 */
+                            
                                 [_dishName setHidden: YES];
                                 [_currentImageView setHidden:YES];
                                 [_pictureFrame setHidden:YES];
                                 [_pictureBack setHidden: NO];
-                                //[_containerView addSubview:_pictureBack];
                                 
                                 _isFlipped = YES;
                             } else {
@@ -194,7 +182,6 @@
                                 [_currentImageView setHidden:NO];
                                 [_pictureFrame setHidden:NO];
                                 [_pictureBack setHidden:YES];
-                                // [_pictureBack removeFromSuperview]; //or hide it.
                                 _isFlipped = NO;
                             }
                             

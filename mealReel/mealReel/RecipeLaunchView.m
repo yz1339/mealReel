@@ -32,12 +32,6 @@
     
     self.recipe = [currentDish objectForKey:@"recipe"];
     self.dishName = [currentDish objectForKey:@"dishName"];
-    
-//    NSLog(@"Launch view: recipe length %i", (int) recipe.count);
-//    NSLog(@"Launch view: dishName is %@", [currentDish objectForKey:@"dishName"]);
-    
-//    dishName = @"haha";
-//    recipe = [[NSMutableArray alloc]initWithObjects:@"skdjf",@"dsfjahk", nil];
     [self createPageViewController];
     [self setupPageControl];
     
