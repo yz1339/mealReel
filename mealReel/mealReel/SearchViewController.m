@@ -21,7 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     [self performSelector:@selector(retrieveFromParse)];
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -38,7 +37,6 @@
     PFQuery *retrieveUsernames = [PFUser query];
     [retrieveUsernames findObjectsInBackgroundWithBlock:^(NSArray * objects, NSError * error) {
         if(!error){
-            NSLog(@"%@",objects);
             NSLog(@"Success!");
             usernamesArray = [[NSArray alloc]initWithArray:objects];
             
@@ -77,7 +75,6 @@
 
 
 -(UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-    NSLog(@"here we enter");
     static NSString *CellIdentifier = @"SearchCell";
     SearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     //if(tableView == self.searchDisplayController.searchResultsTableView){
@@ -112,6 +109,7 @@
     
 }
 
+
 #pragma Search Methods
 
 /*
@@ -135,5 +133,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end

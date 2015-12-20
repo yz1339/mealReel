@@ -25,22 +25,18 @@
 -(void) addToRecipe:(NSString *)currentStep {
     if([steps count]>0){
         [steps addObject: currentStep];
-        NSLog(@"Adding");
     }
     else{
         steps = [[NSMutableArray alloc]init];
         [steps addObject: currentStep];
-        NSLog(@"Initiating");
     }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     appDelegate = [[UIApplication sharedApplication] delegate];
-    // Do any additional setup after loading the view.
     NSString *stepNumber = [[NSString alloc]initWithFormat:@"Step %i", (int)(steps.count)+1];
     stepNumberLabel.text = stepNumber;
-    NSLog(@"How many steps now?? %i", (int)(steps.count));
     if (steps.count > 1) {
         prevStepLabel.text = [steps objectAtIndex:steps.count-1];
     }
@@ -76,8 +72,6 @@
     if (steps.count > 0) {
         prevStepLabel.text = [steps objectAtIndex:steps.count-1];
     }
-    //NSLog(@"addingDish writes: %@", steps.writing);
-    NSLog(@"How many steps now?? %i", (int)(steps.count));
     NSString *stepNumber = [[NSString alloc]initWithFormat:@"Step %i", (int)(steps.count) + 1];
     stepNumberLabel.text = stepNumber;
     stepTextView.text = @"Add your step here...";
@@ -85,8 +79,6 @@
 - (IBAction)finishRecipe:(id)sender {
 
     appDelegate.recipe = steps;
-    NSLog(@"appdelegate recipe length is %i while steps is %i", (int) appDelegate.recipe.count, (int)steps.count);
-    NSLog(@"appdelegate writes %@", appDelegate.writing);
     InfoViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"InfoView"];
     [self presentViewController:next animated:YES completion:NULL];
 }

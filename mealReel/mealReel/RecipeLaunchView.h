@@ -10,13 +10,18 @@
 #import "RecipeViewController.h"
 #import "SingleStepViewController.h"
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
+
 
 @interface RecipeLaunchView : UIViewController {
     AppDelegate* appDelegate;
 }
 @property (strong, nonatomic) UIPageViewController* recipeView;
 @property (strong, nonatomic) NSString* stepContent;
-//@property (nonatomic) NSUInteger itemIndex;
 @property (nonatomic, strong) NSString *dishName;
 @property (nonatomic, strong) NSMutableArray* recipe;
+@property (strong, nonatomic) PFUser* thisUser;
+@property (strong, nonatomic) PFObject* currentDish;
+
+
 @end

@@ -358,19 +358,26 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ni4-Vl-knS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ni4-Vl-knS">
                                 <rect key="frame" x="126" y="42" width="65" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxy-Yg-F9U">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxy-Yg-F9U">
                                 <rect key="frame" x="48" y="103" width="220" height="47"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ZM-1o-IAH">
+                                <rect key="frame" x="137" y="453" width="46" height="30"/>
+                                <state key="normal" title="Return"/>
+                                <connections>
+                                    <action selector="returnToPictureView:" destination="WYg-Ym-lzy" eventType="touchUpInside" id="LaN-Zj-EzZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.93472160900000001" blue="0.86531856549999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -477,15 +484,6 @@
         <!--Search View Controller-->
         <scene sceneID="WIb-re-KFL">
             <objects>
-                <searchDisplayController id="dFU-5Z-fL8">
-                    <connections>
-                        <outlet property="delegate" destination="RZS-IL-NNx" id="S9j-mL-85f"/>
-                        <outlet property="searchContentsController" destination="RZS-IL-NNx" id="uYP-9Z-4mq"/>
-                        <outlet property="searchResultsDataSource" destination="RZS-IL-NNx" id="JHv-fg-AaB"/>
-                        <outlet property="searchResultsDelegate" destination="RZS-IL-NNx" id="bMF-W1-8ez"/>
-                    </connections>
-                </searchDisplayController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VJF-wO-0wg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="SearchView" id="RZS-IL-NNx" customClass="SearchViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EmN-fe-Co2"/>
@@ -546,6 +544,15 @@
                         <outlet property="tableView" destination="a0O-Sv-f5g" id="2Ug-bw-whd"/>
                     </connections>
                 </viewController>
+                <searchDisplayController id="dFU-5Z-fL8">
+                    <connections>
+                        <outlet property="delegate" destination="RZS-IL-NNx" id="S9j-mL-85f"/>
+                        <outlet property="searchContentsController" destination="RZS-IL-NNx" id="uYP-9Z-4mq"/>
+                        <outlet property="searchResultsDataSource" destination="RZS-IL-NNx" id="JHv-fg-AaB"/>
+                        <outlet property="searchResultsDelegate" destination="RZS-IL-NNx" id="bMF-W1-8ez"/>
+                    </connections>
+                </searchDisplayController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VJF-wO-0wg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="190" y="1685"/>
         </scene>
@@ -744,6 +751,15 @@
                                 <rect key="frame" x="99" y="84" width="124" height="30"/>
                                 <state key="normal" title="Username"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9NK-6V-WWQ">
+                                <rect key="frame" x="130" y="538" width="47" height="30"/>
+                                <state key="normal" title="Recipe">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="seeRecipe:" destination="cwo-iE-hNj" eventType="touchUpInside" id="OyI-iS-0SI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.93472160900000001" blue="0.86531856549999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -754,6 +770,7 @@
                         <outlet property="pictureFrame" destination="0eS-gm-FhX" id="zuU-jO-PBM"/>
                         <outlet property="pictureTap" destination="ERi-Y9-h44" id="kEb-NH-sfk"/>
                         <outlet property="usernameButton" destination="L0I-XM-gxZ" id="tAi-7j-xub"/>
+                        <outlet property="viewRecipeButton" destination="9NK-6V-WWQ" id="GcY-cd-vrf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z9S-Vm-gjh" userLabel="First Responder" sceneMemberID="firstResponder"/>

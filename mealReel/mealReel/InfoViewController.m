@@ -66,65 +66,79 @@
         /* This is how you add 'dishToAdd' to the Array called dishAlbum that
          * belongs to the special parse class called User (PFUser type): */
         
-        // This is your current user
-    
-        PFObject *parseDish = [PFObject objectWithClassName:@"Dish"];
+    // This is your current user
+
+    PFObject *parseDish = [PFObject objectWithClassName:@"Dish"];
+    if (dishToAdd.dishName == nil) {
+        parseDish[@"dishName"] = @" ";
+    } else {
         parseDish[@"dishName"] = dishToAdd.dishName;
+    }
+    if (dishToAdd.restaurant == nil) {
+        parseDish[@"restaurant"] = @" ";
+    } else {
         parseDish[@"restaurant"] = dishToAdd.restaurant;
+    }
+    if (dishToAdd.address == nil) {
+        parseDish[@"address"] = @" ";
+    }else{
         parseDish[@"address"] = dishToAdd.address;
+    }
+    if (dishToAdd.writing == nil) {
+        parseDish[@"caption"] = @" ";
+    }else {
         parseDish[@"caption"] = dishToAdd.writing;
-    
-    
-        NSData* data = UIImageJPEGRepresentation(dishToAdd.dishImage, 0.5f);
-        //PFFile *imageFile = [PFFile fileWithName:dishToAdd.dishImage data:data];
-        PFFile *imageFile = [PFFile fileWithData:data];
-    
-    
-        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (!error) {
-                // The image has now been uploaded to Parse. Associate it with a new object
-                //PFObject* newPhotoObject = [parseDish objectWithClassName:@"PhotoObject"];
-                [parseDish setObject:imageFile forKey:@"dishImage2"];
-            
-                [parseDish saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    if (!error) {
-                        NSLog(@"Saved");
-                    }
-                    else{
-                        // Error
-                        NSLog(@"Error: %@ %@", error, [error userInfo]);
-                    }
-                }];
-            }
-        }];
+    }
+    if (dishToAdd.recipe.count == 0) {
+        parseDish[@"recipe"] = [[NSArray alloc]initWithObjects:@"", nil];
+    } else {
+        parseDish[@"recipe"] = dishToAdd.recipe;
+    }
 
-       // parseDish[@"dishImage"] = dishToAdd.dishImage;
-        [parseDish saveInBackground];
+    NSData* data = UIImageJPEGRepresentation(dishToAdd.dishImage, 0.5f);
 
-        PFUser *currentUser = [PFUser currentUser];
-        NSLog(@"%@", currentUser.username);
+    PFFile *imageFile = [PFFile fileWithData:data];
+
+
+    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            // The image has now been uploaded to Parse. Associate it with a new object
+
+            [parseDish setObject:imageFile forKey:@"dishImage2"];
         
-        // Adds object to dishAlbum array
-        [currentUser addObject:parseDish forKey:@"dishAlbum"];
-        NSMutableArray* testAlbum = [currentUser objectForKey:@"dishAlbum"];
-        NSLog(@"%lu", (unsigned long)[testAlbum count]);
-        
-        // Saves the changes on the Parse server. This is necessary to update the actual Parse server. If you don't "save" then the changes will be lost
-        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-            if (succeeded)
-            {
-                //success
-                NSLog(@"Success!");
-            }
-            else{
-                NSLog(@"Failure!");
-            }
-        }];
-       
-        //[[[PFUser currentUser] objectForKey:@"dishAlbum"] saveInBackground];
-    //}];
+            [parseDish saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (!error) {
+                    NSLog(@"Saved");
+                }
+                else{
+                    // Error
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                }
+            }];
+        }
+    }];
+
+   // parseDish[@"dishImage"] = dishToAdd.dishImage;
+    [parseDish saveInBackground];
+
+    PFUser *currentUser = [PFUser currentUser];
     
-     NSLog(@"Death");
+    // Adds object to dishAlbum array
+    [currentUser addObject:parseDish forKey:@"dishAlbum"];
+    NSMutableArray* testAlbum = [currentUser objectForKey:@"dishAlbum"];
+    
+    // Saves the changes on the Parse server. This is necessary to update the actual Parse server. If you don't "save" then the changes will be lost
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+        if (succeeded)
+        {
+            //success
+            NSLog(@"Success!");
+        }
+        else{
+            NSLog(@"Failure!");
+        }
+    }];
+
     ViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CameraView"];
     [self presentViewController:next animated:YES completion:NULL];
 }
@@ -144,6 +158,30 @@
 
 }
 
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self animateTextField:textField up:YES];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self animateTextField:textField up:NO];
+}
+
+-(void)animateTextField:(UITextField*)textField up:(BOOL)up
+{
+    const int movementDistance = -130; // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
+    
+    int movement = (up ? movementDistance : -movementDistance);
+    
+    [UIView beginAnimations: @"animateTextField" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
+}
+
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     
@@ -156,10 +194,10 @@
     [textField resignFirstResponder];
     return NO;
 }
+
 - (IBAction)addingReceipe:(id)sender {
     
     //Connect to the recipeView
-    NSLog(@"Testing appdelegate: %@", appDelegate.writing);
     AddRecipeViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AddRecipeView"];
     [self presentViewController:next animated:YES completion:NULL];
 }
@@ -202,24 +240,5 @@
         }
     } ];
 }
-
-
-
-
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-
-
 
 @end

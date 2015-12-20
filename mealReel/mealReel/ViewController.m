@@ -30,19 +30,9 @@ AVCaptureStillImageOutput *StillImageOutput;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    /*
-     PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-     testObject[@"foo"] = @"bar";
-     [testObject saveInBackground];
-     */
-    NSLog(@"test");
 
-
-    
     appDelegate = [[UIApplication sharedApplication] delegate];
     currentImage = [[UIImage alloc] init];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -100,14 +90,6 @@ AVCaptureStillImageOutput *StillImageOutput;
     
 }
 
-//- (void) viewWillDisappear:(BOOL)animated {
-//    NSData* defaultData = [NSKeyedArchiver archivedDataWithRootObject:appDelegate.currentUser];
-//    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-//    [defaults setObject: defaultData forKey:@"loki102"];
-//    [defaults setBool:YES forKey:@"hasUser"];
-//    NSLog(@"has user? %d", [defaults boolForKey:@"hasUser"]);
-//    [defaults synchronize];
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -128,7 +110,6 @@ AVCaptureStillImageOutput *StillImageOutput;
         if (imageDataSampleBuffer != NULL) {
             NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
             UIImage* image = [UIImage imageWithData:imageData];
-            //UIImage* image = [[UIImage alloc] initWithData:imageData scale:0.8];
             imageView.image = image;
             appDelegate.currentImage = image;
             WritingViewController *next = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"WritingView"];

@@ -30,7 +30,6 @@
     self = [super init];
     if (self) {
         album = [coder decodeObjectForKey:@"FirstUserAlbum"];
-        //[album initWithCoder:coder];
         username = [coder decodeObjectForKey:@"FirstUserName"];
         avatar = [coder decodeObjectForKey:@"FirstUserImage"];
     }
