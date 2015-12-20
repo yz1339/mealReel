@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CommentViewController : UIViewController
+@interface CommentViewController : UIViewController<UITableViewDelegate>{
+    NSArray *commentsArray;
+}
+
+@property (strong, nonatomic)NSArray *commentsArray;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
 
 @end

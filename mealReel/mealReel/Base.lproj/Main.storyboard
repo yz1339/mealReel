@@ -355,20 +355,20 @@
                                 <rect key="frame" x="48" y="179" width="220" height="242"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ni4-Vl-knS">
                                 <rect key="frame" x="126" y="42" width="65" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxy-Yg-F9U">
                                 <rect key="frame" x="48" y="103" width="220" height="47"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -477,6 +477,15 @@
         <!--Search View Controller-->
         <scene sceneID="WIb-re-KFL">
             <objects>
+                <searchDisplayController id="dFU-5Z-fL8">
+                    <connections>
+                        <outlet property="delegate" destination="RZS-IL-NNx" id="S9j-mL-85f"/>
+                        <outlet property="searchContentsController" destination="RZS-IL-NNx" id="uYP-9Z-4mq"/>
+                        <outlet property="searchResultsDataSource" destination="RZS-IL-NNx" id="JHv-fg-AaB"/>
+                        <outlet property="searchResultsDelegate" destination="RZS-IL-NNx" id="bMF-W1-8ez"/>
+                    </connections>
+                </searchDisplayController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VJF-wO-0wg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="SearchView" id="RZS-IL-NNx" customClass="SearchViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EmN-fe-Co2"/>
@@ -486,10 +495,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s18-HY-rtv">
-                                <rect key="frame" x="0.0" y="72" width="320" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cup-0i-rd6">
                                 <rect key="frame" x="15" y="28" width="62" height="30"/>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
@@ -517,22 +522,30 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ra2-QL-VAe">
+                                                    <rect key="frame" x="261" y="4" width="41" height="35"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="cellImage" destination="ra2-QL-VAe" id="ou8-i3-VFI"/>
                                             <outlet property="usernameText" destination="gXA-IJ-5aI" id="2jE-QF-1qD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sLM-M3-XAl">
+                                <rect key="frame" x="0.0" y="72" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.70624006640000003" blue="0.31651804309999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="searchDisplayController" destination="dFU-5Z-fL8" id="C3M-Jy-scz"/>
                         <outlet property="tableView" destination="a0O-Sv-f5g" id="2Ug-bw-whd"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VJF-wO-0wg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="190" y="1685"/>
         </scene>
@@ -736,6 +749,7 @@
                     </view>
                     <connections>
                         <outlet property="avatarImageView" destination="TBy-aX-7px" id="9xC-km-Psl"/>
+                        <outlet property="commentsButton" destination="Fvn-YM-G5K" id="JTN-mu-FTc"/>
                         <outlet property="pictureBack" destination="x6h-7M-5Vl" id="n2m-zo-qq6"/>
                         <outlet property="pictureFrame" destination="0eS-gm-FhX" id="zuU-jO-PBM"/>
                         <outlet property="pictureTap" destination="ERi-Y9-h44" id="kEb-NH-sfk"/>
@@ -762,10 +776,38 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="anothertextbox" translatesAutoresizingMaskIntoConstraints="NO" id="Jkw-aG-Nl1">
                                 <rect key="frame" x="-6" y="45" width="336" height="488"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HLc-Rq-Acy">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="93" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HLc-Rq-Acy">
                                 <rect key="frame" x="26" y="78" width="274" height="423"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="93" id="zfJ-zf-e2d">
+                                        <rect key="frame" x="0.0" y="28" width="274" height="93"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zfJ-zf-e2d" id="eR2-OE-SVp">
+                                            <rect key="frame" x="0.0" y="0.0" width="274" height="92.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jzC-MA-Adf">
+                                                    <rect key="frame" x="8" y="16" width="64" height="62"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGo-eS-iBO">
+                                                    <rect key="frame" x="93" y="16" width="89" height="83"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQu-rr-wUx">
+                                <rect key="frame" x="20" y="20" width="46" height="30"/>
+                                <state key="normal" title="Return"/>
+                                <connections>
+                                    <action selector="returnPressed:" destination="rrR-g5-4AH" eventType="touchUpInside" id="U0c-6p-hJN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.93472160900000001" blue="0.86531856549999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>

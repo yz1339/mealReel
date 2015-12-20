@@ -10,11 +10,13 @@
 #import <Parse/Parse.h>
 #import "SearchTableViewCell.h"
 
-@interface SearchViewController : UIViewController <UITableViewDelegate>{
+@interface SearchViewController : UIViewController <UITableViewDelegate, UISearchDisplayDelegate>{
     NSArray *usernamesArray;
+    NSArray *searchResults;
 }
 
  @property (strong, nonatomic)NSArray *usernamesArray;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic)NSArray *searchResults;
 
 @end

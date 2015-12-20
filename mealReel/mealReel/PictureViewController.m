@@ -26,6 +26,7 @@
 @property (retain, nonatomic) UIImageView *currentImageView;
 
 @property (retain, nonatomic) UILabel *dishName;
+@property (strong, nonatomic) IBOutlet UIButton *commentsButton;
 
 
 
@@ -39,6 +40,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [_commentsButton setEnabled:NO];
     
     appDelegate = [[UIApplication sharedApplication] delegate];
     
@@ -55,7 +57,7 @@
     
     [_avatarImageView setImage:profileImage];
     
-    [_usernameButton setTitle:appDelegate.currentUser.username forState:UIControlStateNormal];
+    [_usernameButton setTitle:thisUser.username forState:UIControlStateNormal];
    
     appDelegate.addingDish = currentDish;
     

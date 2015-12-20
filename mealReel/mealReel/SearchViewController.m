@@ -25,6 +25,7 @@
     [self performSelector:@selector(retrieveFromParse)];
     tableView.delegate = self;
     tableView.dataSource = self;
+    self.searchResults = [[NSArray alloc]init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,6 +65,13 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    //if(tableView == self.searchDisplayController.searchResultsTableView){
+   //     return [self.searchResults count];
+        
+   // }
+   // else{
+    //    return 1;
+   // }
     return usernamesArray.count;
 }
 
@@ -72,10 +80,25 @@
     NSLog(@"here we enter");
     static NSString *CellIdentifier = @"SearchCell";
     SearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-   
+    //if(tableView == self.searchDisplayController.searchResultsTableView){
     PFObject *tempObject = [usernamesArray objectAtIndex:indexPath.row];
+        
+        //PFObject *tempObject = [self.searchResults objectAtIndex:indexPath.row];
+
     
     cell.usernameText.text = [tempObject objectForKey:@"username"];
+    
+    
+    UIImage *currentImage;
+    PFFile *currentFile = [tempObject objectForKey:@"avatar"];
+    currentImage = [UIImage imageWithData: [currentFile getData]];
+    
+
+     [cell.cellImage setImage:currentImage];
+       // }
+    //else{
+
+    //}
     
     return cell;
 }
@@ -89,6 +112,19 @@
     
 }
 
+#pragma Search Methods
+
+/*
+-(void)filterContentForSearchText:(NSString *)searchText scope:(NSString*)scope{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", searchText];
+    self.searchResults = [usernamesArray filteredArrayUsingPredicate: predicate];
+}
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString{
+    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    
+    return YES;
+}
+*/
 
 /*
 #pragma mark - Navigation

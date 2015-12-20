@@ -10,5 +10,6 @@
 
 @interface SearchTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *usernameText;
+@property (strong, nonatomic) IBOutlet UIImageView *cellImage;
 
 @end
